@@ -1,0 +1,19 @@
+AllCops:
+  Excludes:
+    - Gemfile
+    - db/**
+    - config/**/*
+    - spec/spec_helper.rb
+    - bin/**/*
+    - tmp/**/*
+    - app/controllers/application_controller.rb
+    - spec/rails_helper.rb
+    - vendor/**/*
+    - bundler_stubs/**/*
+Rails:
+  Enabled: true
+
+Metrics/LineLength:
+  Max: 90
+  # Ignores comment line length
+  IgnoredPatterns: ['\A#']
