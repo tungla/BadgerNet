@@ -1,8 +1,18 @@
 language: ruby
+cache: bundler
 rvm:
   - 2.4.0
-
-# Sets up test database then runs the test suite
+notifications:
+  slack: badgernetgroup:NDBkjxEAYqYjqE7LdctjsuZR
+  email: false
+env:
+  - DB=postgresql
 script:
-  - bundle exec db:migrate RAILS_ENV=test
-  - bundle exec rspec
+  - bundle exec rake db:test:prepare
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rspec spec/
+  - bundle exec rubocop
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database BadgerNet_test' -U postgres
+bundler_args: --binstubs=./bundler_stubs

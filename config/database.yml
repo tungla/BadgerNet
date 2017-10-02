@@ -29,10 +29,8 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: BadgerNet
-
-  # The password associated with the postgres role (username).
-  #password:
+  username: badgernet
+  password: BadgerNet2017!
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -58,6 +56,8 @@ development:
 test:
   <<: *default
   database: BadgerNet_test
+  username: badgernet
+  password: BadgerNet2017!
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: BadgerNet_production
-  username: BadgerNet
+  username: <%= ENV['BADGERNET_DATABASE_USERNAME'] %>
   password: <%= ENV['BADGERNET_DATABASE_PASSWORD'] %>
