@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: BadgerNet_production
-  username: <%= ENV['BADGERNET_DATABASE_USERNAME']
+  username: <%= ENV['BADGERNET_DATABASE_USERNAME'] %>
   password: <%= ENV['BADGERNET_DATABASE_PASSWORD'] %>
