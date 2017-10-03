@@ -1,5 +1,7 @@
 # BadgerNet
 
+[![Build Status](https://travis-ci.com/Chaseshak/BadgerNet.svg?token=y8dTrJkpQLTEPjpNhoQh&branch=master)](https://travis-ci.com/Chaseshak/BadgerNet)
+
 BadgerNet is a software that was developed for UW Athletics teams as a platform for coaches
 to share information with their athletes and communicate effectively. The current system
 works so poorly that most teams have abandoned the tool entirely in favor of easier to use sites
