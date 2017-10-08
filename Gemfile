@@ -19,7 +19,12 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Flexible user authentication: https://github.com/plataformatec/devise
 gem 'devise'
+# Authorization OO library https://github.com/elabs/pundit
+gem 'authority'
+# Role management library https://github.com/RolifyCommunity/rolify
+gem 'rolify'
 
 # Rubocop is a Ruby code linter
 gem 'rubocop', require: false
