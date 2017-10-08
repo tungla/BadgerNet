@@ -1,7 +1,7 @@
 AllCops:
   Excludes:
     - Gemfile
-    - db/**
+    - db/**/*
     - config/**/*
     - spec/spec_helper.rb
     - bin/**/*
