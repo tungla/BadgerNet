@@ -1,8 +1,10 @@
 require_relative 'support/controller_helpers'
+require_relative 'support/login_helpers'
 require 'devise'
 RSpec.configure do |config|
 
   config.include ControllerHelpers, type: :controller
+  config.include LoginHelpers, type: :feature
   Warden.test_mode!
 
   config.after do
