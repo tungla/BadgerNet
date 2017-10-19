@@ -17,6 +17,13 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
+# Flexible user authentication: https://github.com/plataformatec/devise
+gem 'devise'
+# Authorization OO library https://github.com/elabs/pundit
+gem 'authority'
+# Role management library https://github.com/RolifyCommunity/rolify
+gem 'rolify'
+
 # Rubocop is a Ruby linter Read more: https://github.com/bbatsov/rubocop
 gem 'rubocop', require: false
 
@@ -33,6 +40,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'rspec-rails', '~> 3.6'
+  gem 'rails-controller-testing'
+  gem 'factory_girl_rails'
   gem 'selenium-webdriver'
 end
 

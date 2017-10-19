@@ -1,15 +1,16 @@
 AllCops:
   Excludes:
     - Gemfile
-    - db/**
+    - db/**/*
     - config/**/*
-    - spec/spec_helper.rb
     - bin/**/*
     - tmp/**/*
     - app/controllers/application_controller.rb
-    - spec/rails_helper.rb
+    - app/models/role.rb
     - vendor/**/*
     - bundler_stubs/**/*
+    - spec/rails_helper.rb
+    - spec/spec_helper.rb
 Rails:
   Enabled: true
 
