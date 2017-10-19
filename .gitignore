@@ -17,3 +17,13 @@
 /yarn-error.log
 
 .byebug_history
+
+# Rails assets
+log/*.log
+public/assets/*
+public/cache/*
+public/images/themes/*
+public/javascripts/cache/*
+public/stylesheets/cache/*
+public/themes
+public/files/*
