@@ -25,6 +25,8 @@ gem 'devise'
 gem 'authority'
 # Role management library https://github.com/RolifyCommunity/rolify
 gem 'rolify'
+# Twilio texting
+gem 'twilio-ruby', '~> 5.4.2'
 
 # Rubocop is a Ruby code linter
 gem 'rubocop', require: false
