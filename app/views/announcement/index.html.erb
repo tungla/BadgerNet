@@ -2,5 +2,16 @@
 <div class="container">
   <h1>Test</h1>
   <p>Show up</p>
+  
+  <div class="messages">
+  <div class="container">
+  
+  <% @announcements.each do |announcement| %> 
+    <div class="announcement"> 
+    <p class="content"><%= announcement.content %></p> 
+    <p class="time"><%= announcement.created_at %></p> 
+</div> 
+<% end %>
+<p> more </p>
 </div>
 </div>
