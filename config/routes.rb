@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'permissions/index'
+
+  post 'permissions/delete'
+
   devise_for :users, skip: :registration
   root 'home#index'
 
