@@ -1,7 +1,6 @@
 <div class="main">
 <div class="container">
   <h1>Test</h1>
-  <p>Show up</p>
   
   <div class="announcements">
   <div class="container">
@@ -10,6 +9,8 @@
     <div class="announcement"> 
       <p class="content"><%= announcement.content %></p> 
       <p class="time"><%= announcement.created_at %></p> 
+      <p class="type">type: <%= announcement.sendType %></p>
+      <p>_____</p>
     </div> 
 <% end %>
 <%= link_to 'New Announcement', "announcement/new" %>

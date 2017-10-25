@@ -9,3 +9,5 @@
 a1 = Announcement.create(content: "Let's get to work")
 
 a2 = Announcement.create(content: "Yay!")
+
+u1 = User.create(email: "user@test.com", encrypted_password: "Password123")

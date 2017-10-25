@@ -1,9 +1,9 @@
 <h2>Send Announcement</h2>
 <%= form_for @announcement, url: {action: "create"} do |f| %>
-    <%= f.text_area :content, size: "60x12" %> </br>
-    <%= f.radio_button :sendType, 'email' %> 
-    <%= f.label :sendType, 'Email', :value => 'email' %> </br>
-    <%= f.radio_button :sendType, 'sms' %>
-    <%= f.label :sendType, 'SMS', :value => 'sms' %> </br>
-    <%= f.submit "Create" %>
+  <%= f.radio_button :sendType, 'email' %> 
+  <%= f.label :sendType, 'Email', :value => 'email' %> </br>
+  <%= f.radio_button :sendType, 'sms' %>
+  <%= f.label :sendType, 'SMS', :value => 'sms' %> </br>
+  <%= f.text_area :content, size: "60x12" %> </br>
+  <%= f.submit "Send" %>
   <% end %>
