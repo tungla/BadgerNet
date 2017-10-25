@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-a1 = Announcement.create(content: "Let's get to wokr")
+a1 = Announcement.create(content: "Let's get to work")
 
 a2 = Announcement.create(content: "Yay!")

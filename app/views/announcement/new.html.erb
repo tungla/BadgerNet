@@ -1,0 +1,5 @@
+
+<%= form_for @announcement, url: {action: "create"} do |f| %>
+    <%= f.text_area :content, size: "60x12" %> </br>
+    <%= f.submit "Create" %>
+  <% end %>
