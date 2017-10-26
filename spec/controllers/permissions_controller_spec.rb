@@ -24,10 +24,17 @@ RSpec.describe PermissionsController, type: :controller do
       before do
         coach = create(:coach_user)
         sign_in(coach)
-      end
-      it 'returns http success' do
         get :index
+      end
+
+      it 'returns http success' do
         expect(response).to have_http_status(:success)
+      end
+
+      context 'There are existing users in the database' do
+        it 'assigns @users' do
+          expect(assigns(:users)).not_to be_nil
+        end
       end
     end
   end
