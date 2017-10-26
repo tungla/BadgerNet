@@ -3,6 +3,7 @@ FactoryGirl.define do
     sequence(:id) { |n| n }
     sequence(:email) { |n| "test#{n}@test.com" }
     password 'test_password123'
+    name 'Test User'
 
     factory :athlete_user do
       sequence(:email) { |n| "athlete#{n}@test.com" }
