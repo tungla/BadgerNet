@@ -1,4 +1,6 @@
+# ScheduleController controls adding/editing/viewing schedules
 class ScheduleController < ApplicationController
-    def index
-    end
+  def index
+    render
+  end
 end
