@@ -1,4 +1,4 @@
-#contacts controller will control contacts
+# contacts controller will control contacts
 class ContactsController < ApplicationController
   def index
     @users = User.all
