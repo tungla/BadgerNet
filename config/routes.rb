@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, skip: :registration
   root 'home#index'
-
+  get 'contacts',to:'contacts#index'
   get 'home/index'
   get '/schedule', to: 'schedule#index'
 
