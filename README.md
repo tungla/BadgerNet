@@ -1,6 +1,7 @@
 # BadgerNet
 
 [![Build Status](https://travis-ci.com/Chaseshak/BadgerNet.svg?token=y8dTrJkpQLTEPjpNhoQh&branch=master)](https://travis-ci.com/Chaseshak/BadgerNet)
+[![Coverage Status](https://coveralls.io/repos/github/Chaseshak/BadgerNet/badge.svg?t=waLDpl)](https://coveralls.io/github/Chaseshak/BadgerNet)
 
 BadgerNet is a software that was developed for UW Athletics teams as a platform for coaches
 to share information with their athletes and communicate effectively. The current system
@@ -20,8 +21,15 @@ teams across campus.
 ## [Design and Planning](https://docs.google.com/a/wisc.edu/document/d/1Z0a4z89mLn_SAfXO4p3zN1T6kbIbGHQnuv7N-lqeADE/edit?usp=sharing)
 
 ## Versions
-Ruby: 2.4.0
-Rails: 5.1.4
+- Ruby: 2.4.0
+- Rails: 5.1.4
+- PostgreSQL: 9.5+
+
+*Runs on Linux or Mac OSX machines*
+
+### Project Setup
+
+**Note** This section assumes you have the above versions of the specified softwares installed on your machine.
 
 ## Things we may want to cover in the future:
 
