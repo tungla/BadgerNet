@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   # Permissions routes
-  get 'permissions/index'
-  post 'permissions/delete'
+  get 'permissions', to: 'permissions#index'
+  delete 'permissions/destroy'
 
 end

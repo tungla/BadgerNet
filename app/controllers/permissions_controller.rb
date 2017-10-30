@@ -8,5 +8,13 @@ class PermissionsController < ApplicationController
     @users = User.all
   end
 
-  def delete; end
+  def destroy
+    begin
+      User.find(params[:id]).destroy
+      flash[:notice] = 'Successfully removed user from BadgerNet'
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = 'Could not find specified user'
+    end
+    redirect_to action: 'index'
+  end
 end

@@ -39,6 +39,30 @@ RSpec.describe PermissionsController, type: :controller do
     end
   end
 
-  describe 'POST #delete' do
+  describe 'DELETE #destroy' do
+    before do
+      coach = create(:coach_user)
+      sign_in(coach)
+    end
+
+    context 'existing user' do
+      let!(:u) { create(:athlete_user) }
+
+      it 'should redirect' do
+        delete :destroy, params: { id: u.id }
+        expect(response.status).to eq(302)
+      end
+
+      it 'should remove the user' do
+        expect { delete :destroy, params: { id: u.id } }.to change { User.count }.by(-1)
+      end
+    end
+
+    context 'delete a non-existing user' do
+      it 'creates an error message' do
+        delete :destroy, params: { id: 1000 }
+        expect(flash[:alert]).to include('Could not find specified user')
+      end
+    end
   end
 end

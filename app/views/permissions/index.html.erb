@@ -14,7 +14,7 @@
         </span>
       </h2>
       <a href="#" class="edit">Edit</a>
-      <a href="#" class="delete">Delete</a>
+      <%= link_to 'delete', { action: 'destroy', id: u.id }, method: :delete %>
     </figcaption>
   </figure>
 <% end %>
