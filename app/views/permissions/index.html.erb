@@ -3,7 +3,7 @@
   <figure class="user_card">
     <figcaption>
       <h2>
-        <%= u.name %>
+        <%= u.first_name.capitalize + ' ' + u.last_name.capitalize %>
         <span class='email' ><%= u.email %></span>
         <span class='role'>
           <% if u.has_role? :coach %>
