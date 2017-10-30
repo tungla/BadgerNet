@@ -1,0 +1,30 @@
+<h1>View and Manage User Permissions</h1>
+<table>
+  <tr>
+    <th> First </th>
+    <th> Last </th>
+    <th> Email </th>
+    <th> Permissions </th>
+    <th colspan='2'> Options </th>
+  </tr>
+<% @users.each do |u| %>
+  <tr>
+    <td align='center'><%= u.first_name.capitalize %></td>
+    <td align='center'><%= u.last_name.capitalize %></td>
+    <td align='center'><%= u.email %></td>
+    <td align='center'>
+      <% if u.has_role? :coach %>
+        <%= 'Coach' %>
+      <% else %>
+        <%= 'Athlete' %>
+      <% end %>
+    </td>
+    <td align='center'>
+      <button href="#" class="button-primary">Edit</button>
+    </td>
+    <td align='center'>
+      <%= button_to 'Delete', { action: 'destroy', id: u.id }, method: :delete, class: 'button-danger'%>
+    </td>
+  </tr>
+<% end %>
+</table>
