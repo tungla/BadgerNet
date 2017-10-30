@@ -1,3 +1,8 @@
+# Does code coverage for tests
+require 'coveralls'
+Coveralls.wear!
+# Must be at top of file
+
 require_relative 'support/controller_helpers'
 require_relative 'support/login_helpers'
 require 'devise'
