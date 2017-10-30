@@ -1,0 +1,43 @@
+/*
+==========================================================================
+Modals
+==========================================================================
+*/
+
+$modal-max-width: 32em;
+
+.modal {
+    display: none; // hidden by default
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.65); // fade the background
+}
+
+.modal-content {
+    max-width: $modal-max-width;
+    margin: 12em auto 0 auto;
+    padding: 1.5em;
+    background-color: white;
+    border-radius: 0.5em;
+
+    h2 {
+        margin: 0;
+    }
+}
+
+.modal-close {
+    float: right;
+    font-size: 1.5em;
+    padding: 0.1em 0.4em 0.15em 0.4em;
+    border-radius: 100%;
+    background-color: #f7f7f7;
+
+    &:hover { 
+        background-color: #dbdbdb;
+        transition: 0.1s linear;
+    }
+}
