@@ -1,5 +1,5 @@
 # Toggles modal on page with id
-toggleModal = (id) ->
+window.toggleModal = (id) ->
     modal = document.getElementById(id)
     if !modal.style.display or modal.style.display == "none" 
         modal.style.display = "block"
