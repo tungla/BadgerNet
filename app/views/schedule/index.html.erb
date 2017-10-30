@@ -1,4 +1,4 @@
-<h1>Schedule</h1>
+<h1>My Schedule</h1>
 <div class="calendar-container">
     <div class="timeline">
         <div class="timeline-entry"><span>6 AM</span></div>
@@ -67,6 +67,60 @@
                 <span class="single-event-label">Event Name</span>
             </div>
         </div>
-
+    </div>
+</div>
+<div class="schedule-table-container">
+    <table class="schedule-table">
+    <thead>
+        <tr>
+            <th colspan="4">Events</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>My Event</td>
+            <td>8:00pm - 9:00pm</td>
+            <td>Mon, Wed, Fri</td>
+            <td style="text-align:right;">
+                <button class="button-default">Edit</button>
+                <button class="button-danger">Remove</button>
+            </td>
+        </tr>
+        <tr>
+            <td>My Event</td>
+            <td>8:00pm - 9:00pm</td>
+            <td>Mon</td>
+            <td style="text-align:right;">
+                <button class="button-default">Edit</button>
+                <button class="button-danger">Remove</button>
+            </td>
+        </tr>
+        <tr>
+            <td>My Event</td>
+            <td>8:00pm - 9:00pm</td>
+            <td>Tue, Thu</td>
+            <td style="text-align:right;">
+                <button class="button-default">Edit</button>
+                <button class="button-danger">Remove</button>
+            </td>
+        </tr>
+        </table>
+    </tbody>
+</div>
+<div style="margin-top:1.5em;text-align:right;">
+    <button class="button-primary" onclick="toggleModal('new-event')" style="margin-top:1.5em;">New Event</button>
+</div>
+<div class="modal" id="new-event">
+    <div class="modal-content">
+        <div class="modal-close" onclick="toggleModal('new-event')">&times;</div>
+        <h2>New Event</h2>
+        <form>
+            Name:
+            <input name="eventname" type="text">
+        </form>
+        <div style="margin-top:1.5em;text-align:right;">
+            <button class="button-default" onclick="toggleModal('new-event')">Cancel</button>
+            <button class="button-primary">Add Event</button>
+        </div>
     </div>
 </div>

@@ -1,0 +1,25 @@
+/*
+==========================================================================
+Tables
+==========================================================================
+*/
+
+table {
+    width: 100%;
+    font-size: 1em;
+    font-family: $default-body-font;
+    border-collapse: collapse;
+
+    th, td {
+        padding: 0.6em;
+    }
+
+    thead {
+        background-color: #f7f7f7;
+        text-align: left;
+    }
+
+    tbody {
+        tr { border-top: 1px solid #eaeaea }
+    }
+}
