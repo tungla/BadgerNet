@@ -14,10 +14,10 @@ class AnnouncementController < ApplicationController
 
   def create
     @announcement = Announcement.new(announcement_params)
-    if @announcement.save
-      if @announcement.sms
-        send_text_message(@announcement.content)
-      end
+    if @announcement.save && @announcement.sms
+      send_text_message(@announcement.content)
+      redirect_to '/announcement'
+    elsif @announcement.save
       redirect_to '/announcement'
     else
       render 'new'
