@@ -15,8 +15,10 @@ Imports base styles, as well as view-specific styles
 // view specific styles
 @import "schedule";
 @import "home";
+@import "header";
 
-// css reset 
+
+// css reset
 * {
     margin: 0;
     padding: 0;
