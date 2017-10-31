@@ -13,7 +13,7 @@ module AnnouncementHelper
     @twilio_client.messages.create(
       from: "+1#{twilio_phone_number}",
       to: number_to_send_to,
-      body: "ROSIE TEST This is an message. It gets sent to #{number_to_send_to}"
+      body: "This is an message. It gets sent to #{number_to_send_to}"
     )
   end
 end
