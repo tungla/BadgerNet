@@ -1,7 +1,7 @@
 # AnnouncementHelper: to help announcements
 # referenced https://www.twilio.com/blog/2012/02/adding-twilio-sms-messaging-to-your-rails-app.html
 module AnnouncementHelper
-  def send_text_message
+  def send_text_message(words)
     number_to_send_to = '2066180749' # "params[:number_to_send_to]"
 
     twilio_sid = 'ACc17e1968205992bb82bdb0ba8de37732' # this is public
@@ -13,7 +13,7 @@ module AnnouncementHelper
     @twilio_client.messages.create(
       from: "+1#{twilio_phone_number}",
       to: number_to_send_to,
-      body: "This is an message. It gets sent to #{number_to_send_to}"
+      body: words
     )
   end
 end
