@@ -3,6 +3,7 @@
 class AnnouncementController < ApplicationController
   include AnnouncementHelper
   before_action :authenticate_user!
+  before_action :coach?, except: [:index]
 
   def index
     @announcements = Announcement.all
@@ -13,6 +14,7 @@ class AnnouncementController < ApplicationController
   end
 
   def create
+    byebug
     @announcement = Announcement.new(announcement_params)
     if @announcement.save && @announcement.sms
       send_text_message(@announcement.content)

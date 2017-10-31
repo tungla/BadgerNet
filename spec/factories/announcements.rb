@@ -1,6 +1,19 @@
 FactoryGirl.define do
   factory :announcement do
-    content 'MyString'
-    date '2017-10-23 20:31:24'
+    content 'This is a message!'
+    title 'Hello'
+
+    factory :announcement_email do
+      email true
+    end
+
+    factory :announcement_sms do
+      sms true
+    end
+
+    factory :announcement_both do
+      sms true
+      email true
+    end
   end
 end
