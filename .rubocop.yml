@@ -5,7 +5,6 @@ AllCops:
     - config/**/*
     - bin/**/*
     - tmp/**/*
-    - app/controllers/application_controller.rb
     - app/models/role.rb
     - vendor/**/*
     - bundler_stubs/**/*
