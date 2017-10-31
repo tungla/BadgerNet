@@ -14,8 +14,9 @@ class AnnouncementController < ApplicationController
   end
 
   def create
+    # byebug
     @announcement = Announcement.new(announcement_params)
-    if @announcement.save && @announcement.sms
+    if @announcement.sms && @announcement.save
       send_text_message(@announcement.content)
       redirect_to '/announcement'
     elsif @announcement.save

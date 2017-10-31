@@ -59,11 +59,28 @@ RSpec.describe AnnouncementController, type: :controller do
   end
 
   describe 'POST #create' do
+    before do
+      coach = create(:coach_user)
+      sign_in(coach)
+    end
     context 'given a valid announcment' do
-      let(:a) { create(:announcement) }
+      let(:a) { build(:announcement_email) }
       it 'creates an annoucement' do
-        expect { post :create, params: { announcement: a } }
-          .to change { Announcement.count }.by(1)
+        expect do
+          post :create, params: { announcement: { email: a.email, sms: a.sms,
+                                                  title: a.title, content: a.content } }
+        end.to change { Announcement.count }.by(1)
+      end
+    end
+    context 'creating an announcment as a text message' do
+      let(:a) { build(:announcement_sms) }
+      it 'sends a text message' do
+        # Stub the send text message function to make it a dummy method
+        allow_any_instance_of(AnnouncementHelper).to receive(:send_text_message)
+        expect do
+          post :create, params: { announcement: { email: a.email, sms: a.sms,
+                                                  title: a.title, content: a.content } }
+        end.to change { Announcement.count }.by(1)
       end
     end
   end
