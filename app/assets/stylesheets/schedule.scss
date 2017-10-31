@@ -1,0 +1,81 @@
+/*
+==========================================================================
+Schedule
+==========================================================================
+*/
+
+@import "base/colors";
+@import "base/fonts";
+
+// local variables
+$calendar-header-height: 2.5em;
+$grid-segment-height: 32px;
+
+// calendar view
+.calendar-container {
+    position: relative;
+    box-sizing: border-box;
+
+    .timeline {
+        position: relative;
+        padding: $calendar-header-height 0 0 0;
+    }
+
+    .timeline-entry {
+        height: $grid-segment-height - 1px; // to account for border size
+        border-top: 1px solid rgba(0, 0, 0, .05); // acts as a grid line
+
+        // time labels
+        span {
+            display: inline-block;
+            width: 3.25em;
+            font-size: 0.8em;
+            padding: 0.75em;
+            transform: translateY(-50%);
+            text-align: right;
+            font-weight: $font-weight-bold;
+            color: $faded-text-color;
+            background-color: #ffffff;
+        }
+    }
+
+    .events {
+        position: absolute;
+        top: 0;
+        left: 5em; // leave room for timeline labels
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: stretch;
+        align-content: flex-start;
+    }
+
+    .events-group {
+        flex-grow: 1; // fill width of parent
+        flex-basis: 0; // elements resize evenly
+    }
+
+    .events-group-label {
+        height: $calendar-header-height;
+        display: flex;
+        align-items: center;
+
+        span {
+            font-weight: $font-weight-bold;
+            color: $faded-text-color;
+        }
+    }
+
+    .single-event {
+        box-sizing: border-box;
+        margin: 0 1px 0 1px;
+        padding: 0.5em 0.65em 0.5em 0.65em;
+        background-color: #34495e; // default
+        border-radius: 0.25em;
+    }
+
+    .single-event-label {
+        color: white;
+    }
+}

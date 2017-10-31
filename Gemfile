@@ -16,8 +16,6 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Flexible user authentication: https://github.com/plataformatec/devise
 gem 'devise'
@@ -28,7 +26,7 @@ gem 'rolify'
 # Twilio texting
 gem 'twilio-ruby', '~> 5.4.2'
 
-# Rubocop is a Ruby code linter
+# Rubocop is a Ruby linter Read more: https://github.com/bbatsov/rubocop
 gem 'rubocop', require: false
 
 # Use CoffeeScript for .coffee assets and views
@@ -37,13 +35,6 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

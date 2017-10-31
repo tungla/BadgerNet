@@ -1,0 +1,45 @@
+/*
+==========================================================================
+Buttons
+==========================================================================
+*/
+
+.button-default,
+.button-primary,
+.button-danger {
+    display: inline-block;
+    font-size: 0.85em;
+    padding: 0.75em 1em 0.75em 1em;
+    border-radius: 0.25em;
+    border: none;
+    outline: none;
+
+    &:hover {
+      transition: 0.1s linear;
+      cursor: pointer
+     }
+    &:active { transition: 0s linear; }
+}
+
+.button-default {
+    background-color: #f1f1f1;
+
+    &:hover { background-color: #dbdbdb }
+    &:active { background-color: #bbbbbb }
+}
+
+.button-primary {
+    background-color: #2889ED;
+    color: white;
+
+    &:hover { background-color: #1C7DE2; }
+    &:active { background-color: #1970CA; }
+}
+
+.button-danger {
+    background-color: #EE5370;
+    color: white;
+
+    &:hover { background-color: #EB3D5E; }
+    &:active { background-color: #E9264B; }
+}
