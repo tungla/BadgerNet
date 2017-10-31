@@ -1,4 +1,5 @@
 # AnnouncementController: functions for announcemnt manuipulation
+# referenced https://www.codecademy.com/courses/learn-rails/lessons/one-model/exercises/one-model-view?action=lesson_resume
 class AnnouncementController < ApplicationController
   # before_action :authenticate_user
   def index
@@ -21,6 +22,6 @@ class AnnouncementController < ApplicationController
   private
 
   def announcement_params
-    params.require(:announcement).permit(:content, :sendType)
+    params.require(:announcement).permit(:email, :sms, :title, :content)
   end
 end
