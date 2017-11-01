@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :document do
-    title "MyString"
-    file_path "MyString"
+    title 'workout.xls'
+    file_path 'path/to/file'
   end
 end
