@@ -11,11 +11,11 @@ Imports base styles, as well as view-specific styles
 @import "base/buttons";
 @import "base/tables";
 @import "base/modals";
+@import "base/navigation";
 
 // view specific styles
 @import "schedule";
 @import "home";
-@import "header";
 
 
 // css reset
@@ -24,8 +24,8 @@ Imports base styles, as well as view-specific styles
     padding: 0;
 }
 
-// body
-body {
+// main
+.main {
     max-width: 64em;
     padding: 0 1.5em 0 1.5em;
     margin: 1em 0 1em 0;

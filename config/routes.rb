@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # Contacts controller
-  get 'contacts',to:'contacts#index'
+  get '/contacts',to:'contacts#index'
 
   # Home controller routes
   get 'home/index'
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/schedule', to: 'schedule#index'
 
   # Permissions routes
-  get 'permissions', to: 'permissions#index'
+  get '/permissions', to: 'permissions#index'
   delete 'permissions/destroy'
 
 
