@@ -1,5 +1,5 @@
+# DocumentsController: handles documents
 class DocumentsController < ApplicationController
-
   def index
     @documents = Document.all
   end
@@ -13,8 +13,8 @@ class DocumentsController < ApplicationController
   end
 
   private
-  	def message_params
-    	params.require(:document).permit(:title, :content)
-  	end
 
+  def message_params
+    params.require(:document).permit(:title, :content)
+  end
 end
