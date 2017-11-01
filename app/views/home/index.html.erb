@@ -1,2 +1,26 @@
+<header>
+<div class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-logo">
+      <span>BadgerNet</span>
+    </div>
+  <ul class="navbar-menu ">
+    <li class="navbar-menu-item"><a href="#">Home</a></li>
+    <li class="navbar-menu-item"><a href="#">Team</a></li>
+    <li class="navbar-menu-item"><a href="#">Permissions</a></li>
+    <li class="navbar-menu-item"><a href="#">User</a></li>
+    <li class="navbar-menu-item"><a href="./Schedule">Schedule</a></li>
+  </ul>
+
+    <div class="navbar-profile">
+     <div class="welcome"><span>Welcome  <%= current_user.first_name %>
+     <%= current_user.last_name %></span></div>
+     <div class='setting'><a> Settings </a> - <a>Sign Out</a></div>
+    </div>
+</div>
+</div>
+  </header>
+
 <h1>Home#index</h1>
+
 <p>Find me in app/views/home/index.html.erb</p>

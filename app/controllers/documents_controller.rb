@@ -5,11 +5,11 @@ class DocumentsController < ApplicationController
   end
 
   def new
-    @documents = Document.new
+    @document = Document.new
   end
 
   def create
-    @documents = Document.new(document_params)
+    @document = Document.new(document_params)
   end
 
   private

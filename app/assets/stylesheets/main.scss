@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,900');
+/*
+==========================================================================
+Primary stylesheet
+Imports base styles, as well as view-specific styles
+==========================================================================
+*/
+
+// import base styles
+@import "base/fonts";
+@import "base/buttons";
+@import "base/tables";
+@import "base/modals";
+
+// view specific styles
+@import "schedule";
+@import "home";
+@import "header";
+
+
+// css reset
+* {
+    margin: 0;
+    padding: 0;
+}
+
+// body
+body {
+    max-width: 64em;
+    padding: 0 1.5em 0 1.5em;
+    margin: 1em 0 1em 0;
+}
+
+// essential elements
+p, span {
+    font-size: 1em;
+    font-family: $default-body-font;
+    font-weight: $font-weight-normal;
+}
+
+p {
+    margin: 1em 0 0 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $default-header-font;
+    margin: 1em 0 0 0;
+}
+
+.hidden {
+  display: none
+}
