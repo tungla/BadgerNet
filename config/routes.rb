@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # Home controller routes
   get 'home/index'
 
+
   # get 'announcement/index'
   resources :announcement, :path => 'announcement' #gives CRUD routes
 
@@ -20,5 +21,8 @@ Rails.application.routes.draw do
   get '/permissions', to: 'permissions#index'
   delete 'permissions/destroy'
 
-end
 
+  #documents
+  get '/documents' => 'documents#index'
+
+end
