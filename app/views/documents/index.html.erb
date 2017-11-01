@@ -7,8 +7,8 @@
 
   <% @documents.each do |document| %>
     <div class="document">
-      <p class="title">Title: <%= document.title %></p>
-      <p class="content"><%= document.content %></p>
+      <p class="title"><%= document.title %></p>
+      <a href='#' class="file_path"><%= document.file_path %></a>
       <p>   </p>
     </div>
   <% end %>
