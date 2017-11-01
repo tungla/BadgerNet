@@ -63,8 +63,7 @@ config.action_mailer.smtp_settings ={
   authentication: "plain",
   enable_starttls_auto: true,
   user_name: 'badgernet.announcement',
-  password: 'badger1234',
-  :enable_starttls_auto => true
+  password: 'badger1234'
 }
 
 config.active_support.deprecation = :log
@@ -72,5 +71,5 @@ config.active_support.deprecation = :log
   config.assets.debug = true
   config.assets.digest = true
   config.assets.raise_runtime_errors = true
-  config.action_mailer.default_url_options = { host: "localHost:3000"}
+  config.action_mailer.default_url_options = { host: "localhost:3000"}
 end
