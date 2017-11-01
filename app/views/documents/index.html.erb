@@ -1,0 +1,16 @@
+<div class="main">
+<div class="container">
+  <h1>Documents</h1>
+
+  <div class="documents">
+  <div class="container">
+
+  <% @documents.each do |document| %>
+    <div class="document">
+      <p class="title">Title: <%= document.title %></p>
+      <p class="content"><%= document.content %></p>
+      <p>   </p>
+    </div>
+  <% end %>
+</div>
+</div>
