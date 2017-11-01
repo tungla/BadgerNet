@@ -2,6 +2,8 @@ require 'rails_helper'
 RSpec.describe ScheduleController, type: :controller do
   describe 'GET #index' do
     before do
+      coach = create(:coach_user)
+      sign_in(coach)
       get :index
     end
     it 'responds with a 200 status' do

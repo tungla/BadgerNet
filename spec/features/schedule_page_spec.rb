@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Visiting the schedule page', type: :feature do
   before do
+    login_coach
     visit 'schedule'
   end
   scenario 'it loads the schedule page' do
@@ -15,6 +16,7 @@ end
 
 RSpec.feature 'Creating a new event', type: :feature do
   before do
+    login_coach
     visit 'schedule'
   end
 
