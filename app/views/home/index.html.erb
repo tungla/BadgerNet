@@ -1,34 +1,25 @@
 <header>
-
-    <div class="logo">
-      BadgerNet
+<div class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-logo">
+      <span>BadgerNet</span>
     </div>
-  <ul class="header-list">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Team</a></li>
-    <li><a href="#">Permissions</a></li>
-    <li><a href="#">User</a></li>
-    <li><a href="./Schedule">Schedule</a></li>
+  <ul class="navbar-menu ">
+    <li class="navbar-menu-item"><a href="#">Home</a></li>
+    <li class="navbar-menu-item"><a href="#">Team</a></li>
+    <li class="navbar-menu-item"><a href="#">Permissions</a></li>
+    <li class="navbar-menu-item"><a href="#">User</a></li>
+    <li class="navbar-menu-item"><a href="./Schedule">Schedule</a></li>
   </ul>
 
-    <div class="user-info">
+    <div class="navbar-profile">
      <div class="welcome"><span>Welcome  <%= current_user.first_name %> <%= current_user.last_name %></span></div>
-     <div class='setting'><span> Settings </span> - <span>Sign Out</span></div>
+     <div class='setting'><a> Settings </a> - <a>Sign Out</a></div>
     </div>
-
+</div>
+</div>
   </header>
 
 <h1>Home#index</h1>
 
 <p>Find me in app/views/home/index.html.erb</p>
-<p>Find me in app/views/home/index.html.erb</p>
-<p>Find me in app/views/home/index.html.erb</p>
-<p>Find me in app/views/home/index.html.erb</p>
-<p>Find me in app/views/home/index.html.erb</p>
-<p>Find me in app/views/home/index.html.erb</p>
-<p>Find me in app/views/home/index.html.erb</p>
-<button id="email" class="email">send email</button>
-<%= button_tag(:type => 'button', class: "btn btn-primary", onclick: "UserMailer.welcome_email(current_user)") do %>
-<%= content_tag(:strong, 'Request Contact') %>
-<% end %>
-<p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p><p>Find me in app/views/home/index.html.erb</p>
