@@ -2,7 +2,6 @@
 # referenced https://www.codecademy.com/courses/learn-rails/lessons/one-model/exercises/one-model-view?action=lesson_resume
 class AnnouncementController < ApplicationController
   include AnnouncementHelper
-  before_action :authenticate_user!
   before_action :coach?, except: [:index]
 
   def index
