@@ -26,10 +26,7 @@ RSpec.describe AnnouncementController, type: :controller do
         sign_in(coach)
         get :index
       end
-
-      it 'returns http success' do
-        expect(response).to have_http_status(:success)
-      end
+      include_examples 'renders the template', :index
     end
   end
 
@@ -51,10 +48,7 @@ RSpec.describe AnnouncementController, type: :controller do
         sign_in(coach)
         get :new
       end
-
-      it 'returns http success' do
-        expect(response).to have_http_status(:success)
-      end
+      include_examples 'renders the template', :new
     end
   end
 

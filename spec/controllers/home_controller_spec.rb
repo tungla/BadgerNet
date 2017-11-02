@@ -11,23 +11,17 @@ RSpec.describe HomeController, type: :controller do
       before do
         athlete = create(:athlete_user)
         sign_in(athlete)
+        get :index
       end
-      let(:subject) { get :index }
-
-      it 'shows the user the athlete homepage' do
-        expect(subject).to render_template('home/index')
-      end
+      include_examples 'renders the template', :index
     end
     context 'User is a coach' do
       before do
         coach = create(:coach_user)
         sign_in(coach)
+        get :index
       end
-      let(:subject) { get :index }
-
-      it 'shows the user the coach homepage' do
-        expect(subject).to render_template('home/admin_index')
-      end
+      include_examples 'renders the template', :admin_index
     end
   end
 end
