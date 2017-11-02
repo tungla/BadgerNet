@@ -2,10 +2,10 @@ require 'rails_helper'
 RSpec.describe HomeController, type: :controller do
   describe 'GET #index' do
     context 'No logged in user' do
-      it 'redirects to the login page' do
+      before do
         get :index
-        expect(response).to redirect_to '/users/sign_in'
       end
+      include_examples 'redirects as un-authenticated user'
     end
     context 'User is an athlete' do
       before do

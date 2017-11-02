@@ -6,16 +6,7 @@ RSpec.describe ContactsController, type: :controller do
       before do
         get :index
       end
-
-      it 'returns http redirect status' do
-        get :index
-        expect(response).to have_http_status(:redirect)
-      end
-
-      it 'redirects the user to the sign in page' do
-        get :index
-        expect(response).to redirect_to '/users/sign_in'
-      end
+      include_examples 'redirects as un-authenticated user'
     end
 
     context 'as an authenticated user' do
