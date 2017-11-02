@@ -1,16 +1,8 @@
-<div class="main">
-<div class="container">
-  <h1>Documents</h1>
-
-  <div class="documents">
-  <div class="container">
-
-  <% @documents.each do |document| %>
-    <div class="document">
-      <p class="title"><%= document.title %></p>
-      <a href='#' class="file_path"><%= document.file_path %></a>
-      <p>   </p>
+<h1>Documents</h1>
+<div class="documents-list">
+<% @documents.each do |document| %>
+    <div class="single-document">
+        <p class="document-title"><%= document.title %></p>
+        <a href='#' class="file_path"><%= document.file_path %></a>
     </div>
-  <% end %>
-</div>
-</div>
+<% end %>
