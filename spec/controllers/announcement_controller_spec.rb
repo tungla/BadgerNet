@@ -53,7 +53,8 @@ RSpec.describe AnnouncementController, type: :controller do
       end
 
       it 'returns http success' do
-        expect(response).to have_http_status(:success)
+        expect(response).to render_template(partial: '_new')
+        # expect(response).to have_http_status(:success)
       end
     end
   end
@@ -81,6 +82,33 @@ RSpec.describe AnnouncementController, type: :controller do
           post :create, params: { announcement: { email: a.email, sms: a.sms,
                                                   title: a.title, content: a.content } }
         end.to change { Announcement.count }.by(1)
+      end
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    before do
+      coach = create(:coach_user)
+      sign_in(coach)
+    end
+
+    context 'existing announcement' do
+      let!(:a) { create(:announcement) }
+
+      it 'should redirect' do
+        delete :destroy, params: { id: a.id }
+        expect(response.status).to eq(302)
+      end
+
+      it 'should remove the announcement' do
+        expect { delete :destroy, params: { id: a.id } }.to change { Announcement.count }.by(-1)
+      end
+    end
+
+    context 'delete a non-existing announcement' do
+      it 'creates an error message' do
+        delete :destroy, params: { id: 1000 }
+        expect(flash[:alert]).to include('Could not find this announcement')
       end
     end
   end
