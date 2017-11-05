@@ -1,5 +1,14 @@
 <h1>Announcements</h1>
-<%= link_to 'New Announcement', "announcement/new" %>
+<div style="margin-top:1.5em;text-align:right;">
+    <button class="button-primary" onclick="toggleModal('new-announcement')" >New Announcement</button>
+</div>
+<div class="modal hidden" id="new-announcement">
+    <div class="modal-content">
+        <div class="modal-close" onclick="toggleModal('new-announcement')">&times;</div>
+        <h2>New Announcement</h2>
+        <%= render 'announcement/new' %>
+    </div>
+</div>
 <table>
     <thead>
         <tr>

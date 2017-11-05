@@ -7,6 +7,7 @@ class AnnouncementController < ApplicationController
 
   def index
     @announcements = Announcement.all
+    @announcement = Announcement.new
   end
 
   def new
@@ -14,7 +15,6 @@ class AnnouncementController < ApplicationController
   end
 
   def create
-    # byebug
     @announcement = Announcement.new(announcement_params)
     if @announcement.sms && @announcement.save
       send_text_message(@announcement.content)
