@@ -1,0 +1,75 @@
+/*
+==========================================================================
+Banners - Notification messages from the application displaying info to user
+==========================================================================
+*/
+
+@import 'colors';
+@import 'fonts';
+
+// Generic styling for a banner
+.banner {
+    display: block;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    font-weight: $font-weight-bold;
+    // Animations for hiding the banner after 10 seconds
+    -webkit-animation: cssAnimation 0s ease-in 10s forwards;
+    -moz-animation: cssAnimation 0s ease-in 10s forwards;
+    -ms-animation: cssAnimation 0s ease-in 10s forwards;
+    -o-animation: cssAnimation 0s ease-in 10s forwards;
+    animation: cssAnimation 0s ease-in 10s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+// Positive message
+.success {
+  background-color: $success-background;
+  border-color: $success-border;
+  color: $success-text-color;
+}
+
+// Informational
+.notice {
+  background-color: $notice-background;
+  border-color: $notice-border;
+  color: $notice-text-color;
+}
+
+// AKA warning
+.alert {
+  background-color: $alert-background;
+  border-color: $alert-border;
+  color: $alert-text-color;
+}
+
+// Errors or something wrong has occurred
+.danger {
+  background-color: $danger-background;
+  border-color: $danger-border;
+  color: $danger-text-color;
+}
+
+// Extra styling for hiding element animation
+
+@keyframes cssAnimation {
+    to {
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width: 0;
+        height: 0;
+        visibility: hidden;
+        margin: 0;
+        padding: 0;
+    }
+}

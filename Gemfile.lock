@@ -274,25 +274,25 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  authority
-  byebug
+  authority (~> 3.3.0)
+  byebug (~> 9.1.0)
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
-  coveralls
-  devise
-  factory_girl_rails
+  coveralls (~> 0.7.1)
+  devise (~> 4.3.0)
+  factory_girl_rails (~> 4.8.0)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (~> 0.18)
   puma (~> 3.7)
   rails (~> 5.1.4)
-  rails-controller-testing
-  rolify
+  rails-controller-testing (~> 1.0.2)
+  rolify (~> 5.1.0)
   rspec-rails (~> 3.6)
-  rubocop
+  rubocop (~> 0.50.0)
   sass-rails (~> 5.0)
-  selenium-webdriver
-  simplecov
+  selenium-webdriver (~> 3.6.0)
+  simplecov (~> 0.15.1)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
