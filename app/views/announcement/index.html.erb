@@ -1,13 +1,32 @@
+
+
 <h1>Announcements</h1>
-<div class="announcements-list">
-    <% @announcements.each do |announcement| %>
-        <div class="single-announcement">
-            <p class="title">Title:<%= announcement.title %></p>
-            <p class="content"><%= announcement.content %></p>
-            <p class="time"><%= (announcement.created_at).strftime('%c') %></p>
-            <p class="type">type: email? <%= announcement.email %> sms? <%= announcement.sms %></p>
-            <p>_____</p>
-        </div>
-        <% end %>
-        <%= link_to 'New Announcement', "announcement/new" %>
-</div>
+<%= link_to 'New Announcement', "announcement/new" %>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Time</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @announcements.each do |announcement| %>
+            <tr>
+                <td><%= announcement.title %></td>
+                <td><%= truncate(announcement.content, :length => 80) %></td>
+                <td><%= (announcement.created_at).strftime('%c') %></td>
+                <td>
+                    <% if announcement.sms && announcement.email %>
+                        <%= 'Both' %>
+                    <% elsif announcement.sms%>
+                        <%= 'SMS' %>
+                    <% elsif announcement.email%>
+                        <%= 'Email' %>
+                    <% end %>
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
+</table>
