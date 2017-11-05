@@ -16,6 +16,7 @@
             <th>Content</th>
             <th>Time</th>
             <th>Type</th>
+            <th>Options</th>
         </tr>
     </thead>
     <tbody>
@@ -32,6 +33,9 @@
                     <% elsif announcement.email%>
                         <%= 'Email' %>
                     <% end %>
+                </td>
+                <td>
+                    <%= button_to 'Delete', { action: 'destroy', id: announcement.id }, method: :delete, class: 'button-danger'%>
                 </td>
             </tr>
             <% end %>

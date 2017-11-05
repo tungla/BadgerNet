@@ -26,6 +26,16 @@ class AnnouncementController < ApplicationController
     end
   end
 
+  def destroy
+    begin
+      Announcement.find(params[:id]).destroy
+      flash[:success] = 'Announcement deleted'
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = 'Could not find this announcement'
+    end
+    redirect_to action: 'index'
+  end
+
   private
 
   def announcement_params
