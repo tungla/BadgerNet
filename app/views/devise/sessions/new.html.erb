@@ -5,7 +5,7 @@
                 <h2>Login</h2>
             </div>
             <div class="info-block-content">
-                <div class="login-input" style="max-width: 22em; padding-top: 1em;">
+                <div class="info-block-input">
                     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                         <%= f.label :email %>:<br />
                         <%= f.email_field :email, autofocus: true, class: 'input' %>
