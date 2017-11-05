@@ -1,0 +1,26 @@
+/*
+==========================================================================
+Forms
+==========================================================================
+*/
+
+@import "fonts";
+@import "colors";
+
+.input {
+    margin: 0.5em 0.5em 0.5em 0;
+    height: 2.5em;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.5em;
+    width: 100%;
+    display: block;
+    font-family: $default-body-font;
+    font-weight: $font-weight-normal;
+    font-size: 16px;
+}
+
+label {
+  font-family: $default-body-font;
+  color: $primary-text-color;
+  line-height: 140%;
+}
