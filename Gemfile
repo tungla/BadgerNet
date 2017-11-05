@@ -18,16 +18,16 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
 # Flexible user authentication: https://github.com/plataformatec/devise
-gem 'devise'
+gem 'devise', '~> 4.3.0'
 # Authorization OO library https://github.com/elabs/pundit
-gem 'authority'
+gem 'authority', '~> 3.3.0'
 # Role management library https://github.com/RolifyCommunity/rolify
-gem 'rolify'
+gem 'rolify', '~> 5.1.0'
 # Twilio texting
 gem 'twilio-ruby', '~> 5.4.2'
 
 # Rubocop is a Ruby linter Read more: https://github.com/bbatsov/rubocop
-gem 'rubocop', require: false
+gem 'rubocop', '~> 0.50.0', require: false
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -38,15 +38,15 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', '~> 9.1.0', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'coveralls', require: false
+  gem 'coveralls', '~> 0.7.1', require: false
   gem 'rspec-rails', '~> 3.6'
-  gem 'rails-controller-testing'
-  gem 'factory_girl_rails'
-  gem 'selenium-webdriver'
-  gem 'simplecov', require: false
+  gem 'rails-controller-testing', '~> 1.0.2'
+  gem 'factory_girl_rails', '~> 4.8.0'
+  gem 'selenium-webdriver', '~> 3.6.0'
+  gem 'simplecov', '~> 0.15.1', require: false
 end
 
 group :development do
