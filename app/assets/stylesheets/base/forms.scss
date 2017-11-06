@@ -7,6 +7,11 @@ Forms
 @import "fonts";
 @import "colors";
 
+// temp. fix for issue of buttons sitting side-by-side
+form {
+    display: inline-block;
+}
+
 .input {
     margin: 0.5em 0.5em 0.5em 0;
     height: 2.5em;
