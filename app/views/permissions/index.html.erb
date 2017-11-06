@@ -1,4 +1,5 @@
 <h1>User Permissions</h1>
+<button class='button-primary' onclick="toggleModal('new-user')">Invite New User</button>
 <table>
     <thead>
         <tr>
@@ -12,8 +13,14 @@
     <tbody>
         <% @users.each do |u| %>
             <tr>
-                <td><%= u.first_name.capitalize %></td>
-                <td><%= u.last_name.capitalize %></td>
+                <td>
+                  <% if u.first_name %>
+                    <%= u.first_name.capitalize %>
+                  <% else %>
+                    <i>Pending Invite<i>
+                  <% end %>
+                </td>
+                <td><%= u.last_name.capitalize if u.last_name %></td>
                 <td><%= u.email %></td>
                 <td>
                     <% if u.has_role? :coach %>
@@ -30,3 +37,23 @@
             <% end %>
     </tbody>
 </table>
+
+<div class="modal hidden" id="new-user">
+    <div class="modal-content">
+        <div class="modal-close" onclick="toggleModal('new-user')">&times;</div>
+        <h2>New User</h2>
+        <%= form_tag("/permissions", method: "post") do %>
+            <%= label_tag :email, "Email" %>
+            <%= text_field_tag :email, '', class: 'input' %>
+            <%= radio_button_tag :role, 'athlete', checked: true %>
+            <%= label_tag :role, 'Athlete', value: 'athlete' %>
+            <br />
+            <%= radio_button_tag :role, 'coach' %>
+            <%= label_tag :role, 'Coach', value: 'coach' %>
+            <div style="margin-top:1.5em;text-align:right;">
+                <button class="button-default" onclick="toggleModal('new-user')">Cancel</button>
+                <%= submit_tag('Add User', class: 'button-primary') %>
+            </div>
+        <% end %>
+    </div>
+</div>

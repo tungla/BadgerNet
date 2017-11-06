@@ -34,5 +34,19 @@ RSpec.feature 'Visiting the permissions page', type: :feature do
       expect { page.all('input', class: 'button-danger')[1].click }
         .to change { User.count }.by(-1)
     end
+
+    scenario 'There should be a button to invite a new user which opens a modal' do
+      expect(page).to have_content('Invite New User')
+      click_on 'Invite New User'
+      expect(page.find('#new-user')).not_to have_css('hidden')
+    end
+
+    scenario 'Inviting a new user should result in a pending invite' do
+      click_on 'Invite New User'
+      fill_in('email', with: 'invited@test.com')
+      click_on 'Add User'
+      expect(page).to have_content('Pending Invite')
+      expect(page).to have_content('Successfully sent an invite to invited@test.com!')
+    end
   end
 end

@@ -37,6 +37,33 @@ RSpec.describe PermissionsController, type: :controller do
     end
   end
 
+  describe 'POST #create' do
+    before do
+      coach_adding = create(:coach_user)
+      sign_in(coach_adding)
+    end
+
+    context 'creating a new athlete user' do
+      it 'adds a new athlete user to the database and displays success message' do
+        expect do
+          post :create, params: { email: 'invited_athlete@test.com', role: :athlete }
+        end.to change { (User.with_role :athlete).count }.by(1)
+        expect(flash[:success]).to eq('Successfully '\
+          'sent an invite to invited_athlete@test.com!')
+      end
+    end
+
+    context 'creating a new coach user' do
+      it 'adds a new coach user to the database and displays success message' do
+        expect do
+          post :create, params: { email: 'invited_coach@test.com', role: :coach }
+        end.to change { (User.with_role :coach).count }.by(1)
+        expect(flash[:success]).to eq('Successfully '\
+          'sent an invite to invited_coach@test.com!')
+      end
+    end
+  end
+
   describe 'DELETE #destroy' do
     before do
       coach = create(:coach_user)

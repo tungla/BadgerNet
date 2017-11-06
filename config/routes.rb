@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   # Permissions routes
   get '/permissions', to: 'permissions#index'
+  post '/permissions', to: 'permissions#create'
   delete 'permissions/destroy'
 
 
