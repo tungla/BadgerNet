@@ -4,7 +4,7 @@ module LoginHelpers
     visit '/users/sign_in'
     fill_in 'user_email', with: athlete.email
     fill_in 'user_password', with: 'test_password123'
-    click_button 'Log in'
+    click_button 'Submit'
   end
 
   def login_coach
@@ -12,6 +12,6 @@ module LoginHelpers
     visit '/users/sign_in'
     fill_in 'user_email', with: coach.email
     fill_in 'user_password', with: 'test_password123'
-    click_button 'Log in'
+    click_button 'Submit'
   end
 end
