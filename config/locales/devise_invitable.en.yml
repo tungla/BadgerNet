@@ -13,11 +13,11 @@ en:
         header: "Send invitation"
         submit_button: "Send an invitation"
       edit:
-        header: "Set your password"
-        submit_button: "Set my password"
+        header: "Complete Account Creation"
+        submit_button: "Create Account"
     mailer:
       invitation_instructions:
-        subject: "Invitation instructions"
+        subject: "BadgerNet Invitation!"
         hello: "Hello %{email}!"
         someone_invited_you: "You have been invited to BadgerNet! You can accept your invitation and setup your account through the link below."
         accept: "Accept invitation"

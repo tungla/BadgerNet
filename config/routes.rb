@@ -1,6 +1,8 @@
 
 Rails.application.routes.draw do
-  devise_for :users, skip: :registration
+  devise_for :users, skip: :registration, controllers: {
+    invitations: 'invitations'
+  }
 
   root 'home#index'
 
