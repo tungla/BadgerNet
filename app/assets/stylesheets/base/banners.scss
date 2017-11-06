@@ -15,6 +15,7 @@ Banners - Notification messages from the application displaying info to user
     border: 1px solid transparent;
     border-radius: .25rem;
     font-weight: $font-weight-bold;
+    font-family: $default-body-font;
     // Animations for hiding the banner after 10 seconds
     -webkit-animation: cssAnimation 0s ease-in 10s forwards;
     -moz-animation: cssAnimation 0s ease-in 10s forwards;
