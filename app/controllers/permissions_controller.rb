@@ -10,7 +10,7 @@ class PermissionsController < ApplicationController
   def destroy
     begin
       User.find(params[:id]).destroy
-      flash[:notice] = 'Successfully removed user from BadgerNet'
+      flash[:success] = 'Successfully removed user from BadgerNet'
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = 'Could not find specified user'
     end

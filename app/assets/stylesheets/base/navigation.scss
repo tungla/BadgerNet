@@ -28,11 +28,11 @@ $navbar-gradient-end: #28A5F5;
 
 .navbar-logo {
     flex-grow: 0;
-    font-family: $default-header-font;
-    font-weight: $font-weight-bold;
-    font-size: 1.25em;
+    font-size: 1.15em;
 
     span {
+        font-family: $default-header-font;
+        font-weight: $font-weight-bold;
         padding: 0.1em 0.3em 0.1em 0.3em;
         border: 2px solid rgba(255,255,255, 0.8);
         border-radius: 0.25em;
@@ -49,10 +49,10 @@ $navbar-gradient-end: #28A5F5;
 }
 
 .navbar-menu-item {
-    margin: 0 1.15em 0 0;
+    margin: 0 1.2em 0 0;
     font-family: $default-body-font;
     font-weight: $font-weight-bold;
-    font-size: 1.1em;
+    font-size: 1em;
     
     a {
         text-decoration: none;

@@ -8,14 +8,21 @@ Imports base styles, as well as view-specific styles
 
 // import base styles
 @import "base/fonts";
+@import "base/forms";
 @import "base/buttons";
+@import "base/pages";
 @import "base/tables";
 @import "base/modals";
 @import "base/navigation";
+@import "base/info_block";
+@import "base/forms";
+@import "base/banners";
 
 // view specific styles
-@import "schedule";
+@import "announcements";
+@import "documents";
 @import "home";
+@import "schedule";
 
 
 // css reset
@@ -24,11 +31,9 @@ Imports base styles, as well as view-specific styles
     padding: 0;
 }
 
-// main
-.main {
-    max-width: 64em;
-    padding: 0 1.5em 0 1.5em;
-    margin: 1em 0 1em 0;
+// body
+body {
+  background-color: $background-color;
 }
 
 // essential elements
@@ -44,9 +49,4 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: $default-header-font;
-    margin: 1em 0 0 0;
-}
-
-.hidden {
-  display: none
 }

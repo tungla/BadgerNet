@@ -1,17 +1,22 @@
 <h1>Contacts</h1>
 <table>
-<tr>
-  <th> First </th>
-  <th> Last </th>
-  <th> Email </th>
-  <th> Phone Number </th>
-</tr>
-<% @users.each do |user| %> <!--for each user -->
-  <tr>
-    <td><%= user.first_name %></td>
-    <td><%= user.last_name %></td>
-    <td><%= user.email %></td>
-    <td><%= user.phone %></td>
-  </tr>
-<% end %>
+    <thead>
+        <tr>
+            <th>First</th>
+            <th>Last</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+            <!--for each user -->
+            <tr>
+                <td><%= user.first_name %></td>
+                <td><%= user.last_name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.phone %></td>
+            </tr>
+        <% end %>
+    </tbody>
 </table>
