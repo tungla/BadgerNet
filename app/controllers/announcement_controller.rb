@@ -18,11 +18,12 @@ class AnnouncementController < ApplicationController
     @announcement = Announcement.new(announcement_params)
     if @announcement.sms && @announcement.save
       send_text_message(@announcement.content)
-      redirect_to '/announcement'
+      announcement_success
     elsif @announcement.save
-      redirect_to '/announcement'
+      announcement_success
     else
-      render 'new'
+      redirect_to '/announcement'
+      flash[:alert] = 'Could not send this announcement try again' # happens if email/sms is not selected
     end
   end
 
@@ -40,5 +41,10 @@ class AnnouncementController < ApplicationController
 
   def announcement_params
     params.require(:announcement).permit(:email, :sms, :title, :content)
+  end
+
+  def announcement_success
+    redirect_to '/announcement'
+    flash[:success] = 'Announcement sent'
   end
 end

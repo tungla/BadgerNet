@@ -84,6 +84,12 @@ RSpec.describe AnnouncementController, type: :controller do
         end.to change { Announcement.count }.by(1)
       end
     end
+    context 'given an announcement without a body' do
+      # todo
+    end
+    context 'given an announcement without sendtype (email/sms)' do
+      # todo
+    end
   end
 
   describe 'DELETE #destroy' do
