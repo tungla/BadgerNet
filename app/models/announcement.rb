@@ -1,5 +1,6 @@
 # announcement model
 # checkbox validation code reference: http://www.humbug.in/2010/ruby-on-rails-validate-atleast-one-checkbox-is-checked-in-a-form/
+# BUT this causes test cases to fail now...
 class Announcement < ApplicationRecord
   validate :atleast_one_is_checked
 

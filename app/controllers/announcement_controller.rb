@@ -8,6 +8,11 @@ class AnnouncementController < ApplicationController
   def index
     @announcements = Announcement.all
     @announcement = Announcement.new
+    if current_user.has_role? :coach
+      render 'admin_index'
+    else
+      render
+    end
   end
 
   def new
@@ -34,7 +39,7 @@ class AnnouncementController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = 'Could not find this announcement'
     end
-    redirect_to action: 'index'
+    redirect_to action: 'admin_index'
   end
 
   private
