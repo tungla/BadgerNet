@@ -75,6 +75,7 @@
             <tr><th colspan="4">Events</th></tr>
         </thead>
         <tbody>
+            <% if @schedule.event %>
             <% @schedule.event.each do |event| %>
                 <tr>
                     <td><%= event.name %></td>
@@ -85,6 +86,7 @@
                         <button class="button-danger">Remove</button>
                     </td>
                 </tr>
+            <% end %>
             <% end %>
         </tbody>
     </table>
