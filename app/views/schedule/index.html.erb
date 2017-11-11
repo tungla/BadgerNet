@@ -71,41 +71,24 @@
 </div>
 <div class="schedule-table-container">
     <table class="schedule-table">
-    <thead>
-        <tr>
-            <th colspan="4">Events</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>My Event</td>
-            <td>8:00pm - 9:00pm</td>
-            <td>Mon, Wed, Fri</td>
-            <td style="text-align:right;">
-                <button class="button-default">Edit</button>
-                <button class="button-danger">Remove</button>
-            </td>
-        </tr>
-        <tr>
-            <td>My Event</td>
-            <td>8:00pm - 9:00pm</td>
-            <td>Mon</td>
-            <td style="text-align:right;">
-                <button class="button-default">Edit</button>
-                <button class="button-danger">Remove</button>
-            </td>
-        </tr>
-        <tr>
-            <td>My Event</td>
-            <td>8:00pm - 9:00pm</td>
-            <td>Tue, Thu</td>
-            <td style="text-align:right;">
-                <button class="button-default">Edit</button>
-                <button class="button-danger">Remove</button>
-            </td>
-        </tr>
-        </table>
-    </tbody>
+        <thead>
+            <tr><th colspan="4">Events</th></tr>
+        </thead>
+        <tbody>
+            <% @schedule.event.each do |event| %>
+                <tr>
+                    <td><%= event.name %></td>
+                    <td>8:00pm - 9:00pm</td>
+                    <td>Mon, Wed, Fri</td>
+                    <td style="text-align:right;">
+                        <button class="button-default">Edit</button>
+                        <button class="button-danger">Remove</button>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    
 </div>
 <div style="margin-top:1.5em;text-align:right;">
     <button class="button-primary" onclick="toggleModal('new-event')" style="margin-top:1.5em;">New Event</button>
