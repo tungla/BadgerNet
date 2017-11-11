@@ -79,7 +79,7 @@
             <% @schedule.event.each do |event| %>
                 <tr>
                     <td><%= event.name %></td>
-                    <td>8:00pm - 9:00pm</td>
+                    <td><%= "#{event.start.strftime("%I:%M%p")} - #{event.end.strftime("%I:%M%p")}" %></td>
                     <td>Mon, Wed, Fri</td>
                     <td style="text-align:right;">
                         <button class="button-default">Edit</button>
