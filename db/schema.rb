@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111214401) do
+ActiveRecord::Schema.define(version: 20171111214643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20171111214401) do
     t.datetime "updated_at", null: false
     t.index ["file_path"], name: "index_documents_on_file_path", unique: true
     t.index ["title"], name: "index_documents_on_title", unique: true
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.bigint "schedule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedule_id"], name: "index_events_on_schedule_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -79,5 +87,6 @@ ActiveRecord::Schema.define(version: 20171111214401) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "events", "schedules"
   add_foreign_key "schedules", "users"
 end
