@@ -24,9 +24,9 @@ RSpec.describe AnnouncementController, type: :controller do
       before do
         coach = create(:coach_user)
         sign_in(coach)
-        get :admin_index
+        get :index
       end
-      include_examples 'renders the template', :index
+      include_examples 'renders the template', :admin_index
     end
   end
 
@@ -90,7 +90,7 @@ RSpec.describe AnnouncementController, type: :controller do
     end
   end
 
-  describe 'DELETE #destroy' do
+  describe 'DELETE #destroy' do # also try without a coach
     before do
       coach = create(:coach_user)
       sign_in(coach)
