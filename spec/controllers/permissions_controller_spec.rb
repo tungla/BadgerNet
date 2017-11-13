@@ -43,23 +43,36 @@ RSpec.describe PermissionsController, type: :controller do
       sign_in(coach_adding)
     end
 
+    context 'with invalid parameters' do
+      it 'returns an error for a blank email address' do
+        post :create, params: { email: '', role: :athlete }
+        expect(flash[:danger]).to eq('Error: Email cannot be blank.')
+      end
+
+      it 'returns an error for an email in the wrong domain' do
+        post :create, params: { email: 'test@gmail.com', role: :athlete }
+        expect(flash[:danger]).to eq('Error: Email must '\
+        'be a valid @wisc.edu email address.')
+      end
+    end
+
     context 'creating a new athlete user' do
       it 'adds a new athlete user to the database and displays success message' do
         expect do
-          post :create, params: { email: 'invited_athlete@test.com', role: :athlete }
+          post :create, params: { email: 'invited_athlete@wisc.edu', role: :athlete }
         end.to change { (User.with_role :athlete).count }.by(1)
         expect(flash[:success]).to eq('Successfully '\
-          'sent an invite to invited_athlete@test.com!')
+          'sent an invite to invited_athlete@wisc.edu!')
       end
     end
 
     context 'creating a new coach user' do
       it 'adds a new coach user to the database and displays success message' do
         expect do
-          post :create, params: { email: 'invited_coach@test.com', role: :coach }
+          post :create, params: { email: 'invited_coach@wisc.edu', role: :coach }
         end.to change { (User.with_role :coach).count }.by(1)
         expect(flash[:success]).to eq('Successfully '\
-          'sent an invite to invited_coach@test.com!')
+          'sent an invite to invited_coach@wisc.edu!')
       end
     end
   end
