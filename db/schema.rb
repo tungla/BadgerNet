@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20171111230136) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.bigint "schedule_id"
+    t.integer "days", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.time "start"
