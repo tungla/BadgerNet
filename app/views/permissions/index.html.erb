@@ -51,7 +51,7 @@
             <%= radio_button_tag :role, 'coach' %>
             <%= label_tag :role, 'Coach', value: 'coach' %>
             <div style="margin-top:1.5em;text-align:right;">
-                <button class="button-default" onclick="toggleModal('new-user')">Cancel</button>
+                <%= button_tag 'Cancel', type: :reset, class: 'button-default', onclick: "toggleModal('new-user')" %>
                 <%= submit_tag('Add User', class: 'button-primary') %>
             </div>
         <% end %>
