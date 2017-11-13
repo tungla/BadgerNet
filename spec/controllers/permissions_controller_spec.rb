@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe PermissionsController, type: :controller do
   describe 'GET #index' do
     context 'User is not signed in' do
-      it 'redirects the user to the sign in page' do
+      before do
         get :index
-        expect(response).to redirect_to '/users/sign_in'
       end
+      include_examples 'redirects as un-authenticated user'
     end
 
     context 'User does not have the :coach role' do
@@ -27,9 +27,7 @@ RSpec.describe PermissionsController, type: :controller do
         get :index
       end
 
-      it 'returns http success' do
-        expect(response).to have_http_status(:success)
-      end
+      include_examples 'renders the template', :index
 
       context 'There are existing users in the database' do
         it 'assigns @users' do

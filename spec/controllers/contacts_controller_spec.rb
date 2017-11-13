@@ -2,19 +2,20 @@ require 'rails_helper'
 
 RSpec.describe ContactsController, type: :controller do
   describe 'GET #index' do
-    before do
-      get :index
-    end
-    it 'responds with a 200 status' do
-      expect(response).to have_http_status(:ok)
-    end
-
-    it 'renders the index template' do
-      expect(response).to render_template(:index)
+    context 'as an un-authenticated user' do
+      before do
+        get :index
+      end
+      include_examples 'redirects as un-authenticated user'
     end
 
-    it 'assigns @users' do
-      expect(assigns(:users)).not_to be_nil
+    context 'as an authenticated user' do
+      before do
+        athlete = create(:athlete_user)
+        sign_in(athlete)
+        get :index
+      end
+      include_examples 'renders the template', :index
     end
   end
 end

@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe AnnouncementController, type: :controller do
   describe 'GET #index' do
     context 'User is not signed in' do
-      it 'redirects the user to the sign in page' do
+      before do
         get :index
-        expect(response).to redirect_to '/users/sign_in'
       end
+      include_examples 'redirects as un-authenticated user'
     end
 
     context 'User does not have the :coach role' do
@@ -26,10 +26,7 @@ RSpec.describe AnnouncementController, type: :controller do
         sign_in(coach)
         get :admin_index
       end
-
-      it 'returns http success' do
-        expect(response).to have_http_status(:success)
-      end
+      include_examples 'renders the template', :index
     end
   end
 
@@ -56,6 +53,7 @@ RSpec.describe AnnouncementController, type: :controller do
         expect(response).to render_template(partial: '_new')
         # expect(response).to have_http_status(:success)
       end
+      include_examples 'renders the template', :new
     end
   end
 

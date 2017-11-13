@@ -10,6 +10,9 @@ require 'rspec/rails'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+# Load shared example files
+Dir[Rails.root.join("spec/support/shared_examples/*.rb")].each { |f| require f }
+
 RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
