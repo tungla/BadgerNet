@@ -1,4 +1,5 @@
+# Represents a single user's schedule
 class Schedule < ApplicationRecord
   belongs_to :user
-  has_many :event
+  has_many :event, dependent: destroy
 end
