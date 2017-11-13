@@ -1,6 +1,6 @@
 # A user is a user of the application, default devise class
 class User < ApplicationRecord
-  has_one :schedule, dependent: destroy
+  has_one :schedule
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
