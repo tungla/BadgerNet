@@ -24,7 +24,7 @@ RSpec.describe AnnouncementController, type: :controller do
       before do
         coach = create(:coach_user)
         sign_in(coach)
-        get :index
+        get :admin_index
       end
 
       it 'returns http success' do
