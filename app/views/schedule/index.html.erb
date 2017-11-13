@@ -80,7 +80,7 @@
                 <tr>
                     <td><%= event.name %></td>
                     <td><%= "#{event.start.strftime("%I:%M%p")} - #{event.end.strftime("%I:%M%p")}" %></td>
-                    <td>Mon, Wed, Fri</td>
+                    <td><%= event.days_as_string %></td>
                     <td style="text-align:right;">
                         <button class="button-default">Edit</button>
                         <button class="button-danger">Remove</button>
