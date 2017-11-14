@@ -62,16 +62,16 @@ RSpec.describe AnnouncementController, type: :controller do
       coach = create(:coach_user)
       sign_in(coach)
     end
-    context 'given a valid announcment' do
+    context 'given a valid announcement' do
       let(:a) { build(:announcement_email) }
-      it 'creates an annoucement' do
+      it 'creates an announcement' do
         expect do
           post :create, params: { announcement: { email: a.email, sms: a.sms,
                                                   title: a.title, content: a.content } }
         end.to change { Announcement.count }.by(1)
       end
     end
-    context 'creating an announcment as a text message' do
+    context 'creating an announcement as a text message' do
       let(:a) { build(:announcement_sms) }
       it 'sends a text message' do
         # Stub the send text message function to make it a dummy method
@@ -97,7 +97,7 @@ RSpec.describe AnnouncementController, type: :controller do
     end
 
     context 'existing announcement' do
-      let!(:a) { create(:announcement) }
+      let!(:a) { build(:announcement_sms) }
 
       it 'should redirect' do
         delete :destroy, params: { id: a.id }
