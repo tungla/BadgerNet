@@ -30,30 +30,12 @@ RSpec.describe AnnouncementController, type: :controller do
     end
   end
 
-  describe 'GET #new' do
-    context 'User does not have the :coach role' do
-      before do
-        athlete = create(:athlete_user)
-        sign_in(athlete)
+  describe '#new' do
+    context 'user is a coach user' do
+      it 'assigns the @announcement variable' do
+        controller.new
+        expect(assigns(:announcement).to_json).to eq(Announcement.new.to_json)
       end
-      it 'returns http forbidden' do
-        get :new
-        expect(response).to have_http_status(:forbidden)
-      end
-    end
-
-    context 'User has the :coach role' do
-      before do
-        coach = create(:coach_user)
-        sign_in(coach)
-        get :new
-      end
-
-      it 'returns http success' do
-        expect(response).to render_template(partial: '_new')
-        # expect(response).to have_http_status(:success)
-      end
-      include_examples 'renders the template', :new
     end
   end
 
