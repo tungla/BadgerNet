@@ -87,9 +87,8 @@ RSpec.describe AnnouncementController, type: :controller do
       end
 
       it 'should remove the announcement' do
-        expect {
-          delete :destroy, params: { id: a.id }
-        }.to change { Announcement.count }.by(-1)
+        expect { delete :destroy, params: { id: a.id } }.to change { Announcement.count }
+          .by(-1)
       end
     end
 
