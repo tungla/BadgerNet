@@ -64,6 +64,22 @@ RSpec.describe AnnouncementController, type: :controller do
         end.to change { Announcement.count }.by(1)
       end
     end
+    context 'with an invalid announcement' do
+      let(:a) do
+        # Build an invalid announcement (i.e. false email and sms)
+        invalid_a = build(:announcement_sms, email: false, sms: false)
+        # Tell active record not to validate the announcement object
+        invalid_a.save(validate: false)
+        invalid_a # return value which is stored in the variable 'a'.
+      end
+      it 'redirects and gives an error message to the user' do
+        post :create, params: { announcement: { email: a.email, sms: a.sms,
+                                                title: a.title, content: a.content } }
+        expect(flash[:alert]).to include('Please select a send type before submitting
+          announcement')
+        expect(response.status).to eq(302)
+      end
+    end
   end
 
   describe 'DELETE #destroy' do
