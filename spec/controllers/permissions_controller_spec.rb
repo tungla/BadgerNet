@@ -77,6 +77,34 @@ RSpec.describe PermissionsController, type: :controller do
     end
   end
 
+  describe 'PUT #update' do
+    before do
+      coach_modifying = create(:coach_user)
+      sign_in(coach_modifying)
+    end
+    context 'given a coach user' do
+      it 'downgrades their permission level to an athlete user' do
+        to_modify = create(:coach_user)
+        put :update, params: { id: to_modify.id }
+        expect(to_modify.has_role?(:coach)).to be false
+        expect(to_modify.has_role?(:athlete)).to be true
+        success_message = "Successfully changed #{to_modify.email}'s permission level"
+        expect(flash[:success]).to eq(success_message)
+      end
+    end
+
+    context 'given an athlete user' do
+      it 'upgrades their permission level to a coach user' do
+        to_modify = create(:athlete_user)
+        put :update, params: { id: to_modify.id }
+        expect(to_modify.has_role?(:athlete)).to be false
+        expect(to_modify.has_role?(:coach)). to be true
+        success_message = "Successfully changed #{to_modify.email}'s permission level"
+        expect(flash[:success]).to eq(success_message)
+      end
+    end
+  end
+
   describe 'DELETE #destroy' do
     before do
       coach = create(:coach_user)

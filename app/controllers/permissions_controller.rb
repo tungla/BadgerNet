@@ -16,6 +16,21 @@ class PermissionsController < ApplicationController
     redirect_to action: 'index'
   end
 
+  def update
+    @user = User.find(params[:id])
+    coach_before = @user.coach? ? :coach : :athlete
+    begin
+      flip_permissions
+    # rubocop:disable Lint/HandleExceptions
+    rescue ActiveRecord::HasManyThroughAssociationNotFoundError
+      # Supressing this error because it is a bug in the Rolify library and is thrown
+      # even when a role is removed appropriately
+    end
+    # rubocop:enable Lint/HandleExceptions
+    update_permissions_message(coach_before)
+    redirect_to action: 'index'
+  end
+
   def destroy
     begin
       User.find(params[:id]).destroy
@@ -39,5 +54,23 @@ class PermissionsController < ApplicationController
       flash[:danger] = 'Error: Email cannot be blank.' if email.blank?
     end
     email && role # returns true if both values set
+  end
+
+  def flip_permissions
+    if @user.coach?
+      @user.add_role :athlete
+      @user.remove_role :coach
+    else
+      @user.add_role :coach
+      @user.remove_role :athlete
+    end
+  end
+
+  def update_permissions_message(coach_before)
+    if @user.coach? != coach_before
+      flash[:success] = "Successfully changed #{@user.email}'s permission level"
+    else
+      flash[:warning] = "Unable to change #{@user.email}'s permission at this time"
+    end
   end
 end

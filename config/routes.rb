@@ -20,9 +20,7 @@ Rails.application.routes.draw do
   get '/schedule', to: 'schedule#index'
 
   # Permissions routes
-  get '/permissions', to: 'permissions#index'
-  post '/permissions', to: 'permissions#create'
-  delete 'permissions/destroy'
+  resources :permissions, path: 'permissions'
 
 
   #documents
