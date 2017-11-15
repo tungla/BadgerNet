@@ -25,12 +25,13 @@
                 <td>
                     <% if u.has_role? :coach %>
                         <%= 'Coach' %>
+                        <a href='' class='edit-permissions'>Make Athlete</a>
                     <% else %>
                         <%= 'Athlete' %>
+                        <a href='' class='edit-permissions'>Make Coach</a>
                     <% end %>
                 </td>
                 <td>
-                    <button href="#" class="button-primary">Edit</button>
                     <%= button_to 'Delete', { action: 'destroy', id: u.id }, method: :delete, class: 'button-danger'%>
                 </td>
             </tr>
