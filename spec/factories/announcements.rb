@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :announcement do
     content 'This is a message!'
     title 'Hello'
-    email false
+    email true
     sms false
 
     factory :announcement_email do
