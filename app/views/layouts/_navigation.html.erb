@@ -13,7 +13,7 @@
         </div>
         <div class="navbar-profile">
             <span>Welcome, <%= defined?(current_user.first_name) ? current_user.first_name : 'user' %><br><a href="#">Settings</a> – <%= link_to('Logout', destroy_user_session_path, method: :delete) %></span>
-            <img src="http://lorempixel.com/200/200" />
+            <img src="#" />
         </div>
     </div>
 </nav>

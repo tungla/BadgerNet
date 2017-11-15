@@ -8,6 +8,6 @@ class Schedule < ApplicationRecord
   def events_on_day(day_num)
     events = []
     event.each { |e| events << e if e.days.include? day_num }
-    events
+    events.sort_by &:start
   end
 end
