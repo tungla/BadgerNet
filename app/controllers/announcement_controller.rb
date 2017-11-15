@@ -27,7 +27,7 @@ class AnnouncementController < ApplicationController
       announcement_success
     else
       redirect_to '/announcement'
-       # happens if email/sms is not selected
+      # happens if email/sms is not selected
       flash[:alert] = 'Could not send this announcement try again'
     end
   end
