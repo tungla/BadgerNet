@@ -1,4 +1,4 @@
-window.onload = () => {
+function positionEventsOnCalendar() {
     let eventGroups = document.getElementsByClassName("events-group");
     // for each day
     for(let i = 0; i < eventGroups.length; i++) {
@@ -21,3 +21,5 @@ window.onload = () => {
         }
     }
 }
+
+window.onload = positionEventsOnCalendar;

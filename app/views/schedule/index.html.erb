@@ -45,7 +45,7 @@
                     <td><%= "#{event.start.strftime("%I:%M%p")} - #{event.end.strftime("%I:%M%p")}" %></td>
                     <td><%= event.days_as_string %></td>
                     <td style="text-align:right;">
-                        <button class="button-danger">Remove</button>
+                        <%= button_to 'Remove', { action: 'destroy_event', id: event.id }, method: :delete, class: 'button-danger'%>
                     </td>
                 </tr>
             <% end %>

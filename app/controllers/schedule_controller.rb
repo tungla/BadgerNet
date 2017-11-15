@@ -10,4 +10,16 @@ class ScheduleController < ApplicationController
                   Schedule.create(user_id: @user.id)
                 end
   end
+
+  def destroy_event
+    begin
+      event = Event.find(params[:id])
+      name = event.name
+      event.destroy
+      flash[:success] = 'Successfully removed "' + name + '"'
+    rescue
+      flash[:alert] = 'Could not find specified event'
+    end
+    redirect_to action: 'index'
+  end
 end
