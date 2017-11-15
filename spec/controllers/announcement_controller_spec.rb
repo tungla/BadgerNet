@@ -75,8 +75,9 @@ RSpec.describe AnnouncementController, type: :controller do
       it 'redirects and gives an error message to the user' do
         post :create, params: { announcement: { email: a.email, sms: a.sms,
                                                 title: a.title, content: a.content } }
-        expect(flash[:alert]).to include('Please select a send type before submitting
-          announcement')
+        expect(flash[:alert]).to include(
+          'Please select a send type before submitting announcement'
+        )
         expect(response.status).to eq(302)
       end
     end
