@@ -79,7 +79,7 @@ RSpec.describe AnnouncementController, type: :controller do
     end
 
     context 'existing announcement' do
-      let!(:a) { build(:announcement_sms) }
+      let!(:a) { FactoryGirl.create(:announcement_email) }
 
       it 'should redirect' do
         delete :destroy, params: { id: a.id }

@@ -38,7 +38,7 @@ class AnnouncementController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = 'Could not find this announcement'
     end
-    redirect_to action: 'admin_index'
+    redirect_to action: 'index'
   end
 
   private
