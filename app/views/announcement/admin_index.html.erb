@@ -17,12 +17,13 @@
             <th>Time</th>
             <th>Type</th>
             <th>Options</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         <% @announcements.reverse.each do |announcement| %>
             <tr>
-                <td><%= announcement.title %></td>
+                <td style="text-decoration: none;"><%= link_to announcement.title, {:action => 'show', :id => announcement.id}%></td>
                 <td><%= truncate(announcement.content, :length => 80) %></td>
                 <td><%= (announcement.created_at).strftime('%c') %></td>
                 <td>

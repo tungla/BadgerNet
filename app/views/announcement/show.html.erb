@@ -1,0 +1,13 @@
+<h1><%= @announcement.title %></h1>
+
+<p>
+   <strong>Type (SMS): </strong> <%= @announcement.sms %><br />
+   <strong>Type (Email) :</strong> <%= @announcement.email %><br />
+   <strong>Content :</strong> <%= @announcement.content %><br />
+</p>
+
+<p><%= @announcement.created_at %></p>
+
+<hr />
+
+<%= link_to 'Back', {:action => 'index'} %>

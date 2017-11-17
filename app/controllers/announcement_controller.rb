@@ -41,6 +41,10 @@ class AnnouncementController < ApplicationController
     redirect_to action: 'index'
   end
 
+  def show
+    @announcement = Announcement.find(params[:id])
+  end
+
   private
 
   def announcement_params
