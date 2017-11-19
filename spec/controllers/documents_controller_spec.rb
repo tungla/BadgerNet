@@ -52,9 +52,49 @@ RSpec.describe DocumentsController, type: :controller do
         end.to change { Document.count }.by(1)
       end
     end
+    context 'with an invalid document' do
+      let(:d) do
+        # Build an invalid document (i.e. no name)
+        invalid_d = build(:document, name: nil)
+        # Tell active record not to validate the document object
+        invalid_d.save(validate: false)
+        invalid_d # return value which is stored in the variable 'd'.
+      end
+      it 'redirects and gives an error message to the user' do
+        post :create, params: { document: { name: d.name, attachment: d.attachment } }
+        expect(flash[:alert]).to include(
+          'Document cannot be uploaded'
+        )
+        expect(response.status).to eq(302)
+      end
+    end
   end
 
   describe 'POST #destroy' do
-    # fill in
+    before do
+      coach = create(:coach_user)
+      sign_in(coach)
+    end
+
+    context 'existing document' do
+      let!(:d) { FactoryGirl.create(:document) }
+
+      it 'should redirect' do
+        delete :destroy, params: { id: d.id }
+        expect(response.status).to eq(302)
+      end
+
+      it 'should remove the document' do
+        expect { delete :destroy, params: { id: d.id } }.to change { Document.count }
+          .by(-1)
+      end
+    end
+
+    context 'delete a non-existing document' do
+      it 'creates an error message' do
+        delete :destroy, params: { id: 1000 }
+        expect(flash[:alert]).to include('Could not find this document')
+      end
+    end
   end
 end

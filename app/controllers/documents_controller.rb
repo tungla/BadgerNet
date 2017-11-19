@@ -16,17 +16,21 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.new(document_params)
-
     if @document.save
-      redirect_to documents_path
+      flash[:success] = 'Document uploaded'
     else
-      render 'new'
+      flash[:alert] = 'Document cannot be uploaded'
     end
+    redirect_to documents_path
   end
 
   def destroy
-    @document = Document.find(params[:id])
-    @document.destroy
+    begin
+      Document.find(params[:id]).destroy
+      flash[:success] = 'Document deleted'
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = 'Could not find this document'
+    end
     redirect_to documents_path
   end
 
