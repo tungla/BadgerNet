@@ -1,6 +1,7 @@
 class DocumentsController < ApplicationController
   def index
     @documents = Document.all
+    @document = Document.new
     if current_user.has_role? :coach
       render 'admin_index'
     else

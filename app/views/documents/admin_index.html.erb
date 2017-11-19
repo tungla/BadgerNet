@@ -1,11 +1,14 @@
-<% if !flash[:notice].blank? %>
-  <div class="alert alert-info">
-  <%= flash[:notice] %>
-  </div>
-<% end %>
-<br />
-<%= link_to "New Document", new_document_path, class: "btn btn-primary" %>
-<br />
+<h1>Documents</h1>
+<div style="margin-top:1.5em;text-align:right;">
+<button class="button-primary" onclick="toggleModal('new-document')" >New Document</button>
+</div>
+<div class="modal hidden" id="new-document">
+<div class="modal-content">
+    <div class="modal-close" onclick="toggleModal('new-document')">&times;</div>
+    <h2>New Document</h2>
+    <%= render 'documents/new' %>
+</div>
+</div>
 <br />
 <table class="table table-bordered table-striped">
   <thead>
@@ -13,7 +16,7 @@
       <th>Name</th>
       <th>Download Link</th>
       <th>Date Uploaded</th>
-      <th>&nbsp;</th>
+      <th>Options</th>
     </tr>
   </thead>
   <tbody>
@@ -22,7 +25,7 @@
         <td><%= document.name %></td>
         <td><%= link_to "Download Document", document.attachment_url %></td>
         <td><%= document.created_at.strftime("%d %b. %Y") %></td>
-        <td><%= button_to "Delete",  document, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{document.name}?" %></td>
+        <td><%= button_to "Delete",  document, method: :delete, class: "button-danger", confirm: "Are you sure that you wish to delete #{document.name}?" %></td>
       </tr>
     <% end %>
   </tbody>
