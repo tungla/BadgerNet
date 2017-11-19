@@ -1,3 +1,4 @@
+# document controller
 class DocumentsController < ApplicationController
   def index
     @documents = Document.all
@@ -19,7 +20,7 @@ class DocumentsController < ApplicationController
     if @document.save
       redirect_to documents_path
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -34,5 +35,4 @@ class DocumentsController < ApplicationController
   def document_params
     params.require(:document).permit(:name, :attachment)
   end
-
 end

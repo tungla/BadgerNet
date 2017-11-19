@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :document do
-    name "MyString"
-    attachment "MyString"
+    name 'MyString'
+    attachment 'MyString'
   end
 end
