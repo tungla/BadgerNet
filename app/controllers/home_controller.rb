@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     if current_user.has_role? :coach
       render 'admin_index'
     else
-      render 'admin_index'
+      render
     end
   end
 end
