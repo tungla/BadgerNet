@@ -1,12 +1,19 @@
 <h1><%= @announcement.title %></h1>
 
 <p>
-   <strong>Type (SMS): </strong> <%= @announcement.sms %><br />
-   <strong>Type (Email) :</strong> <%= @announcement.email %><br />
-   <strong>Content :</strong> <%= @announcement.content %><br />
+   Date: <%= @announcement.created_at %><br />
+   Type: 
+   <% if @announcement.sms && @announcement.email %>
+     <%= 'Both' %>
+   <% elsif @announcement.sms%>
+     <%= 'SMS' %>
+   <% elsif @announcement.email%>
+     <%= 'Email' %>
+   <% end %><br />
+   <br />
+   <strong>Message:</strong> <%= @announcement.content %><br />
+   
 </p>
-
-<p><%= @announcement.created_at %></p>
 
 <hr />
 
