@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Document, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'has a valid factory' do
+    expect(build(:document)).to be_valid
+  end
+
+  describe 'ActiveModel validations' do
+    it 'requires a sendType' do
+      expect(build(:document, name: nil)).not_to be_valid
+    end
+  end
 end
