@@ -2,7 +2,7 @@
 # referenced https://www.codecademy.com/courses/learn-rails/lessons/one-model/exercises/one-model-view?action=lesson_resume
 class AnnouncementController < ApplicationController
   include AnnouncementHelper
-  before_action :coach?, except: [:index]
+  before_action :coach?, except: %i[index show]
 
   def index
     @announcements = Announcement.all
@@ -43,6 +43,10 @@ class AnnouncementController < ApplicationController
 
   def show
     @announcement = Announcement.find(params[:id])
+    return unless @announcement.nil?
+    @announcements = Announcement.all
+    flash[:alert] = 'Announcement not found'
+    render 'index'
   end
 
   private
