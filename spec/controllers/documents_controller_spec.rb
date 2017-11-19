@@ -3,11 +3,12 @@ require 'rails_helper'
 RSpec.describe DocumentsController, type: :controller do
 
   describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
+    context 'User is not signed in' do
+      before do
+        get :index
+      end
+      include_examples 'redirects as un-authenticated user'
     end
-  end
 
   context 'User does not have the :coach role' do
     before do
@@ -24,32 +25,38 @@ RSpec.describe DocumentsController, type: :controller do
     before do
       coach = create(:coach_user)
       sign_in(coach)
+      get :index
     end
-    it 'returns http ok' do
-      get :admin_index
-      expect(response).to have_http_status(:ok)
-    end
-  end
-
-  describe "GET #new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
+      include_examples 'renders the template', :admin_index
     end
   end
 
-  describe "GET #create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
+  describe 'GET #new' do
+    context 'user is a coach user' do
+      it 'assigns the @document variable' do
+        controller.new
+        expect(assigns(:document).to_json).to eq(Document.new.to_json)
+      end
     end
   end
 
-  describe "GET #destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
+  describe "POST #create" do
+    before do
+      coach = create(:coach_user)
+      sign_in(coach)
     end
+    context 'given a valid document' do
+      let(:d) { build(:document) }
+      it 'creates an announcement' do
+        expect do
+          post :create, params: { document: { name: d.name, attachment: d.attachment} }
+        end.to change { Document.count }.by(1)
+      end
+    end
+  end
+
+  describe "POST #destroy" do
+    
   end
 
 end
