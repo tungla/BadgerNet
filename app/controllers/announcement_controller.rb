@@ -43,9 +43,8 @@ class AnnouncementController < ApplicationController
 
   def show
     @announcement = Announcement.find(params[:id])
-    return unless @announcement.nil?
-    @announcements = Announcement.all
-    flash[:alert] = 'Announcement not found'
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Could not find this announcement'
     render 'index'
   end
 
