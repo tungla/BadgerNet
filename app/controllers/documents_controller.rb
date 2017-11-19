@@ -1,7 +1,11 @@
-# DocumentsController: handles documents
 class DocumentsController < ApplicationController
   def index
     @documents = Document.all
+    if current_user.has_role? :coach
+      render 'admin_index'
+    else
+      render
+    end
   end
 
   def new
@@ -10,20 +14,24 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.new(document_params)
+
+    if @document.save
+      redirect_to documents_path
+    else
+      render "new"
+    end
+  end
+
+  def destroy
+    @document = Document.find(params[:id])
+    @document.destroy
+    redirect_to documents_path
   end
 
   private
 
-  def message_params
-    params.require(:document).permit(:title, :content)
-  end
-
-  def upload
-    @person=User.all
-    uploaded_io = params[:Document]
-    File.open(Rails.root.join('public',uploaded_io.original_filename), 'wb') do |file|
-    file.write(uploaded_io.read)
-    end
+  def document_params
+    params.require(:document).permit(:name, :attachment)
   end
 
 end
