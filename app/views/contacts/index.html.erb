@@ -16,7 +16,73 @@
                 <td><%= user.last_name %></td>
                 <td><%= user.email %></td>
                 <td><%= user.phone %></td>
+                <td><button class="button-primary" onclick="toggleModal('edit-user')" style="margin-top:1.5em;">Edit User</button>
+
+
+                  <div class="modal hidden" id="edit-user">
+                      <div class="modal-content">
+                          <div class="modal-close" onclick="toggleModal('edit-user')">&times;</div>
+                          <h2>Edit User</h2>
+
+                          <%= form_for :user, url: contacts_path, method: 'POST' do |f| %>
+
+
+                              <%= f.label :fname %>
+                              <%= f.text_field :fname, class: 'form-control' %>
+                              <br>
+                              <%= f.label :lname %>
+                              <%= f.text_field :lname, class: 'form-control' %>
+                              <br>
+                              <%= f.label :email %>
+                              <%= f.email_field :email, class: 'form-control' %>
+                              <br>
+
+                              <%= f.submit "Save changes", class: "btn btn-primary" %>
+                            <% end %>
+
+                          <div style="margin-top:1.5em;text-align:right;">
+                              <button class="button-default" onclick="toggleModal('edit-user')">Cancel</button>
+                              <button class="button-primary">Add Event</button>
+                          </div>
+                      </div>
+                  </div>
+
+                </td>
             </tr>
         <% end %>
     </tbody>
 </table>
+
+<div style="margin-top:1.5em;text-align:right;">
+    <button class="button-primary" onclick="toggleModal('new-user')" style="margin-top:1.5em;">New User</button>
+</div>
+<div class="modal hidden" id="new-user">
+    <div class="modal-content">
+        <div class="modal-close" onclick="toggleModal('new-user')">&times;</div>
+        <h2>New Event</h2>
+        <form>
+            <label for="l_name">First Name:</label>
+            <input name="f_name" type="text">
+<br/>
+            <label for="l_name">Last Name:</label>
+            <input name="l_name" type="text">
+<br/>
+            <label for="phone">Phone Number:</label>
+            <input name="phone" type="text">
+<br/>
+            <label for="email"> Email Address:</label>
+            <input name="email" type="text">
+<br/>
+            <label for="Coach"> Coach:</label>
+            <input type="radio" name="permission" value="is_coach">
+<br/>
+            <label for="Athlete"> Student:</label>
+            <input type="radio" name="permission" value="is_athlete">
+        </form>
+
+        <div style="margin-top:1.5em;text-align:right;">
+            <button class="button-default" onclick="toggleModal('new-event')">Cancel</button>
+            <button class="button-primary">Add Event</button>
+        </div>
+    </div>
+</div>
