@@ -1,4 +1,4 @@
-# ScheduleController controls adding/editing/viewing schedules
+# ScheduleController controls adding/editing/viewing events on schedules
 class ScheduleController < ApplicationController
   def index
     # get current user
@@ -13,13 +13,14 @@ class ScheduleController < ApplicationController
 
   def destroy_event
     begin
-      event = Event.find(params[:id])
-      name = event.name
-      event.destroy
+      @event = Event.find(params[:event_id])
+      name = @event.name
+      @event.destroy
       flash[:success] = 'Successfully removed "' + name + '"'
     rescue
       flash[:alert] = 'Could not find specified event'
     end
     redirect_to action: 'index'
   end
+
 end

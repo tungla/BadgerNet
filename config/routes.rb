@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   # scheulde
   get '/schedule', to: 'schedule#index'
-  delete 'schedule/destroy_event'
+  delete '/schedule', to: 'schedule#destroy_event'
 
   # Permissions routes
   get '/permissions', to: 'permissions#index'
