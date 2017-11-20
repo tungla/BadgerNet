@@ -1,0 +1,17 @@
+<div class="main">
+<div class="container">
+  <h1>Settings</h1>
+
+  <%= form_for @user, url: {action: "update"} |f| %>
+    <%= f.label "Test" %>
+    <%= f.text_field "test" %>
+  <% end %>
+
+<div class="settings">
+  <p>First Name: <%= defined?(current_user.first_name) ? current_user.first_name : 'user' %></p>
+  <p>Last Name: <%= defined?(current_user.last_name) ? current_user.last_name : 'user' %></p>
+  <p>Phone Number: <%= defined?(current_user.phone) ? current_user.phone : 'user' %></p>
+  <p>Profile Picture</p>
+  <img src="http://lorempixel.com/200/200" />
+
+</div>

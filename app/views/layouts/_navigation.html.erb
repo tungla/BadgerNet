@@ -12,7 +12,7 @@
            <div class="navbar-menu-item"><%= link_to "PERMISSIONS", permissions_path %></div>
         </div>
         <div class="navbar-profile">
-            <span>Welcome, <%= defined?(current_user.first_name) ? current_user.first_name : 'user' %><br><a href="#">Settings</a> – <%= link_to('Logout', destroy_user_session_path, method: :delete) %></span>
+            <span>Welcome, <%= defined?(current_user.first_name) ? current_user.first_name : 'user' %><br><a href="/settings">Settings</a> – <%= link_to('Logout', destroy_user_session_path, method: :delete) %></span>
             <img src="http://lorempixel.com/200/200" />
         </div>
     </div>

@@ -25,4 +25,7 @@ Rails.application.routes.draw do
   #documents
   get '/documents' => 'documents#index'
 
+  #settings
+  get '/settings' => 'settings#index'
+
 end
