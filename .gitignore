@@ -2,11 +2,12 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore all logfiles and tempfiles.
+# Ignore all logfiles, tempfiles and uploads.
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/public/uploads/*
 
 # Testing
 coverage/*

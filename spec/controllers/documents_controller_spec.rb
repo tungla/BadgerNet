@@ -46,7 +46,7 @@ RSpec.describe DocumentsController, type: :controller do
     end
     context 'given a valid document' do
       let(:d) { build(:document) }
-      it 'creates an announcement' do
+      it 'creates an document' do
         expect do
           post :create, params: { document: { name: d.name, attachment: d.attachment } }
         end.to change { Document.count }.by(1)
