@@ -2,7 +2,7 @@
 # referenced https://www.codecademy.com/courses/learn-rails/lessons/one-model/exercises/one-model-view?action=lesson_resume
 class AnnouncementController < ApplicationController
   include AnnouncementHelper
-  before_action :coach?, except: [:index]
+  before_action :coach?, except: %i[index show]
 
   def index
     @announcements = Announcement.all
@@ -39,6 +39,13 @@ class AnnouncementController < ApplicationController
       flash[:alert] = 'Could not find this announcement'
     end
     redirect_to action: 'index'
+  end
+
+  def show
+    @announcement = Announcement.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Could not find this announcement'
+    render 'index'
   end
 
   private
