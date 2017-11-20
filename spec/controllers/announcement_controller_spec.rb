@@ -110,4 +110,26 @@ RSpec.describe AnnouncementController, type: :controller do
       end
     end
   end
+
+  describe 'GET #show' do
+    before do
+      coach = create(:coach_user)
+      sign_in(coach)
+    end
+
+    context 'an existing announcement' do
+      let(:a) { FactoryGirl.create(:announcement_email) }
+      it 'displays announcement' do
+        get :show, params: { id: a.id }
+        expect(response).to render_template(:show)
+      end
+    end
+
+    context 'a non-existing announcement' do
+      it 'creates an error message' do
+        get :show, params: { id: 1000 }
+        expect(flash[:alert]).to include('Could not find this announcement')
+      end
+    end
+  end
 end
