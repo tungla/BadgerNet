@@ -25,10 +25,10 @@
                 <td>
                     <% if u.has_role? :coach %>
                         <%= 'Coach' %>
-                        <a href='' class='edit-permissions'>Make Athlete</a>
+                        <%= link_to "Make Athlete", permission_path(id: u.id),  method: :put, class: 'edit-permissions' %>
                     <% else %>
                         <%= 'Athlete' %>
-                        <a href='' class='edit-permissions'>Make Coach</a>
+                        <%= link_to "Make Coach", permission_path(id: u.id), method: :put, class: 'edit-permissions' %>
                     <% end %>
                 </td>
                 <td>
