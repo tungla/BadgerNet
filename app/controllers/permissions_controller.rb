@@ -8,11 +8,13 @@ class PermissionsController < ApplicationController
   end
 
   def create
-    if create_params
+    user = User.find_by(email: params[:email])
+    if create_params && !user
       new_user = User.invite!({ email: params[:email] }, current_user)
       new_user.add_role params[:role]
       flash[:success] = "Successfully sent an invite to #{new_user.email}!"
     end
+    flash[:notice] = "User #{user.email} already exists! Invite not sent." if user
     redirect_to action: 'index'
   end
 

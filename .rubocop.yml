@@ -17,3 +17,6 @@ Metrics/LineLength:
   Max: 90
   # Ignores comment line length
   IgnoredPatterns: ['\A#']
+
+Metrics/AbcSize:
+  Enabled: false

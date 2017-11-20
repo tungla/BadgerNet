@@ -3,7 +3,7 @@
 class InvitationsController < Devise::InvitationsController
   before_action :update_sanitized_params, only: :update
 
-  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   # PUT /resource/invitation
   def update
     respond_to do |format|
@@ -20,7 +20,7 @@ class InvitationsController < Devise::InvitationsController
       end
     end
   end
-  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
 
   protected
 

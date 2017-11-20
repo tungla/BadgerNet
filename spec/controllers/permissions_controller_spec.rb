@@ -75,6 +75,16 @@ RSpec.describe PermissionsController, type: :controller do
           'sent an invite to invited_coach@wisc.edu!')
       end
     end
+
+    context 'inviting a user that already exists' do
+      it 'does not invite the user again' do
+        post :create, params: { email: 'inv@wisc.edu', role: :athlete }
+        expect do
+          post :create, params: { email: 'inv@wisc.edu', role: :athlete }
+        end.not_to(change { User.count })
+        expect(flash[:notice]).to eq('User inv@wisc.edu already exists! Invite not sent.')
+      end
+    end
   end
 
   describe 'PUT #update' do
