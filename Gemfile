@@ -19,6 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Flexible user authentication: https://github.com/plataformatec/devise
 gem 'devise', '~> 4.3.0'
+gem 'devise_invitable', '~> 1.7.2'
 # Authorization OO library https://github.com/elabs/pundit
 gem 'authority', '~> 3.3.0'
 # Role management library https://github.com/RolifyCommunity/rolify
