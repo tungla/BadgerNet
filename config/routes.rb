@@ -26,4 +26,9 @@ Rails.application.routes.draw do
   #documents
   get '/documents' => 'documents#index'
 
+  BadgerNet::Application.routes.draw do
+    resources :documents
+    root "documents#index"
+  end
+
 end

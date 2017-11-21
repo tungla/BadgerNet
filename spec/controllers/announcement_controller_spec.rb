@@ -30,7 +30,7 @@ RSpec.describe AnnouncementController, type: :controller do
     end
   end
 
-  describe '#new' do
+  describe 'GET #new' do
     context 'user is a coach user' do
       it 'assigns the @announcement variable' do
         controller.new
