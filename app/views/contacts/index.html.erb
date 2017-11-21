@@ -16,39 +16,29 @@
                 <td><%= user.last_name %></td>
                 <td><%= user.email %></td>
                 <td><%= user.phone %></td>
-                <td><button class="button-primary" onclick="toggleModal('edit-user')" style="margin-top:1.5em;">Edit User</button>
+                <td><select>
+                  <optgroup label="Groups in" disabled=true>
+                  <% user.roles.each do |role|%>
+                  <option><%=role.name%></option>
+                  <% end %>
+                </optgroup>
+                <optgroup label="Other Groups">
+                <% @roles.each do |role|%>
+                <%if !user.roles.include?(role)%>
+                <option ><%=link_to role.name, @update_user_path_role_path, method: :update%></option>
 
 
-                  <div class="modal hidden" id="edit-user">
-                      <div class="modal-content">
-                          <div class="modal-close" onclick="toggleModal('edit-user')">&times;</div>
-                          <h2>Edit User</h2>
-
-                          <%= form_for :user, url: contacts_path, method: 'POST' do |f| %>
-
-
-                              <%= f.label :fname %>
-                              <%= f.text_field :fname, class: 'form-control' %>
-                              <br>
-                              <%= f.label :lname %>
-                              <%= f.text_field :lname, class: 'form-control' %>
-                              <br>
-                              <%= f.label :email %>
-                              <%= f.email_field :email, class: 'form-control' %>
-                              <br>
-
-                              <%= f.submit "Save changes", class: "btn btn-primary" %>
-                            <% end %>
-
-                          <div style="margin-top:1.5em;text-align:right;">
-                              <button class="button-default" onclick="toggleModal('edit-user')">Cancel</button>
-                              <button class="button-primary">Add Event</button>
-                          </div>
-                      </div>
-                  </div>
-
-                </td>
+                <% end %>
+                <% end %>
+              </optgroup>
+                </select>
+              </td>
+              <td>
+                 <button class="button-primary">Add</button>
+                 <%= button_to 'Update Assign', , method: :put, class: 'button-danger'%>
+               </td>
             </tr>
+
         <% end %>
     </tbody>
 </table>

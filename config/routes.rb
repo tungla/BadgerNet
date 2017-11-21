@@ -25,4 +25,9 @@ Rails.application.routes.draw do
   #documents
   get '/documents' => 'documents#index'
 
+  get '/contacts', to: 'contacts#index'
+  post 'contacts/action'
+  resources :contacts, :path => 'contacts' #gives CRUD routes
+
+
 end
