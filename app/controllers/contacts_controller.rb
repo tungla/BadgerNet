@@ -8,12 +8,23 @@ class ContactsController < ApplicationController
 
 
   def update
-    User.find(params[:id]).add_role(Role.find(params:[:idr]))
-
+    @u = User.find(params[:id])
+    @r = Role.find(params[:role])
+    if !@u.roles.include?(@r)
+      @u.add_role(@r.name)
+      flash[:success] = 'Successfully added role'
+    else
+      @u.remove_role @r.name
+      flash[:success] = 'Successfully removed role'
+    end
+    redirect_to action: 'index'
   end
 
   def create
-    User.find(3).first_name = 'jimmy'
+    Role.create(name: params[:name])
+    flash[:success] = 'Successfully added role'
+    redirect_to action: 'index'
+
   end
 
   def destroy

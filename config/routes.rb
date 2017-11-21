@@ -1,10 +1,11 @@
+
 Rails.application.routes.draw do
   devise_for :users, skip: :registration
 
   root 'home#index'
 
   # Contacts controller
-  get '/contacts',to:'contacts#index'
+  resources :contacts, path: 'contacts'
 
   # Home controller routes
   get 'home/index'
@@ -24,7 +25,9 @@ Rails.application.routes.draw do
   #documents
   get '/documents' => 'documents#index'
 
-  #settings
-  get '/settings' => 'settings#index'
+  post '/contacts', to: 'contacts#index'
+  post 'contacts/action'
+  resources :contacts, :path => 'contacts' #gives CRUD routes
+
 
 end

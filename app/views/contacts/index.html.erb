@@ -16,64 +16,51 @@
                 <td><%= user.last_name %></td>
                 <td><%= user.email %></td>
                 <td><%= user.phone %></td>
-                <td><select>
-                  <optgroup label="Groups in" disabled=true>
-                  <% user.roles.each do |role|%>
-                  <option><%=role.name%></option>
-                  <% end %>
-                </optgroup>
-                <optgroup label="Other Groups">
-                <% @roles.each do |role|%>
-                <%if !user.roles.include?(role)%>
-                <option ><%=link_to role.name, @update_user_path_role_path, method: :update%></option>
+              </tr>
+              <tr>
 
-                <%= button_to role.name, { action: 'update', id: user.id,  idr:role.id }, method: :update, class: 'button-danger'%>
+                <td>Roles in</td>
+                          <% user.roles.each do |role|%>
+                          <td>
+                            <%= button_to role.name, {action: 'update', id: user.id, role: role.id}, method: :put, class:"button-danger"%>
 
-                <% end %>
-                <% end %>
-              </optgroup>
-                </select>
-              </td>
-              <td>
-                 <button class="button-primary">Add</button>
-                 <%= button_to 'Delete', { action: 'destroy', id: user.id }, method: :delete, class: 'button-danger'%>
-               </td>
-            </tr>
+                          </td>
+                        <% end %>
+                      </tr>
+                      <tr>
+                        <td>other roles</td>
+                        <% @roles.each do |role|%>
+                        <%if !user.roles.include?(role)%>
+                        <td >
+                        <%= button_to role.name, {action: 'update', id: user.id, role: role.id}, method: :put, class:"button-danger"%>
+                        </td>
+
+                        <% end %>
+                        <% end %>
+</tr>
+<tr><td></td></tr>
 
         <% end %>
     </tbody>
 </table>
 
 <div style="margin-top:1.5em;text-align:right;">
-    <button class="button-primary" onclick="toggleModal('new-user')" style="margin-top:1.5em;">New User</button>
+    <button class="button-primary" onclick="toggleModal('new-event')" style="margin-top:1.5em;">New Event</button>
 </div>
-<div class="modal hidden" id="new-user">
+<div class="modal hidden" id="new-event">
     <div class="modal-content">
-        <div class="modal-close" onclick="toggleModal('new-user')">&times;</div>
-        <h2>New Event</h2>
-        <form>
-            <label for="l_name">First Name:</label>
-            <input name="f_name" type="text">
-<br/>
-            <label for="l_name">Last Name:</label>
-            <input name="l_name" type="text">
-<br/>
-            <label for="phone">Phone Number:</label>
-            <input name="phone" type="text">
-<br/>
-            <label for="email"> Email Address:</label>
-            <input name="email" type="text">
-<br/>
-            <label for="Coach"> Coach:</label>
-            <input type="radio" name="permission" value="is_coach">
-<br/>
-            <label for="Athlete"> Student:</label>
-            <input type="radio" name="permission" value="is_athlete">
-        </form>
+        <div class="modal-close" onclick="toggleModal('new-event')">&times;</div>
+        <h2>New Team</h2>
+        <%= form_tag do %>
+            <%= label_tag(:name, "Name:") %>
+            <%= text_field_tag(:name) %><br>
 
+
+            <%= button_to "Add Role", {action: 'create', name: :name}, method: :post, class:"button-danger"%>
+
+        <% end %>
         <div style="margin-top:1.5em;text-align:right;">
             <button class="button-default" onclick="toggleModal('new-event')">Cancel</button>
-            <button class="button-primary">Add Event</button>
         </div>
     </div>
 </div>
