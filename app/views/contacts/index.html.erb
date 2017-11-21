@@ -27,6 +27,7 @@
                 <%if !user.roles.include?(role)%>
                 <option ><%=link_to role.name, @update_user_path_role_path, method: :update%></option>
 
+                <%= button_to role.name, { action: 'update', id: user.id,  idr:role.id }, method: :update, class: 'button-danger'%>
 
                 <% end %>
                 <% end %>
@@ -35,7 +36,7 @@
               </td>
               <td>
                  <button class="button-primary">Add</button>
-                 <%= button_to 'Update Assign', method: :assign, class: 'button-danger'%>
+                 <%= button_to 'Delete', { action: 'destroy', id: user.id }, method: :delete, class: 'button-danger'%>
                </td>
             </tr>
 
