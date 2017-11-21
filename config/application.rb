@@ -15,7 +15,7 @@ module BadgerNet
     # This allows an un-authenticated user to reach the sign in page and sign
     # in while requiring authentication application wide elsewhere
     config.to_prepare do
-      Devise::SessionsController.skip_before_action :authenticate_user!
+      Devise::SessionsController.skip_before_action :authenticate_user!, raise: false
     end
 
     # Settings in config/environments/* take precedence over those specified here.

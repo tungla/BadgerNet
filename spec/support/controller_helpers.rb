@@ -1,5 +1,4 @@
 module ControllerHelpers
-  # rubocop:disable Metrics/AbcSize
   def login_with(user = double('user'), scope = :user)
     current_user = "current_#{scope}".to_sym
     if user.nil?
@@ -11,5 +10,4 @@ module ControllerHelpers
       allow(controller).to receive(current_user).and_return(user)
     end
   end
-  # rubocop:enable Metrics/AbcSize
 end
