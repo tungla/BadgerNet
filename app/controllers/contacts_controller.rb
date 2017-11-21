@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
     @roles = Role.all
   end
 
-  def assin
+  def assign
     @thisuser = User.find(params[:ids])
     @thisrole = Role.find(params[:idr])
     @thisuser.add_role(@thisrole)
