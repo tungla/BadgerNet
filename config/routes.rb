@@ -1,35 +1,28 @@
-
 Rails.application.routes.draw do
-  devise_for :users, skip: :registration
+  # Devise routes setup
+  devise_for :users, skip: :registration, controllers: {
+    invitations: 'invitations'
+  }
 
   root 'home#index'
+  get 'home/index' # Home (Main Index)
 
-  # Contacts controller
+  # Announcements
+  resources :announcement, :path => 'announcement'
+
+  # Contacts (teams)
   delete 'contacts/destroy'
   post '/contacts', to: 'contacts#index'
   post 'contacts/action'
-  resources :contacts, :path => 'contacts' #gives CRUD routes
+  resources :contacts, path: 'contacts'
 
-  # Home controller routes
-  get 'home/index'
+  # Documents
+  resources :documents, path: 'documents'
 
-
-  # get 'announcement/index'
-  resources :announcement, :path => 'announcement' #gives CRUD routes
-
-  # scheulde
+  # Schedule
   get '/schedule', to: 'schedule#index'
 
-  # Permissions routes
-  get '/permissions', to: 'permissions#index'
-  delete 'permissions/destroy'
-
-
-
-  #documents
-  get '/documents' => 'documents#index'
-
-
-
+  # Permissions
+  resources :permissions, path: 'permissions'
 
 end

@@ -1,0 +1,28 @@
+/*
+==========================================================================
+Permissions
+==========================================================================
+*/
+
+@import "base/colors";
+
+.edit-permissions {
+  outline: none;
+  font-size: 10px;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+.edit-permissions:link, :visited {
+  color: $permissions-link;
+}
+
+.edit-permissions:focus {
+  border-bottom: 1px solid;
+  background: $permissions-link-focus;
+}
+
+.edit-permissions:hover {
+  border-bottom: 1px solid;
+  background: $permissions-link-hover;
+}

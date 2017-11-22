@@ -1,0 +1,15 @@
+<table class="table table-bordered table-striped one">
+  <thead>
+    <tr>
+      <th><font size="5">Announcements</font></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @announcements.limit(5).reverse.each do |announcement| %>
+      <tr>
+        <td><%= announcement.title %></td>
+        <td><%= truncate(announcement.content, :length => 80) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

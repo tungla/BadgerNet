@@ -37,6 +37,84 @@ RSpec.describe PermissionsController, type: :controller do
     end
   end
 
+  describe 'POST #create' do
+    before do
+      coach_adding = create(:coach_user)
+      sign_in(coach_adding)
+    end
+
+    context 'with invalid parameters' do
+      it 'returns an error for a blank email address' do
+        post :create, params: { email: '', role: :athlete }
+        expect(flash[:danger]).to eq('Error: Email cannot be blank.')
+      end
+
+      it 'returns an error for an email in the wrong domain' do
+        post :create, params: { email: 'test@gmail.com', role: :athlete }
+        expect(flash[:danger]).to eq('Error: Email must '\
+        'be a valid @wisc.edu email address.')
+      end
+    end
+
+    context 'creating a new athlete user' do
+      it 'adds a new athlete user to the database and displays success message' do
+        expect do
+          post :create, params: { email: 'invited_athlete@wisc.edu', role: :athlete }
+        end.to change { (User.with_role :athlete).count }.by(1)
+        expect(flash[:success]).to eq('Successfully '\
+          'sent an invite to invited_athlete@wisc.edu!')
+      end
+    end
+
+    context 'creating a new coach user' do
+      it 'adds a new coach user to the database and displays success message' do
+        expect do
+          post :create, params: { email: 'invited_coach@wisc.edu', role: :coach }
+        end.to change { (User.with_role :coach).count }.by(1)
+        expect(flash[:success]).to eq('Successfully '\
+          'sent an invite to invited_coach@wisc.edu!')
+      end
+    end
+
+    context 'inviting a user that already exists' do
+      it 'does not invite the user again' do
+        post :create, params: { email: 'inv@wisc.edu', role: :athlete }
+        expect do
+          post :create, params: { email: 'inv@wisc.edu', role: :athlete }
+        end.not_to(change { User.count })
+        expect(flash[:notice]).to eq('User inv@wisc.edu already exists! Invite not sent.')
+      end
+    end
+  end
+
+  describe 'PUT #update' do
+    before do
+      coach_modifying = create(:coach_user)
+      sign_in(coach_modifying)
+    end
+    context 'given a coach user' do
+      it 'downgrades their permission level to an athlete user' do
+        to_modify = create(:coach_user)
+        put :update, params: { id: to_modify.id }
+        expect(to_modify.has_role?(:coach)).to be false
+        expect(to_modify.has_role?(:athlete)).to be true
+        success_message = "Successfully changed #{to_modify.email}'s permission level"
+        expect(flash[:success]).to eq(success_message)
+      end
+    end
+
+    context 'given an athlete user' do
+      it 'upgrades their permission level to a coach user' do
+        to_modify = create(:athlete_user)
+        put :update, params: { id: to_modify.id }
+        expect(to_modify.has_role?(:athlete)).to be false
+        expect(to_modify.has_role?(:coach)). to be true
+        success_message = "Successfully changed #{to_modify.email}'s permission level"
+        expect(flash[:success]).to eq(success_message)
+      end
+    end
+  end
+
   describe 'DELETE #destroy' do
     before do
       coach = create(:coach_user)
