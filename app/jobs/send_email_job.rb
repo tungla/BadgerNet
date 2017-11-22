@@ -1,4 +1,5 @@
-class SendEmailJob < ActiveJob::Base
+# SendEmailJob processes emails
+class SendEmailJob < Application::Job
   queue_as :default
 
   def perform(user)

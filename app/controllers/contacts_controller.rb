@@ -5,8 +5,6 @@ class ContactsController < ApplicationController
     @roles = Role.all
   end
 
-
-
   def update
     @u = User.find(params[:id])
     @r = Role.find(params[:role])
@@ -24,16 +22,15 @@ class ContactsController < ApplicationController
     Role.create(name: params[:name])
     flash[:success] = 'Successfully added role'
     redirect_to action: 'index'
-
   end
 
   def destroy
     begin
-     User.find(params[:id]).destroy
-     flash[:success] = 'Successfully removed user from BadgerNet'
-   rescue ActiveRecord::RecordNotFound
-     flash[:alert] = 'Could not find specified user'
-   end
-   redirect_to action: 'index'
+      User.find(params[:id]).destroy
+      flash[:success] = 'Successfully removed user from BadgerNet'
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = 'Could not find specified user'
+    end
+    redirect_to action: 'index'
   end
 end
