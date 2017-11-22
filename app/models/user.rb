@@ -14,6 +14,7 @@ class User < ApplicationRecord
   end
 
   def delete_role(role)
+    return false unless has_role?(role)
     begin
       remove_role role
     # rubocop:disable Lint/HandleExceptions
