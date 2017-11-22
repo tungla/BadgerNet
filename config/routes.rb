@@ -12,8 +12,6 @@ Rails.application.routes.draw do
 
   # Contacts (teams)
   delete 'contacts/destroy'
-  post '/contacts', to: 'contacts#index'
-  post 'contacts/action'
   resources :contacts, path: 'contacts'
 
   # Documents
