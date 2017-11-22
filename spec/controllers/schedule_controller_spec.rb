@@ -27,7 +27,9 @@ RSpec.describe ScheduleController, type: :controller do
     context 'given a valid event' do
       it 'creates an event' do
         expect do
-          post :create_event, params: { name: 'My Event', time: {'start'=>'09:00', 'end'=>'16:45'}, days: [0, 2, 3]}
+          post :create_event, params: { name: 'My Event',
+                                        time: { 'start' => '09:00', 'end' => '16:45' },
+                                        days: [0, 2, 3] }
         end.to change { Event.count }.by(1)
       end
     end
