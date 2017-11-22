@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # Contacts controller
-  resources :contacts, path: 'contacts'
   delete 'contacts/destroy'
+  post '/contacts', to: 'contacts#index'
+  post 'contacts/action'
+  resources :contacts, :path => 'contacts' #gives CRUD routes
 
   # Home controller routes
   get 'home/index'
@@ -27,9 +29,7 @@ Rails.application.routes.draw do
   #documents
   get '/documents' => 'documents#index'
 
-  post '/contacts', to: 'contacts#index'
-  post 'contacts/action'
-  resources :contacts, :path => 'contacts' #gives CRUD routes
+
 
 
 end

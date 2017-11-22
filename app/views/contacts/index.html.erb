@@ -1,4 +1,8 @@
 <h1>Contacts</h1>
+<header>
+  <br/>
+Click the team in the "Teams In" category to remove user from team, Click team in "Other Team" to add user to team.
+</header>
 <table>
     <thead>
         <tr>
@@ -19,7 +23,7 @@
               </tr>
               <tr>
 
-                <td>Roles in</td>
+                <td>Teams In:</td>
                           <% user.roles.each do |role|%>
                           <td>
                             <%= button_to role.name, {action: 'update', id: user.id, role: role.id}, method: :put, class:"button-danger"%>
@@ -28,7 +32,7 @@
                         <% end %>
                       </tr>
                       <tr>
-                        <td>other roles</td>
+                        <td>Other Teams:</td>
                         <% @roles.each do |role|%>
                         <%if !user.roles.include?(role)%>
                         <td >
@@ -45,11 +49,11 @@
 </table>
 
 <div style="margin-top:1.5em;text-align:right;">
-    <button class="button-primary" onclick="toggleModal('new-event')" style="margin-top:1.5em;">New Event</button>
+    <button class="button-primary" onclick="toggleModal('new-team')" style="margin-top:1.5em;">New Event</button>
 </div>
-<div class="modal hidden" id="new-event">
+<div class="modal hidden" id="new-team">
     <div class="modal-content">
-        <div class="modal-close" onclick="toggleModal('new-event')">&times;</div>
+        <div class="modal-close" onclick="toggleModal('new-team')">&times;</div>
         <h2>New Team</h2>
         <%= form_tag do %>
             <%= label_tag(:name, "Name:") %>
@@ -59,7 +63,7 @@
             <%= button_to "Remove Role", {action: 'destroy', name: :name}, method: :delete, class:"button-danger"%>
         <% end %>
         <div style="margin-top:1.5em;text-align:right;">
-            <button class="button-default" onclick="toggleModal('new-event')">Cancel</button>
+            <button class="button-default" onclick="toggleModal('new-team')">Cancel</button>
         </div>
     </div>
 </div>
