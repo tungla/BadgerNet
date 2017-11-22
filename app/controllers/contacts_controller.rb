@@ -2,7 +2,12 @@
 class ContactsController < ApplicationController
   def index
     @users = User.all
-    @roles = Role.non_permissions_roles
+    if current_user.coach?
+      @roles = Role.non_permissions_roles
+      render 'admin_index'
+    else
+      render
+    end
   end
 
   def update
