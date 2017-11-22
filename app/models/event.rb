@@ -1,7 +1,7 @@
 # Represents a single event on a user's schedule
 class Event < ApplicationRecord
   belongs_to :schedule
-  validates :name, :start, :end, presence: true
+  validates :name, :start_time, :end_time, presence: true
 
   # Returns a string of the days in which this event repeats
   # For example: "Mon, Tue, Sat"

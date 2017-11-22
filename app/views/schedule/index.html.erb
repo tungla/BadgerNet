@@ -24,7 +24,7 @@
         <div class="events-group">
             <div class="events-group-label"><span>Sunday</span></div>
             <% @schedule.events_on_day(i).each do |event| %>
-                <div class="single-event" data-start-hour="<%= event.start.hour %>" data-start-min="<%= event.start.min %>" data-end-hour="<%= event.end.hour %>" data-end-min="<%= event.end.min %>">
+                <div class="single-event" data-start-hour="<%= event.start_time.hour %>" data-start-min="<%= event.start_time.min %>" data-end-hour="<%= event.end_time.hour %>" data-end-min="<%= event.end_time.min %>">
                     <span class="single-event-label"><%= event.name %></span>
                 </div>
             <% end %>
@@ -42,7 +42,7 @@
             <% @schedule.event.each do |event| %>
                 <tr>
                     <td><%= event.name %></td>
-                    <td><%= "#{event.start.strftime("%I:%M%p")} - #{event.end.strftime("%I:%M%p")}" %></td>
+                    <td><%= "#{event.start_time.strftime("%I:%M%p")} - #{event.end_time.strftime("%I:%M%p")}" %></td>
                     <td><%= event.days_as_string %></td>
                     <td style="text-align:right;">
                         <%= button_to 'Remove', { event_id: event.id }, method: :delete, class: 'button-danger'%>

@@ -13,7 +13,7 @@ class ScheduleController < ApplicationController
   def create_event
     @user = current_user
     @event = Event.create(name: params[:name], schedule_id: @user.schedule.id,
-                          start: params[:time]['start'], end: params[:time]['end'],
+                          start_time: params[:time]['start'], end_time: params[:time]['end'],
                           days: build_days_array(params))
     # success
     flash[:success] = "Successfully added \"#{@event.name}\""

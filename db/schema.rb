@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 20171111230136) do
     t.integer "days", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.time "start"
-    t.time "end"
+    t.time "start_time"
+    t.time "end_time"
     t.index ["schedule_id"], name: "index_events_on_schedule_id"
   end
 
