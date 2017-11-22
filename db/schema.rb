@@ -25,12 +25,10 @@ ActiveRecord::Schema.define(version: 20171111230136) do
   end
 
   create_table "documents", force: :cascade do |t|
-    t.string "title", null: false
-    t.string "file_path", null: false
+    t.string "name"
+    t.string "attachment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["file_path"], name: "index_documents_on_file_path", unique: true
-    t.index ["title"], name: "index_documents_on_title", unique: true
   end
 
   create_table "events", force: :cascade do |t|

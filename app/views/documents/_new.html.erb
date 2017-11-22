@@ -1,0 +1,11 @@
+<%= form_for @document, url: { action: "create" } do |f| %>
+  </br>
+  <%= f.label :name %>
+  <%= f.text_field :name,:required => 'required' %>
+  </br>
+  <%= f.label :attachment %>
+  <%= f.file_field :attachment,:required => 'required' %>
+  </br>
+  <%= f.submit "Save", class: "button-primary" %>
+<% end %>
+
