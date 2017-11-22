@@ -21,19 +21,38 @@ class ContactsController < ApplicationController
   end
 
   def create
-    Role.create(name: params[:name])
-    flash[:success] = 'Successfully added role'
-    redirect_to action: 'index'
+    is_repeat = false
+    Role.all.each do |role|
+      if role.name == params[:name]
+        is_repeat = true
+      end
+    end
+    if is_repeat == false
+      Role.create(name: params[:name])
+      flash[:success] = 'Successfully added role'
+      redirect_to action: 'index'
+    else
+      flash[:alert] = 'Role already exists'
+      redirect_to action: 'index'
+    end
 
   end
 
   def destroy
-    begin
-     User.find(params[:id]).destroy
-     flash[:success] = 'Successfully removed user from BadgerNet'
-   rescue ActiveRecord::RecordNotFound
-     flash[:alert] = 'Could not find specified user'
-   end
-   redirect_to action: 'index'
-  end
+    is_repeat = false
+    Role.all.each do |role|
+      if role.name == params[:name]
+        is_repeat = true
+      end
+    end
+    if is_repeat == false
+    #r = Role.find_by(name: params[:name])
+      #r.delete
+      flash[:success] = :name
+      redirect_to action: 'index'
+    else
+      flash[:alert] = 'Role doesn\'t exists'
+      redirect_to action: 'index'
+    end
+end
 end

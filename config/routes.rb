@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   # Contacts controller
   resources :contacts, path: 'contacts'
+  delete 'contacts/destroy'
 
   # Home controller routes
   get 'home/index'
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
   # Permissions routes
   get '/permissions', to: 'permissions#index'
   delete 'permissions/destroy'
+
 
 
   #documents

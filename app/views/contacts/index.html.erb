@@ -55,9 +55,8 @@
             <%= label_tag(:name, "Name:") %>
             <%= text_field_tag(:name) %><br>
 
-
             <%= button_to "Add Role", {action: 'create', name: :name}, method: :post, class:"button-danger"%>
-
+            <%= button_to "Remove Role", {action: 'destroy', name: :name}, method: :delete, class:"button-danger"%>
         <% end %>
         <div style="margin-top:1.5em;text-align:right;">
             <button class="button-default" onclick="toggleModal('new-event')">Cancel</button>
