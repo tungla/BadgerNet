@@ -39,6 +39,26 @@ RSpec.describe ContactsController, type: :controller do
     end
   end
 
+  describe 'POST #create' do
+    before do
+      coach = create(:coach_user)
+      sign_in(coach)
+    end
+
+    it 'creates a new role (team) if one does not already exist' do
+      post :create, params: { name: 'new_team' }
+      expect(Role.where(name: 'new_team').first).not_to be nil
+      expect(flash[:success]).to eq('Successfully added new team New_team')
+    end
+
+    it 'does not add a new role if it already exists' do
+      role = create(:role)
+      post :create, params: { name: role.name }
+      expect(Role.find(role.id)).not_to be nil
+      expect(flash[:notice]).to eq("Team '#{role.name.capitalize}' already exists!")
+    end
+  end
+
   describe 'PUT #update' do
     before do
       coach = create(:coach_user)
