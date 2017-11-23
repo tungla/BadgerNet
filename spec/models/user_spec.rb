@@ -22,6 +22,7 @@ RSpec.describe User, type: :model do
   describe 'public instance methods' do
     context 'responds to its methods' do
       it { expect(user).to respond_to(:coach?) }
+      it { expect(user).to respond_to(:delete_role) }
     end
 
     context 'executes coach? method correctly' do
@@ -30,6 +31,19 @@ RSpec.describe User, type: :model do
       end
       it 'returns false for an athlete user' do
         expect(create(:athlete_user).coach?).to be false
+      end
+    end
+
+    context 'executes delete_role(role) correctly' do
+      let(:user) { create(:athlete_user) }
+      it 'removes the role when it exists' do
+        user.add_role :test
+        expect(user.delete_role(:test)).to be true
+        expect(user.has_role?(:test)).to be false
+      end
+
+      it 'does not remove any roles if the given role does not match' do
+        expect(user.delete_role(:test)).to be false
       end
     end
   end
