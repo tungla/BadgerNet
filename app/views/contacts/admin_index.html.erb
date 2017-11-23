@@ -1,0 +1,68 @@
+<h1>Contacts</h1>
+<button class="button-primary" onclick="toggleModal('new-team')" style="float: right; margin: 1.25em 0 0 0;">New Team</button>
+<header>
+  <br/>
+Click the team in the "Teams In" category to remove user from team, Click team in "Other Team" to add user to team.
+</header>
+<table>
+    <thead>
+        <tr>
+            <th>First</th>
+            <th>Last</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+            <!--for each user -->
+            <tr>
+                <td><%= user.first_name %></td>
+                <td><%= user.last_name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.phone %></td>
+              </tr>
+              <tr>
+
+                <td><strong>Current Teams:</strong></td>
+                <td colspan='3'>
+                          <% has_roles = false %>
+                          <% user.roles.sort_by{ |r| r.name }.each do |role|%>
+                            <% next if role.name == 'athlete' || role == 'coach' %>
+                            <% has_roles = true %>
+                            <%= button_to role.name.capitalize, {action: 'update', id: user.id, role: role.id}, method: :put, class:"button-danger" %>
+                        <% end %>
+                        <%= "Not in any teams!" unless has_roles %>
+                      </td>
+                      </tr>
+                      <tr>
+                        <td><strong>Other Teams:</strong></td>
+                        <td colspan='3'>
+                        <% @roles.each do |role|%>
+                        <%if !user.roles.include?(role)%>
+                          <%= button_to role.name.capitalize, {action: 'update', id: user.id, role: role.id}, method: :put, class:"button-danger"%>
+                        <% end %>
+                        <% end %>
+                      </td>
+</tr>
+<tr><td></td></tr>
+
+        <% end %>
+    </tbody>
+</table>
+<div class="modal hidden" id="new-team">
+    <div class="modal-content">
+        <div class="modal-close" onclick="toggleModal('new-team')">&times;</div>
+        <h2>New Team</h2>
+        <%= form_tag do %>
+            <%= label_tag(:name, "Name:") %>
+            <%= text_field_tag(:name) %><br>
+
+            <%= button_to "Add Role", {action: 'create', name: :name}, method: :post, class:"button-danger"%>
+            <%= button_to "Remove Role", {action: 'destroy', name: :name}, method: :delete, class:"button-danger"%>
+        <% end %>
+        <div style="margin-top:1.5em;text-align:right;">
+            <button class="button-default" onclick="toggleModal('new-team')">Cancel</button>
+        </div>
+    </div>
+</div>
