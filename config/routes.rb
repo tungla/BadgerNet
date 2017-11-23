@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   # Permissions
   resources :permissions, path: 'permissions'
 
+  #settings
+  resources :settings, path: 'settings'
 end
