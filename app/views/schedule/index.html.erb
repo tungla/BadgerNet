@@ -13,99 +13,46 @@
         <div class="timeline-entry"><span>3 PM</span></div>
         <div class="timeline-entry"><span>4 PM</span></div>
         <div class="timeline-entry"><span>5 PM</span></div>
+        <div class="timeline-entry"><span>6 PM</span></div>
         <div class="timeline-entry"><span>7 PM</span></div>
         <div class="timeline-entry"><span>8 PM</span></div>
         <div class="timeline-entry"><span>9 PM</span></div>
         <div class="timeline-entry"><span>10 PM</span></div>
     </div>
     <div class="events">
+        <% (0..6).each do |i| %>
         <div class="events-group">
             <div class="events-group-label"><span>Sunday</span></div>
-            <div class="single-event" style="height:64px;transform:translateY(64px);background-color:#3498db;">
-                <span class="single-event-label">Event Name</span>
-            </div>
+            <% @schedule.events_on_day(i).each do |event| %>
+                <div class="single-event" data-start-hour="<%= event.start_time.hour %>" data-start-min="<%= event.start_time.min %>" data-end-hour="<%= event.end_time.hour %>" data-end-min="<%= event.end_time.min %>">
+                    <span class="single-event-label"><%= event.name %></span>
+                </div>
+            <% end %>
         </div>
-        <div class="events-group">
-            <div class="events-group-label"><span>Monday</span></div>
-            <div class="single-event" style="height:128px;transform:translateY(16px);background-color:#2ecc71;">
-                <span class="single-event-label">Event Name</span>
-            </div>
-            <div class="single-event" style="height:64px;transform:translateY(64px);background-color:#e74c3c;">
-                <span class="single-event-label">Event Name</span>
-            </div>
-            <div class="single-event" style="height:80px;transform:translateY(80px);background-color:#3498db;">
-                <span class="single-event-label">Event Name</span>
-            </div>
-        </div>
-        <div class="events-group">
-            <div class="events-group-label"><span>Tuesday</span></div>
-            <div class="single-event" style="height:256px;transform:translateY(80px);background-color:#f39c12;">
-                <span class="single-event-label">Event Name</span>
-            </div>
-        </div>
-        <div class="events-group">
-            <div class="events-group-label"><span>Wednesday</span></div>
-            <div class="single-event" style="height:64px;transform:translateY(64px);background-color:#3498db;">
-                <span class="single-event-label">Event Name</span>
-            </div>
-            <div class="single-event" style="height:80px;transform:translateY(80px);background-color:#3498db;">
-                <span class="single-event-label">Event Name</span>
-            </div>
-        </div>
-        <div class="events-group">
-            <div class="events-group-label"><span>Thursday</span></div>
-        </div>
-        <div class="events-group">
-            <div class="events-group-label"><span>Friday</span></div>
-            <div class="single-event" style="height:128px;transform:translateY(16px);background-color:#2ecc71;">
-                <span class="single-event-label">Event Name</span>
-            </div>
-        </div>
-        <div class="events-group">
-            <div class="events-group-label"><span>Saturday</span></div>
-            <div class="single-event" style="height:128px;transform:translateY(256px);background-color:#e74c3c;">
-                <span class="single-event-label">Event Name</span>
-            </div>
-        </div>
+        <% end %>
     </div>
 </div>
 <div class="schedule-table-container">
     <table class="schedule-table">
-    <thead>
-        <tr>
-            <th colspan="4">Events</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>My Event</td>
-            <td>8:00pm - 9:00pm</td>
-            <td>Mon, Wed, Fri</td>
-            <td style="text-align:right;">
-                <button class="button-default">Edit</button>
-                <button class="button-danger">Remove</button>
-            </td>
-        </tr>
-        <tr>
-            <td>My Event</td>
-            <td>8:00pm - 9:00pm</td>
-            <td>Mon</td>
-            <td style="text-align:right;">
-                <button class="button-default">Edit</button>
-                <button class="button-danger">Remove</button>
-            </td>
-        </tr>
-        <tr>
-            <td>My Event</td>
-            <td>8:00pm - 9:00pm</td>
-            <td>Tue, Thu</td>
-            <td style="text-align:right;">
-                <button class="button-default">Edit</button>
-                <button class="button-danger">Remove</button>
-            </td>
-        </tr>
-        </table>
-    </tbody>
+        <thead>
+            <tr><th colspan="4">Events</th></tr>
+        </thead>
+        <tbody>
+            <% if @schedule.event %>
+            <% @schedule.event.each do |event| %>
+                <tr>
+                    <td><%= event.name %></td>
+                    <td><%= "#{event.start_time.strftime("%I:%M%p")} - #{event.end_time.strftime("%I:%M%p")}" %></td>
+                    <td><%= event.days_as_string %></td>
+                    <td style="text-align:right;">
+                        <%= button_to 'Remove', { event_id: event.id }, method: :delete, class: 'button-danger'%>
+                    </td>
+                </tr>
+            <% end %>
+            <% end %>
+        </tbody>
+    </table>
+    
 </div>
 <div style="margin-top:1.5em;text-align:right;">
     <button class="button-primary" onclick="toggleModal('new-event')" style="margin-top:1.5em;">New Event</button>
@@ -114,13 +61,19 @@
     <div class="modal-content">
         <div class="modal-close" onclick="toggleModal('new-event')">&times;</div>
         <h2>New Event</h2>
-        <form>
-            Name:
-            <input name="eventname" type="text">
-        </form>
+        <%= form_tag do %>
+            <%= label_tag(:name, "Name:") %>
+            <%= text_field_tag(:name) %><br>
+            <%= label_tag(:time, "Time:") %>
+            <%= time_field(:time, :start) %> to <%= time_field(:time, :end) %><br>
+            <% %w(sun mon tue wed thur fri sat).each do |day| %>
+                <%= check_box_tag day, true %>
+                <%= label_tag day.capitalize %>
+            <% end %><br>
+            <%= submit_tag("Add Event") %>
+        <% end %>
         <div style="margin-top:1.5em;text-align:right;">
             <button class="button-default" onclick="toggleModal('new-event')">Cancel</button>
-            <button class="button-primary">Add Event</button>
         </div>
     </div>
 </div>

@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20171117020637) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.bigint "schedule_id"
+    t.integer "days", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.time "start_time"
+    t.time "end_time"
+    t.index ["schedule_id"], name: "index_events_on_schedule_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -40,6 +51,13 @@ ActiveRecord::Schema.define(version: 20171117020637) do
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -82,4 +100,6 @@ ActiveRecord::Schema.define(version: 20171117020637) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "events", "schedules"
+  add_foreign_key "schedules", "users"
 end

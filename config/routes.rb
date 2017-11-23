@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   # Schedule
   get '/schedule', to: 'schedule#index'
+  post '/schedule', to: 'schedule#create_event'
+  delete '/schedule', to: 'schedule#destroy_event'
 
   # Permissions
   resources :permissions, path: 'permissions'
