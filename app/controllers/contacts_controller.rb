@@ -28,11 +28,12 @@ class ContactsController < ApplicationController
   end
 
   def destroy
-    begin
-      User.find(params[:id]).destroy
-      flash[:success] = 'Successfully removed user from BadgerNet'
-    rescue ActiveRecord::RecordNotFound
-      flash[:alert] = 'Could not find specified user'
+    to_destroy = Role.where(name: params[:name].downcase).first
+    if to_destroy
+      to_destroy.destroy
+      flash[:success] = "Successfully removed #{params[:name].capitalize} team."
+    else
+      flash[:alert] = "Could not find team #{params[:name].capitalize}!"
     end
     redirect_to action: 'index'
   end
