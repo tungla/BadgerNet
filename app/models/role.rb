@@ -10,4 +10,8 @@ class Role < ApplicationRecord
             inclusion: { in: Rolify.resource_types },
             allow_nil: true
   scopify
+
+  def self.non_permissions_roles
+    Role.where.not(name: ['athlete', 'coach']).order('name ASC')
+  end
 end

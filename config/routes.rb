@@ -1,36 +1,28 @@
-
 Rails.application.routes.draw do
+  # Devise routes setup
   devise_for :users, skip: :registration, controllers: {
     invitations: 'invitations'
   }
 
   root 'home#index'
+  get 'home/index' # Home (Main Index)
 
-  # Contacts controller
-  get '/contacts',to:'contacts#index'
+  # Announcements
+  resources :announcement, :path => 'announcement'
 
-  # Home controller routes
-  get 'home/index'
+  # Contacts (teams)
+  delete 'contacts/destroy'
+  resources :contacts, path: 'contacts'
 
+  # Documents
+  resources :documents, path: 'documents'
 
-  # get 'announcement/index'
-  resources :announcement, :path => 'announcement' #gives CRUD routes
-
-  # scheulde
+  # Schedule
   get '/schedule', to: 'schedule#index'
   post '/schedule', to: 'schedule#create_event'
   delete '/schedule', to: 'schedule#destroy_event'
 
-  # Permissions routes
+  # Permissions
   resources :permissions, path: 'permissions'
-
-
-  #documents
-  get '/documents' => 'documents#index'
-
-  BadgerNet::Application.routes.draw do
-    resources :documents
-    root "documents#index"
-  end
 
 end
