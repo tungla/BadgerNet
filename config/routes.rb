@@ -22,12 +22,10 @@ Rails.application.routes.draw do
   # Permissions routes
   resources :permissions, path: 'permissions'
 
-
   #documents
   get '/documents' => 'documents#index'
 
-
   #settings
-  get '/settings' => 'settings#index'
+  resources :settings, path: 'settings'
 
 end
