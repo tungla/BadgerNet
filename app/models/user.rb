@@ -12,4 +12,15 @@ class User < ApplicationRecord
   def coach?
     has_role? :coach
   end
+
+  def delete_role(role)
+    return false unless has_role?(role)
+    begin
+      remove_role role
+    # rubocop:disable Lint/HandleExceptions
+    rescue ActiveRecord::HasManyThroughAssociationNotFoundError
+    end
+    # rubocop:enable Lint/HandleExceptions
+    !has_role?(role)
+  end
 end
