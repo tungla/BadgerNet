@@ -1,6 +1,8 @@
 
 Rails.application.routes.draw do
-  devise_for :users, skip: :registration
+  devise_for :users, skip: :registration, controllers: {
+    invitations: 'invitations'
+  }
 
   root 'home#index'
 
@@ -18,12 +20,12 @@ Rails.application.routes.draw do
   get '/schedule', to: 'schedule#index'
 
   # Permissions routes
-  get '/permissions', to: 'permissions#index'
-  delete 'permissions/destroy'
+  resources :permissions, path: 'permissions'
 
 
   #documents
   get '/documents' => 'documents#index'
+
 
   #settings
   get '/settings' => 'settings#index'

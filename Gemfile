@@ -19,6 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Flexible user authentication: https://github.com/plataformatec/devise
 gem 'devise', '~> 4.3.0'
+gem 'devise_invitable', '~> 1.7.2'
 # Authorization OO library https://github.com/elabs/pundit
 gem 'authority', '~> 3.3.0'
 # Role management library https://github.com/RolifyCommunity/rolify
@@ -35,6 +36,9 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+
+# Document Handling
+gem 'carrierwave'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

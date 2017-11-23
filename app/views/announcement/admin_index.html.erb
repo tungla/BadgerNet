@@ -1,0 +1,54 @@
+<h1>Announcements</h1>
+<div style="margin-top:1.5em;text-align:right;">
+    <button class="button-primary" onclick="toggleModal('new-announcement')" >New Announcement</button>
+</div>
+<div class="modal hidden" id="new-announcement">
+    <div class="modal-content">
+        <div class="modal-close" onclick="toggleModal('new-announcement')">&times;</div>
+        <h2>New Announcement</h2>
+        <%= render 'announcement/new' %>
+    </div>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Time</th>
+            <th>Type</th>
+            <th>Options</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @announcements.reverse.each do |announcement| %>
+            <tr>
+                <td style="text-decoration: none;"><%= link_to announcement.title, {:action => 'show', :id => announcement.id}%></td>
+                <td><%= truncate(announcement.content, :length => 78) %></td>
+                <td><%= (announcement.created_at).strftime("%I:%M%p, %d %b. %Y") %></td>
+                <td>
+                    <% if announcement.sms && announcement.email %>
+                        <%= 'Both' %>
+                    <% elsif announcement.sms%>
+                        <%= 'SMS' %>
+                    <% elsif announcement.email%>
+                        <%= 'Email' %>
+                    <% end %>
+                </td>
+                <td>
+                    <%= button_to 'Delete', { action: 'destroy', id: announcement.id }, method: :delete, class: 'button-danger'%>
+                </td>
+                <td>
+                    <button class="button-primary" onclick="toggleModal('show-announcement')" >Show</button>
+                <div class="modal hidden" id="show-announcement">
+                    <div class="modal-content">
+                        <div class="modal-close" onclick="toggleModal('show-announcement')">&times;</div>
+                        <h2>Coming soon</h2>
+                        <% #render 'announcement/show'
+                        %>
+                    </div>
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
+</table>
