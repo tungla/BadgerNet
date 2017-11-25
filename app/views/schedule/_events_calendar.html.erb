@@ -22,10 +22,14 @@
         <% (0..6).each do |i| %>
         <div class="events-group">
             <div class="events-group-label"><span>Sunday</span></div>
-            <% @schedule.events_on_day(i).each do |event| %>
-                <div class="single-event" data-start-hour="<%= event.start_time.hour %>" data-start-min="<%= event.start_time.min %>" data-end-hour="<%= event.end_time.hour %>" data-end-min="<%= event.end_time.min %>">
-                    <span class="single-event-label"><%= event.name %></span>
-                </div>
+            <% 
+                if @user.coach? then events = all_events_on_day(i)
+                else events = @schedule.events_on_day(i) end
+            %>
+            <% events.each do |event| %>
+            <div class="single-event" data-start-hour="<%= event.start_time.hour %>" data-start-min="<%= event.start_time.min %>" data-end-hour="<%= event.end_time.hour %>" data-end-min="<%= event.end_time.min %>">
+                <span class="single-event-label"><%= event.name %></span>
+            </div>
             <% end %>
         </div>
         <% end %>
