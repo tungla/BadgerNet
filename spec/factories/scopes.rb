@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :scope do
-    type ""
+    type 'type'
     resource_id 1
     role nil
   end
