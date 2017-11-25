@@ -1,62 +1,6 @@
 <h1>Schedule</h1>
-<div class="calendar-container">
-    <div class="timeline">
-        <div class="timeline-entry"><span>6 AM</span></div>
-        <div class="timeline-entry"><span>7 AM</span></div>
-        <div class="timeline-entry"><span>8 AM</span></div>
-        <div class="timeline-entry"><span>9 AM</span></div>
-        <div class="timeline-entry"><span>10 AM</span></div>
-        <div class="timeline-entry"><span>11 AM</span></div>
-        <div class="timeline-entry"><span>12 AM</span></div>
-        <div class="timeline-entry"><span>1 PM</span></div>
-        <div class="timeline-entry"><span>2 PM</span></div>
-        <div class="timeline-entry"><span>3 PM</span></div>
-        <div class="timeline-entry"><span>4 PM</span></div>
-        <div class="timeline-entry"><span>5 PM</span></div>
-        <div class="timeline-entry"><span>6 PM</span></div>
-        <div class="timeline-entry"><span>7 PM</span></div>
-        <div class="timeline-entry"><span>8 PM</span></div>
-        <div class="timeline-entry"><span>9 PM</span></div>
-        <div class="timeline-entry"><span>10 PM</span></div>
-    </div>
-    <div class="events">
-        <% (0..6).each do |i| %>
-        <div class="events-group">
-            <div class="events-group-label"><span>Sunday</span></div>
-            <% @schedule.events_on_day(i).each do |event| %>
-                <div class="single-event" data-start-hour="<%= event.start_time.hour %>" data-start-min="<%= event.start_time.min %>" data-end-hour="<%= event.end_time.hour %>" data-end-min="<%= event.end_time.min %>">
-                    <span class="single-event-label"><%= event.name %></span>
-                </div>
-            <% end %>
-        </div>
-        <% end %>
-    </div>
-</div>
-<div class="schedule-table-container">
-    <table class="schedule-table">
-        <thead>
-            <tr><th colspan="4">Events</th></tr>
-        </thead>
-        <tbody>
-            <% if @schedule.event %>
-            <% @schedule.event.each do |event| %>
-                <tr>
-                    <td><%= event.name %></td>
-                    <td><%= "#{event.start_time.strftime("%I:%M%p")} - #{event.end_time.strftime("%I:%M%p")}" %></td>
-                    <td><%= event.days_as_string %></td>
-                    <td style="text-align:right;">
-                        <%= button_to 'Remove', { event_id: event.id }, method: :delete, class: 'button-danger'%>
-                    </td>
-                </tr>
-            <% end %>
-            <% end %>
-        </tbody>
-    </table>
-    
-</div>
-<div style="margin-top:1.5em;text-align:right;">
-    <button class="button-primary" onclick="toggleModal('new-event')" style="margin-top:1.5em;">New Event</button>
-</div>
+<%= render 'events_calendar' %>
+<%= render 'events_table' %>
 <div class="modal hidden" id="new-event">
     <div class="modal-content">
         <div class="modal-close" onclick="toggleModal('new-event')">&times;</div>
