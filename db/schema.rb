@@ -61,13 +61,13 @@ ActiveRecord::Schema.define(version: 20171124223618) do
   end
 
   create_table "scopes", force: :cascade do |t|
-    t.string "type", null: false
+    t.string "resource", null: false
     t.integer "resource_id", null: false
     t.bigint "role_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["resource", "resource_id", "role_id"], name: "index_scopes_on_resource_and_resource_id_and_role_id", unique: true
     t.index ["role_id"], name: "index_scopes_on_role_id"
-    t.index ["type", "resource_id", "role_id"], name: "index_scopes_on_type_and_resource_id_and_role_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
