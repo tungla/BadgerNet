@@ -1,7 +1,7 @@
 # BadgerNet
 
 [![Build Status](https://travis-ci.com/Chaseshak/BadgerNet.svg?token=y8dTrJkpQLTEPjpNhoQh&branch=master)](https://travis-ci.com/Chaseshak/BadgerNet)
-[![Coverage Status](https://coveralls.io/repos/github/Chaseshak/BadgerNet/badge.svg?t=waLDpl)](https://coveralls.io/github/Chaseshak/BadgerNet)
+[![Coverage Status](https://coveralls.io/repos/github/Chaseshak/BadgerNet/badge.svg?branch=master)](https://coveralls.io/github/Chaseshak/BadgerNet?branch=master)
 
 BadgerNet is a software that was developed for UW Athletics teams as a platform for coaches
 to share information with their athletes and communicate effectively. The current system
