@@ -87,7 +87,7 @@ Code coverage data can be viewed on [coveralls](https://coveralls.io/github/Chas
 
 ### Test Structure
 
-All tests are contained in the `spec/` folder. There are several folders nested underneath this directory.
+All tests are contained in the `spec/` folder. There are several folders nested underneath this directory. 
 
 `controllers/` contains unit tests for all application controllers
 
