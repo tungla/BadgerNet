@@ -81,6 +81,10 @@ $ bundle exec rails s
 ### Run entire test suite
 `$ bundle exec rspec`
 
+### Coverage Data
+
+Code coverage data can be viewed on [coveralls](https://coveralls.io/github/Chaseshak/BadgerNet)! This will give you line by line coverage information for each file.
+
 ### Test Structure
 
 All tests are contained in the `spec/` folder. There are several folders nested underneath this directory.
