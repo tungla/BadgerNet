@@ -4,20 +4,7 @@
 <div class="modal hidden" id="new-event">
     <div class="modal-content">
         <div class="modal-close" onclick="toggleModal('new-event')">&times;</div>
-        <h2>New Event</h2>
-        <%= form_tag do %>
-            <%= label_tag(:name, "Name:") %>
-            <%= text_field_tag(:name) %><br>
-            <%= label_tag(:time, "Time:") %>
-            <%= time_field(:time, :start) %> to <%= time_field(:time, :end) %><br>
-            <% %w(sun mon tue wed thur fri sat).each do |day| %>
-                <%= check_box_tag day, true %>
-                <%= label_tag day.capitalize %>
-            <% end %><br>
-            <%= submit_tag("Add Event") %>
-        <% end %>
-        <div style="margin-top:1.5em;text-align:right;">
-            <button class="button-default" onclick="toggleModal('new-event')">Cancel</button>
-        </div>
+        <%= render 'new_event' %>
     </div>
 </div>
+
