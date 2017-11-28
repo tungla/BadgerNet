@@ -16,7 +16,7 @@
             <div class="events-group-label"><span><%= day %></span></div>
             <% if @user.coach? %>
                 <% all_events_on_day(i).each do |event| %>
-                <div class="single-event" style="transform:translateY(<%= event_block_offset(event) %>px);height:<%= event_block_height(event) %>px"></div>
+                <div class="single-event" style="transform:translateY(<%= event_block_offset(event) %>px);height:<%= event_block_height(event) %>px;background-color:rgba(41,121,173,0.25)"></div>
                 <% end %>
             <% else %>
                 <% @schedule.events_on_day(i).each do |event| %>
