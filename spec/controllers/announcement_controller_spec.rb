@@ -118,10 +118,16 @@ RSpec.describe AnnouncementController, type: :controller do
     end
 
     context 'an existing announcement' do
-      let(:a) { FactoryGirl.create(:announcement_email) }
-      it 'displays announcement' do
+      let!(:a) { FactoryGirl.create(:announcement_email) }
+
+      it 'assigns the requested announcement to @announcement' do
         get :show, params: { id: a.id }
-        expect(response).to render_template(partial: 'show')
+        expect(assigns(:announcement)).to eq(a)
+      end
+
+      it 'renders the #show partial' do
+        get :show, params: { id: a.id }
+        expect(response).to render_template(partial: '_show')
       end
     end
 
