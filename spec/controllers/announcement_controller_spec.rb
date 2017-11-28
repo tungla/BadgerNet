@@ -121,7 +121,7 @@ RSpec.describe AnnouncementController, type: :controller do
       let(:a) { FactoryGirl.create(:announcement_email) }
       it 'displays announcement' do
         get :show, params: { id: a.id }
-        expect(response).to render_template(:show)
+        expect(response).to render_template(partial: 'show')
       end
     end
 

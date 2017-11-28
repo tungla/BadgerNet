@@ -6,12 +6,13 @@
             <th>Content</th>
             <th>Time</th>
             <th>Type</th>
+            <th>Options</th>
         </tr>
     </thead>
     <tbody>
-        <% @announcements.reverse.each do |announcement| %>
+        <% @announcements.reverse.each do |announcement, index| %>
             <tr>
-                <td style="text-decoration: none;"><%= link_to announcement.title, {:action => 'show', :id => announcement.id}%></td>
+                <td><%= announcement.title%></td>
                 <td><%= truncate(announcement.content, :length => 80) %></td>
                 <td><%= (announcement.created_at).strftime("%I:%M%p, %d %b. %Y") %></td>
                 <td>
@@ -22,6 +23,15 @@
                     <% elsif announcement.email%>
                         <%= 'Email' %>
                     <% end %>
+                </td>
+                <td>
+                <button class="button-primary" onclick="toggleModal('show-announcement-<%= index %>')">Show</button>
+                <div class="modal hidden" id="show-announcement-<%= index %>">
+                <div class="modal-content">
+                    <div class="modal-close" onclick="toggleModal('show-announcement-<%= index %>')">&times;</div>
+                    <%= render partial: 'show', locals: {announcement: announcement} %>
+                    </div>
+                </div>
                 </td>
             </tr>
             <% end %>

@@ -21,9 +21,9 @@
         </tr>
     </thead>
     <tbody>
-        <% @announcements.reverse.each do |announcement| %>
+        <% @announcements.reverse.each do |announcement, index| %>
             <tr>
-                <td style="text-decoration: none;"><%= link_to announcement.title, {:action => 'show', :id => announcement.id}%></td>
+                <td><%= announcement.title%></td>
                 <td><%= truncate(announcement.content, :length => 78) %></td>
                 <td><%= (announcement.created_at).strftime("%I:%M%p, %d %b. %Y") %></td>
                 <td>
@@ -39,13 +39,12 @@
                     <%= button_to 'Delete', { action: 'destroy', id: announcement.id }, method: :delete, class: 'button-danger'%>
                 </td>
                 <td>
-                    <button class="button-primary" onclick="toggleModal('show-announcement')" >Show</button>
-                <div class="modal hidden" id="show-announcement">
+                    <button class="button-primary" onclick="toggleModal('show-announcement-<%= index %>')">Show</button>
+                    <div class="modal hidden" id="show-announcement-<%= index %>">
                     <div class="modal-content">
-                        <div class="modal-close" onclick="toggleModal('show-announcement')">&times;</div>
-                        <h2>Coming soon</h2>
-                        <% #render 'announcement/show'
-                        %>
+                        <div class="modal-close" onclick="toggleModal('show-announcement-<%= index %>')">&times;</div>
+                        <%= render partial: 'show', locals: {announcement: announcement} %>
+                        </div>
                     </div>
                 </td>
             </tr>
