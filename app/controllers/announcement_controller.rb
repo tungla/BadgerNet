@@ -55,6 +55,8 @@ class AnnouncementController < ApplicationController
   end
 
   def announcement_success
+    @announcement.sender = [current_user.first_name, current_user.last_name].join(' ')
+    @announcement.save
     redirect_to '/announcement'
     flash[:success] = 'Announcement sent'
   end

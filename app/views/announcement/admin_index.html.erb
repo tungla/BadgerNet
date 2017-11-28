@@ -16,6 +16,7 @@
             <th>Content</th>
             <th>Time</th>
             <th>Type</th>
+            <th>Sender</th>
             <th>Options</th>
             <th></th>
         </tr>
@@ -35,6 +36,7 @@
                         <%= 'Email' %>
                     <% end %>
                 </td>
+                <td><%= announcement.sender %></td>
                 <td>
                     <%= button_to 'Delete', { action: 'destroy', id: announcement.id }, method: :delete, class: 'button-danger'%>
                 </td>

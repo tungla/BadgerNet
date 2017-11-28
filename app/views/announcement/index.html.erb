@@ -6,6 +6,7 @@
             <th>Content</th>
             <th>Time</th>
             <th>Type</th>
+            <th>Sender</th>
             <th>Options</th>
         </tr>
     </thead>
@@ -24,6 +25,7 @@
                         <%= 'Email' %>
                     <% end %>
                 </td>
+                <td><%=announcement.sender%></td>
                 <td>
                 <button class="button-primary" onclick="toggleModal('show-announcement-<%= index %>')">Show</button>
                 <div class="modal hidden" id="show-announcement-<%= index %>">
