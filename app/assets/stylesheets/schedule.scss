@@ -52,6 +52,7 @@ $grid-segment-height: 30px;
     }
 
     .events-group {
+        position: relative;
         flex-grow: 1; // fill width of parent
         flex-basis: 0; // elements resize evenly
     }
@@ -68,11 +69,16 @@ $grid-segment-height: 30px;
     }
 
     .single-event {
+        position: absolute;
+        left: 0;
+        top: $calendar-header-height;
+        width: 100%;
         box-sizing: border-box;
         margin: 0 1px 0 1px;
         padding: 0.5em 0.65em 0.5em 0.65em;
         background-color: #34495e; // default
         border-radius: 0.25em;
+        z-index: 1;
     }
 
     .single-event-label {

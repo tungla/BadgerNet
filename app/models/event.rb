@@ -11,4 +11,10 @@ class Event < ApplicationRecord
     days.each { |d| day_string << day_map[d] + ', ' }
     day_string[0..(day_string.length - 3)]
   end
+
+  # Length of event as a decimal
+  # An event of 1 hr 30 min returns 1.5
+  def time_length
+    (end_time.hour - start_time.hour) + (end_time.min - start_time.min) / 60.0
+  end
 end

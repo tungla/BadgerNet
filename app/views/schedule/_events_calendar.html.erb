@@ -1,35 +1,29 @@
 <div class="calendar-container">
     <div class="timeline">
-        <div class="timeline-entry"><span>6 AM</span></div>
-        <div class="timeline-entry"><span>7 AM</span></div>
-        <div class="timeline-entry"><span>8 AM</span></div>
-        <div class="timeline-entry"><span>9 AM</span></div>
-        <div class="timeline-entry"><span>10 AM</span></div>
-        <div class="timeline-entry"><span>11 AM</span></div>
-        <div class="timeline-entry"><span>12 AM</span></div>
-        <div class="timeline-entry"><span>1 PM</span></div>
-        <div class="timeline-entry"><span>2 PM</span></div>
-        <div class="timeline-entry"><span>3 PM</span></div>
-        <div class="timeline-entry"><span>4 PM</span></div>
-        <div class="timeline-entry"><span>5 PM</span></div>
-        <div class="timeline-entry"><span>6 PM</span></div>
-        <div class="timeline-entry"><span>7 PM</span></div>
-        <div class="timeline-entry"><span>8 PM</span></div>
-        <div class="timeline-entry"><span>9 PM</span></div>
-        <div class="timeline-entry"><span>10 PM</span></div>
+        <% calendar_hours.each do |hour| %>
+        <% 
+            if hour < 12 then display = hour.to_s + ' AM'
+            elsif hour == 12 then display = hour.to_s + ' PM'
+            else display = (hour - 12).to_s + ' PM'
+            end
+        %>
+        <div class="timeline-entry"><span><%= display %></span></div>
+        <% end %>
     </div>
     <div class="events">
-        <% (0..6).each do |i| %>
+        <% days_of_week.each_with_index do |day, i| %>
         <div class="events-group">
-            <div class="events-group-label"><span>Sunday</span></div>
-            <% 
-                if @user.coach? then events = all_events_on_day(i)
-                else events = @schedule.events_on_day(i) end
-            %>
-            <% events.each do |event| %>
-            <div class="single-event" data-start-hour="<%= event.start_time.hour %>" data-start-min="<%= event.start_time.min %>" data-end-hour="<%= event.end_time.hour %>" data-end-min="<%= event.end_time.min %>">
-                <span class="single-event-label"><%= event.name %></span>
-            </div>
+            <div class="events-group-label"><span><%= day %></span></div>
+            <% if @user.coach? %>
+                <% all_events_on_day(i).each do |event| %>
+                <div class="single-event" style="transform:translateY(<%= event_block_offset(event) %>px);height:<%= event_block_height(event) %>px"></div>
+                <% end %>
+            <% else %>
+                <% @schedule.events_on_day(i).each do |event| %>
+                <div class="single-event" style="transform:translateY(<%= event_block_offset(event) %>px);height:<%= event_block_height(event) %>px">
+                    <span class="single-event-label"><%= event.name %></span>
+                </div>
+                <% end %>
             <% end %>
         </div>
         <% end %>
