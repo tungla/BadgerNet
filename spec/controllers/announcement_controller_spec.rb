@@ -124,11 +124,6 @@ RSpec.describe AnnouncementController, type: :controller do
         get :show, params: { id: a.id }
         expect(assigns(:announcement)).to eq(a)
       end
-
-      it 'renders the #show partial' do
-        get :show, params: { id: a.id }
-        expect(response).to render_template(partial: '_show')
-      end
     end
 
     context 'a non-existing announcement' do
