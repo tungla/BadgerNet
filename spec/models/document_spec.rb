@@ -10,8 +10,4 @@ RSpec.describe Document, type: :model do
       expect(build(:document, name: nil)).not_to be_valid
     end
   end
-
-  it 'is valid with valid attributes' do
-    expect(build(:document)).to be_valid
-  end
 end
