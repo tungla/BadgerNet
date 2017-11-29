@@ -11,6 +11,9 @@ module BadgerNet
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
+    # Load lib/ files
+    config.autoload_paths += %W(#{config.root}/lib)
+
     # Skip authenticating devise sessions controller
     # This allows an un-authenticated user to reach the sign in page and sign
     # in while requiring authentication application wide elsewhere
