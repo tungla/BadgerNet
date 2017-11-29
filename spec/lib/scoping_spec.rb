@@ -1,5 +1,5 @@
 require 'rails_helper'
-require_relative '../../lib/scoping.rb'
+require Rails.root.join('lib', 'scoping.rb')
 
 describe Scoping::Retrieve do
   context 'scoped(user)' do
