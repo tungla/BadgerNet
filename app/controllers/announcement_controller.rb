@@ -5,7 +5,7 @@ class AnnouncementController < ApplicationController
   before_action :coach?, except: %i[index show]
 
   def index
-    @announcements = Announcement.all
+    @announcements = Announcement.scoped(current_user)
     @announcement = Announcement.new
     if current_user.has_role? :coach
       render 'admin_index'
@@ -55,6 +55,7 @@ class AnnouncementController < ApplicationController
   end
 
   def announcement_success
+    @announcement.scopify(params[:roles])
     redirect_to '/announcement'
     flash[:success] = 'Announcement sent'
   end
