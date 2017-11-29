@@ -5,7 +5,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @announcements[0..4].reverse.each do |announcement| %>
+    <% @announcements.limit(5).reverse.each_with_index do |announcement, index| %>
       <tr>
         <td><%= announcement.title %></td>
         <td><%= truncate(announcement.content, :length => 80) %></td>
