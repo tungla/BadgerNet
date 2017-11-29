@@ -1,22 +1,10 @@
-<div class="main">
-<div class="container">
-  <h1>Settings</h1>
-
-  <%= form_for @user, url: "/settings/#{@user.id}", method: :put do |f| %>
-    <br>
-    <%= f.label "First Name" %>
-    <%= f.text_field :first_name, class: 'input' %>
-    <%= f.label "Last Name" %>
-    <%= f.text_field :last_name, class: 'input' %>
-    <%= f.label "Phone Number" %>
-    <%= f.text_field :phone, class: 'input' %>
-    <br>
-    <%= f.submit "Update Profile Information", class: 'button-primary' %>
-  <% end %>
-
-  <p>Profile Picture</p>
-  <br>
-  <img src="http://lorempixel.com/200/200" />
-
-</div>
-</div>
+<h1>Settings</h1>
+<%= form_for @user, url: "/settings/#{@user.id}", method: :put do |f| %><br>
+<%= f.label "First Name" %>
+<%= f.text_field :first_name, class: 'input' %>
+<%= f.label "Last Name" %>
+<%= f.text_field :last_name, class: 'input' %>
+<%= f.label "Phone Number" %>
+<%= f.text_field :phone, class: 'input' %><br>
+<%= f.submit "Update Profile Information", class: 'button-primary' %>
+<% end %>

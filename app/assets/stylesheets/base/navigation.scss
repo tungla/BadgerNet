@@ -10,7 +10,7 @@ $navbar-gradient-end: #28A5F5;
 
 .navbar-container {
     padding: 0 1.25em 0 1.25em;
-    height: 3.75em;
+    height: 3.5em;
     width: 100%;
     display: flex;
     align-items: center;
@@ -72,19 +72,7 @@ $navbar-gradient-end: #28A5F5;
 
 .navbar-profile {
     flex-grow: 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    font-family: $default-body-font;
     color: white;
-
-    img {
-        margin: 0 0 0 1em;
-        width: 2.5em;
-        height: 2.5em;
-        border: 3px solid rgba(255,255,255, 0.8);
-        border-radius: 100%;
-    }
 
     a {
         text-decoration: none;
