@@ -2,7 +2,7 @@
 class ScheduleController < ApplicationController
   def index
     @user = current_user
-    if @user.coach? then render 'admin_index' end
+    render 'admin_index' if @user.coach?
     # create schedule if one doesn't exist
     @schedule = if @user.schedule
                   @user.schedule
