@@ -1,7 +1,7 @@
 # BadgerNet
 
 [![Build Status](https://travis-ci.com/Chaseshak/BadgerNet.svg?token=y8dTrJkpQLTEPjpNhoQh&branch=master)](https://travis-ci.com/Chaseshak/BadgerNet)
-[![Coverage Status](https://coveralls.io/repos/github/Chaseshak/BadgerNet/badge.svg?t=waLDpl)](https://coveralls.io/github/Chaseshak/BadgerNet)
+[![Coverage Status](https://coveralls.io/repos/github/Chaseshak/BadgerNet/badge.svg?branch=master)](https://coveralls.io/github/Chaseshak/BadgerNet?branch=master)
 
 BadgerNet is a software that was developed for UW Athletics teams as a platform for coaches
 to share information with their athletes and communicate effectively. The current system
@@ -81,9 +81,13 @@ $ bundle exec rails s
 ### Run entire test suite
 `$ bundle exec rspec`
 
+### Coverage Data
+
+Code coverage data can be viewed on [coveralls](https://coveralls.io/github/Chaseshak/BadgerNet)! This will give you line by line coverage information for each file.
+
 ### Test Structure
 
-All tests are contained in the `spec/` folder. There are several folders nested underneath this directory.
+All tests are contained in the `spec/` folder. There are several folders nested underneath this directory. 
 
 `controllers/` contains unit tests for all application controllers
 
