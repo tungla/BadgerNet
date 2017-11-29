@@ -1,0 +1,31 @@
+<div class="calendar-container">
+    <div class="timeline">
+        <% calendar_hours.each do |hour| %>
+        <% 
+            if hour < 12 then display = hour.to_s + ' AM'
+            elsif hour == 12 then display = hour.to_s + ' PM'
+            else display = (hour - 12).to_s + ' PM'
+            end
+        %>
+        <div class="timeline-entry"><span><%= display %></span></div>
+        <% end %>
+    </div>
+    <div class="events">
+        <% days_of_week.each_with_index do |day, i| %>
+        <div class="events-group">
+            <div class="events-group-label"><span><%= day %></span></div>
+            <% if @user.coach? %>
+                <% all_events_on_day(i).each do |event| %>
+                <div class="single-event" style="transform:translateY(<%= event_block_offset(event) %>px);height:<%= event_block_height(event) %>px;background-color:rgba(41,121,173,0.25)"></div>
+                <% end %>
+            <% else %>
+                <% @schedule.events_on_day(i).each do |event| %>
+                <div class="single-event" style="transform:translateY(<%= event_block_offset(event) %>px);height:<%= event_block_height(event) %>px">
+                    <span class="single-event-label"><%= event.name %></span>
+                </div>
+                <% end %>
+            <% end %>
+        </div>
+        <% end %>
+    </div>
+</div>
