@@ -16,7 +16,7 @@ end
 
 RSpec.feature 'Creating a new event', type: :feature do
   before do
-    login_coach
+    login_athlete
     visit 'schedule'
   end
 

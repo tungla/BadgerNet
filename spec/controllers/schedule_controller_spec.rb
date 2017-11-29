@@ -20,8 +20,8 @@ RSpec.describe ScheduleController, type: :controller do
 
   describe 'POST #create_event' do
     before do
-      coach = create(:coach_user)
-      sign_in(coach)
+      athlete = create(:athlete_user)
+      sign_in(athlete)
       get :index
     end
     context 'given a valid event' do

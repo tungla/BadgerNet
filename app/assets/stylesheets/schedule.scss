@@ -10,6 +10,7 @@ Schedule
 // local variables
 $calendar-header-height: 2.5em;
 $grid-segment-height: 30px;
+$event-block-color: #2979ad;
 
 // calendar view
 .calendar-container {
@@ -52,6 +53,7 @@ $grid-segment-height: 30px;
     }
 
     .events-group {
+        position: relative;
         flex-grow: 1; // fill width of parent
         flex-basis: 0; // elements resize evenly
     }
@@ -68,14 +70,21 @@ $grid-segment-height: 30px;
     }
 
     .single-event {
+        position: absolute;
+        left: 0;
+        top: $calendar-header-height;
+        width: 100%;
         box-sizing: border-box;
-        margin: 0 1px 0 1px;
-        padding: 0.5em 0.65em 0.5em 0.65em;
-        background-color: #34495e; // default
+        margin: 0;
+        padding: 0.25em 0.5em 0.25em 0.5em;
+        background-color: $event-block-color;
         border-radius: 0.25em;
+        border: 1px solid $background-color;
+        z-index: 1;
     }
 
     .single-event-label {
         color: white;
+        font-size: 0.85em;
     }
 }
