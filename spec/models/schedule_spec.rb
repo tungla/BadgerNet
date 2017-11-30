@@ -8,9 +8,8 @@ RSpec.describe Schedule, type: :model do
   let(:schedule) { create(:schedule) }
 
   describe 'ActiveRecord Associations' do
-    it { expect(schedule.user).to be_valid }
-    it { expect(schedule.event.first).to be_valid }
-    it { expect(schedule.event.count).to eq(Event.count) }
+    it { expect(schedule).to belong_to(:user) }
+    it { expect(schedule).to have_many(:event) }
   end
 
   describe 'public instance methods' do
