@@ -1,5 +1,5 @@
 <h1>Settings</h1>
-<%= form_for @user, url: "/settings/#{@user.id}", method: :put do |f| %><br>
+<%= form_for @user, url: setting_path(@user), method: :put do |f| %><br>
 <%= f.label "First Name" %>
 <%= f.text_field :first_name, class: 'input' %>
 <%= f.label "Last Name" %>
