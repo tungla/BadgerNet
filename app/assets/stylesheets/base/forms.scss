@@ -48,7 +48,9 @@ label {
     box-sizing: border-box;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="email"],
+input[type="password"] {
     width: 100%;
     margin: $input-margin;
     padding: $input-padding;
@@ -57,7 +59,9 @@ input[type="text"] {
     background-color: $input-background-color-default;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
     border: $input-border-focus;
     background-color: $input-background-color-focus;
     box-shadow: $input-box-shadow-focus;
@@ -80,7 +84,7 @@ input[type="time"]:focus {
 }
 
 // custom classes
-.check-box-container {
+.check-box-group {
     display: flex;
     box-sizing: border-box;
     margin: $input-margin;
@@ -88,6 +92,10 @@ input[type="time"]:focus {
     border: $input-border-default;
     border-radius: $input-border-radius;
     width: 100%;
+}
+
+.check-box-group-item {
+    margin: 0 0 0 0.5em;
 
     label {
         display: inline-block;
@@ -96,8 +104,14 @@ input[type="time"]:focus {
     }
 }
 
-.check-box-item {
-    margin: 0 0 0 0.5em
+.check-box-single {
+    margin: 0.5em 0 0 0;
+
+    label {
+        display: inline-block;
+        margin: 0;
+        font-weight: $font-weight-normal;
+    }
 }
 
 select {

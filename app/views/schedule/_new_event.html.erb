@@ -5,9 +5,9 @@
     <%= label_tag(:time, "Time:") %>
     <%= time_field(:time, :start) %> to <%= time_field(:time, :end) %>
     <%= label_tag("Days repeated:") %>
-    <div class="check-box-container">
+    <div class="check-box-group">
         <% %w(sun mon tue wed thur fri sat).each do |day| %>
-        <div class="check-box-item">
+        <div class="check-box-group-item">
             <%= check_box_tag day, true %>
             <%= label_tag day.capitalize %>
         </div>
