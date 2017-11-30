@@ -6,6 +6,6 @@
   <%= f.label :attachment %>
   <%= f.file_field :attachment,:required => 'required' %>
   </br>
+  <%= render 'shared/roles' %>
   <%= f.submit "Save", class: "button-primary" %>
 <% end %>
-

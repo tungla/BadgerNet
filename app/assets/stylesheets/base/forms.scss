@@ -30,3 +30,18 @@ label {
     color: $primary-text-color;
     line-height: 140%;
 }
+
+select {
+  margin: 0.5em 0.5em 0.5em 0;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.5em;
+  width: 100%;
+  display: block;
+  option {
+    height: 1em;
+    font-family: $default-body-font;
+    font-weight: $font-weight-normal;
+    font-size: 16px;
+    padding: 0.25em;
+  }
+}

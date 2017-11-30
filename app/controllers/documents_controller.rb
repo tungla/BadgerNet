@@ -1,7 +1,7 @@
 # document controller
 class DocumentsController < ApplicationController
   def index
-    @documents = Document.all
+    @documents = Document.scoped(current_user)
     @document = Document.new
     if current_user.has_role? :coach
       render 'admin_index'
@@ -17,6 +17,7 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
     if @document.save
+      @document.scopify(params[:roles])
       flash[:success] = 'Document uploaded'
     else
       flash[:alert] = 'Document cannot be uploaded'
@@ -37,6 +38,6 @@ class DocumentsController < ApplicationController
   private
 
   def document_params
-    params.require(:document).permit(:name, :attachment)
+    params.require(:document).permit(:name, :attachment, :roles)
   end
 end

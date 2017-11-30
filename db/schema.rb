@@ -61,6 +61,16 @@ ActiveRecord::Schema.define(version: 20171128023503) do
     t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
+  create_table "scopes", force: :cascade do |t|
+    t.string "resource", null: false
+    t.integer "resource_id", null: false
+    t.bigint "role_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resource", "resource_id", "role_id"], name: "index_scopes_on_resource_and_resource_id_and_role_id", unique: true
+    t.index ["role_id"], name: "index_scopes_on_role_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -85,7 +95,6 @@ ActiveRecord::Schema.define(version: 20171128023503) do
     t.string "invited_by_type"
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
-    t.string "sender"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"
@@ -104,4 +113,5 @@ ActiveRecord::Schema.define(version: 20171128023503) do
 
   add_foreign_key "events", "schedules"
   add_foreign_key "schedules", "users"
+  add_foreign_key "scopes", "roles"
 end
