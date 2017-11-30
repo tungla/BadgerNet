@@ -46,7 +46,7 @@ RSpec.describe ScheduleController, type: :controller do
     context 'given a valid event id' do
       it 'deletes the event' do
         delete :destroy_event, params: { event_id: event.id }
-        expect{ Event.find(event.id) }.to raise_error(ActiveRecord::RecordNotFound)
+        expect { Event.find(event.id) }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end
