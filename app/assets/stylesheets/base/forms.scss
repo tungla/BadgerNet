@@ -7,28 +7,97 @@ Forms
 @import "fonts";
 @import "colors";
 
-// temp. fix for issue of buttons sitting side-by-side
-form {
-    display: inline-block;
-    width: 100%;
-}
+// input background color
+$input-background-color-default: rgba(0, 0, 0, 0.025);
+$input-background-color-focus: white;
 
-.input {
-    margin: 0.5em 0.5em 0.5em 0;
-    height: 2.5em;
-    border: 2px solid rgba(0, 0, 0, 0.08);
-    border-radius: 0.5em;
-    width: 100%;
-    display: block;
+// input border and shadow
+$input-border-default: 1px solid rgba(0, 0, 0, 0.085);
+$input-border-focus: 1px solid rgba(25, 181, 254, 0.5);
+$input-border-radius: 0.35em;
+$input-box-shadow-focus: 0 0 4px rgba(25, 181, 254, 0.5);
+
+// input sizing
+$input-padding: 0.5em 0.75em 0.5em 0.75em;
+$input-margin: 0.35em 0 0 0;
+
+// standard form elements
+form {
     font-family: $default-body-font;
-    font-weight: $font-weight-normal;
-    font-size: 16px;
+    font-size: 1em;
 }
 
 label {
-    font-family: $default-body-font;
-    color: $primary-text-color;
-    line-height: 140%;
+    display: block;
+    margin: 0.5em 0 0 0;
+}
+
+input {
+    font-size: 1em;
+    box-sizing: border-box;
+    outline: none;
+}
+
+input:focus {
+    transition: all 100ms ease-in;
+}
+
+label {
+    margin: 0.65em 0 0 0;
+    font-weight: $font-weight-bold;
+    box-sizing: border-box;
+}
+
+input[type="text"] {
+    width: 100%;
+    margin: $input-margin;
+    padding: $input-padding;
+    border: $input-border-default;
+    border-radius: $input-border-radius;
+    background-color: $input-background-color-default;
+}
+
+input[type="text"]:focus {
+    border: $input-border-focus;
+    background-color: $input-background-color-focus;
+    box-shadow: $input-box-shadow-focus;
+}
+
+input[type="time"] {
+    display: inline-block;
+    margin: 0.25em 0 0 0;
+    margin: $input-margin;
+    padding: $input-padding;
+    border: $input-border-default;
+    border-radius: $input-border-radius;
+    background-color: $input-background-color-default;
+}
+
+input[type="time"]:focus {
+    border: $input-border-focus;
+    background-color: $input-background-color-focus;
+    box-shadow: $input-box-shadow-focus;
+}
+
+// custom classes
+.check-box-container {
+    display: flex;
+    box-sizing: border-box;
+    margin: $input-margin;
+    padding: 0.5em;
+    border: $input-border-default;
+    border-radius: $input-border-radius;
+    width: 100%;
+
+    label {
+        display: inline-block;
+        margin: 0;
+        font-weight: $font-weight-normal;
+    }
+}
+
+.check-box-item {
+    margin: 0 0 0 0.5em
 }
 
 select {
