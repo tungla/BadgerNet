@@ -9,13 +9,9 @@ Banners - Notification messages from the application displaying info to user
 
 // Generic styling for a banner
 .banner {
-    position: fixed;
-    top: 3.5em;
-    right: 1em;
-    width: 25%;
-    text-align: center;
-    box-shadow: 8px 8px 5px #888888;
+    display: block;
     padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: .25rem;
     font-weight: $font-weight-bold;
