@@ -29,7 +29,8 @@ form {
 
 label {
     display: block;
-    margin: 0.5em 0 0 0;
+    margin: 1em 0 0 0;
+    font-weight: $font-weight-bold;
 }
 
 input, textarea {
@@ -40,12 +41,6 @@ input, textarea {
 
 input:focus {
     transition: all 100ms ease-in;
-}
-
-label {
-    margin: 0.65em 0 0 0;
-    font-weight: $font-weight-bold;
-    box-sizing: border-box;
 }
 
 input[type="text"],
@@ -71,12 +66,16 @@ textarea:focus {
 
 input[type="time"] {
     display: inline-block;
-    margin: 0.25em 0 0 0;
     margin: $input-margin;
     padding: $input-padding;
     border: $input-border-default;
     border-radius: $input-border-radius;
     background-color: $input-background-color-default;
+}
+
+input[type="file"] {
+    display: block;
+    margin: $input-margin;
 }
 
 textarea {
