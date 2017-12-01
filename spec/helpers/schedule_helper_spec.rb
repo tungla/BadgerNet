@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AnnouncementHelper, type: :helper do
+RSpec.describe ScheduleHelper, type: :helper do
   describe 'public methods' do
     context 'it responds to its methods' do
       it { expect(helper).to respond_to(:calendar_hours) }
