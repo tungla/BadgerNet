@@ -43,11 +43,11 @@ class ContactsController < ApplicationController
   def update_role
     if !@u.roles.include?(@r)
       @u.add_role(@r.name)
-      flash[:success] = "Successfully added #{@u.first_name.capitalize} to "\
+      flash[:success] = "Successfully added #{@u.first_name} to "\
       "#{@r.name.capitalize} team!"
     else
       @u.delete_role @r.name
-      flash[:success] = "Successfully removed #{@u.first_name.capitalize} from "\
+      flash[:success] = "Successfully removed #{@u.first_name} from "\
       "#{@r.name.capitalize} team!"
     end
   end
