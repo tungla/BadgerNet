@@ -55,7 +55,7 @@ RSpec.describe ContactsController, type: :controller do
       role = create(:role)
       post :create, params: { name: role.name }
       expect(Role.find(role.id)).not_to be nil
-      expect(flash[:notice]).to eq("Team '#{role.name.capitalize}' already exists!")
+      expect(flash[:notice]).to eq("Team '#{role.name}' already exists!")
     end
   end
 
