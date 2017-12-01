@@ -38,7 +38,7 @@ RSpec.describe ScheduleHelper, type: :helper do
       context 'all_events_on_day(day_num)' do
         it 'returns all the events on a given day' do
           event = create(:event, days: [0])
-          expect(helper.all_events_on_day(0).first).to eq(event)
+          expect(helper.all_events_on_day(0)).to include(event)
         end
       end
 
