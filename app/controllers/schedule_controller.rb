@@ -33,9 +33,10 @@ class ScheduleController < ApplicationController
 
   def build_days_array(params)
     days = []
-    %w[sun mon tue wed thur fri sat].each_with_index do |day, i|
+    %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday].each_with_index do |day, i|
       days << i if params[day]
     end
     days
   end
 end
+
