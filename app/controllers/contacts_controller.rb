@@ -19,7 +19,7 @@ class ContactsController < ApplicationController
 
   def create
     if Role.exists?(name: params[:name].downcase)
-      flash[:notice] = "Team '#{params[:name].capitalize}' already exists!"
+      flash[:notice] = "Team '#{params[:name]}' already exists!"
     else
       Role.create(name: params[:name].downcase)
       flash[:success] = "Successfully added new team #{params[:name].capitalize}"
