@@ -78,6 +78,21 @@ input[type="file"] {
     margin: $input-margin;
 }
 
+input.search {
+    display: block;
+    width: 100%;
+    padding: $input-padding;
+    border: $input-border-default;
+    border-radius: $input-border-radius;
+    background-color: $input-background-color-default;
+}
+
+input.search:focus {
+    border: $input-border-focus;
+    background-color: $input-background-color-focus;
+    box-shadow: $input-box-shadow-focus;
+}
+
 textarea {
     width: 100%;
     height: 6em;
