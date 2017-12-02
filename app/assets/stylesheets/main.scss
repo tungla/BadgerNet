@@ -26,6 +26,9 @@ Imports base styles, as well as view-specific styles
 @import "schedule";
 @import "permissions";
 
+// import libraries
+@import "libraries/toast";
+
 
 // css reset
 * {
