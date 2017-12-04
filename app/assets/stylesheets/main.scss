@@ -52,3 +52,8 @@ p {
 h1, h2, h3, h4, h5, h6 {
     font-family: $default-header-font;
 }
+
+a {
+    text-decoration: none;
+    font-family: $default-body-font;
+}

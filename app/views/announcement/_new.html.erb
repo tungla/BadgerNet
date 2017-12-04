@@ -1,16 +1,21 @@
 <%= form_for @announcement, url: {action: "create"} do |f| %>
-  <%= f.label 'Receipent enter name goes here' %> </br>
-  <div id='sendtype'>
-    <%= f.check_box :email%>  <%# figure out how to do validation %>
-    <%= f.label :email, 'Email'%> </br>
-    <%= f.check_box :sms%>
-    <%= f.label :sms, 'SMS'%> </br>
+  <%= f.label 'Receipent enter name goes here' %>
+  <%= f.label "Send via" %>
+  <div class="check-box-group">
+    <div class="check-box-group-item">
+      <%= f.check_box :email%>  <%# figure out how to do validation %>
+      <%= f.label :email, 'Email'%>
+    </div>
+    <div class="check-box-group-item">
+      <%= f.check_box :sms%>
+      <%= f.label :sms, 'SMS'%>
+    </div>
   </div>
   <%= render 'shared/roles' %>
   <%= f.label :title, 'Title'%>
-  <%= f.text_field :title %> </br>
-  <%= f.label 'body' %></br>
-  <%= f.text_area :content, size: "80x12" , required: true%> </br>
+  <%= f.text_field :title %>
+  <%= f.label 'Message' %>
+  <%= f.text_area :content, required: true %>
   <div style="margin-top:1.5em;text-align:right;">
     <button class="button-default" onclick="toggleModal('new-announcement')">Cancel</button>
     <%= f.submit "Send Announcement", class: "button-primary"%>
