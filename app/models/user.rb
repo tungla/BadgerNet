@@ -10,6 +10,8 @@ class User < ApplicationRecord
   validates :phone, format: { with: /\d{10}/,
                               message: 'Please enter a 10 digit US Phone Number' }
 
+  attr_accessor :confirm_password
+
   def coach?
     has_role? :coach
   end
