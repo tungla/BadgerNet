@@ -10,13 +10,13 @@
     <%= f.text_field :last_name, class: 'input' %>
     <%= f.label "Phone Number" %>
     <%= f.text_field :phone, class: 'input' %>
+    <%= f.label "Enter New Password" %>
+    <%= f.text_field :password, class: 'input', type: 'password' %>
+    <%= f.label "Confirm New Password" %>
+    <%= f.text_field :confirm_password, class: 'input', type: 'password' %>
     <br>
     <%= f.submit "Update Profile Information", class: 'button-primary' %>
   <% end %>
-
-  <p>Profile Picture</p>
-  <br>
-  <img src="http://lorempixel.com/200/200" />
 
 </div>
 </div>
