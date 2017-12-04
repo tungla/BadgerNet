@@ -58,6 +58,8 @@ class AnnouncementController < ApplicationController
     @announcement.sender = [current_user.first_name, current_user.last_name].join(' ')
     @announcement.save
     @announcement.scopify(params[:roles])
+    #@announcement.scopify(params[:users])
+
     redirect_to '/announcement'
     flash[:success] = 'Announcement sent'
   end

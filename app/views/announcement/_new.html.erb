@@ -1,5 +1,10 @@
 <%= form_for @announcement, url: {action: "create"} do |f| %>
   <%= f.label 'Receipent enter name goes here' %> </br>
+  <%= label_tag 'users[]', "Teams (Hold ctrl while clicking to select multiple teams)" %>
+  <%= select_tag 'users', options_from_collection_for_select(User.read_all, "id", "last_name"),
+   multiple: true %>
+  <br />
+
   <div id='sendtype'>
     <%= f.check_box :email%>  <%# figure out how to do validation %>
     <%= f.label :email, 'Email'%> </br>

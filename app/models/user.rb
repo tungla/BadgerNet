@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :phone, presence: true
   validates :phone, format: { with: /\d{10}/,
                               message: 'Please enter a 10 digit US Phone Number' }
+  scopify
 
   def coach?
     has_role? :coach
@@ -23,5 +24,9 @@ class User < ApplicationRecord
     end
     # rubocop:enable Lint/HandleExceptions
     !has_role?(role)
+  end
+
+  def self.read_all
+    User.order('last_name ASC')
   end
 end
