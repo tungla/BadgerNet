@@ -71,7 +71,7 @@ RSpec.describe ContactsController, type: :controller do
     it 'adds the team if the user is not already on the team' do
       put :update, params: { id: user.id, role: role.id }
       expect(user.has_role?(role.name)).to be true
-      success_message = "Successfully added #{user.first_name.capitalize} to "\
+      success_message = "Successfully added #{user.first_name} to "\
       "#{role.name.capitalize} team!"
       expect(flash[:success]).to eq(success_message)
     end
@@ -80,7 +80,7 @@ RSpec.describe ContactsController, type: :controller do
       user.add_role(role.name)
       put :update, params: { id: user.id, role: role.id }
       expect(user.has_role?(role.name)).to be false
-      success_message = "Successfully removed #{user.first_name.capitalize} from "\
+      success_message = "Successfully removed #{user.first_name} from "\
       "#{role.name.capitalize} team!"
       expect(flash[:success]).to eq(success_message)
     end
