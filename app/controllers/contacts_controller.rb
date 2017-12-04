@@ -19,7 +19,7 @@ class ContactsController < ApplicationController
 
   def create
     if Role.exists?(name: params[:name].downcase)
-      flash[:notice] = "Team '#{params[:name].capitalize}' already exists!"
+      flash[:notice] = "Team '#{params[:name]}' already exists!"
     else
       Role.create(name: params[:name].downcase)
       flash[:success] = "Successfully added new team #{params[:name].capitalize}"
@@ -43,11 +43,11 @@ class ContactsController < ApplicationController
   def update_role
     if !@u.roles.include?(@r)
       @u.add_role(@r.name)
-      flash[:success] = "Successfully added #{@u.first_name.capitalize} to "\
+      flash[:success] = "Successfully added #{@u.first_name} to "\
       "#{@r.name.capitalize} team!"
     else
       @u.delete_role @r.name
-      flash[:success] = "Successfully removed #{@u.first_name.capitalize} from "\
+      flash[:success] = "Successfully removed #{@u.first_name} from "\
       "#{@r.name.capitalize} team!"
     end
   end
