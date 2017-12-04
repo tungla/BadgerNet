@@ -2,6 +2,7 @@
 class ScheduleController < ApplicationController
   def index
     @user = current_user
+    render 'admin_index' if @user.coach?
     # create schedule if one doesn't exist
     @schedule = if @user.schedule
                   @user.schedule
@@ -32,8 +33,8 @@ class ScheduleController < ApplicationController
 
   def build_days_array(params)
     days = []
-    %w[sun mon tue wed thur fri sat].each_with_index do |day, i|
-      days << i if params[day]
+    %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday].each_with_index do |d, i|
+      days << i if params[d]
     end
     days
   end

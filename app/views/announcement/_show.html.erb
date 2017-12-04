@@ -1,0 +1,16 @@
+<h1><%= announcement.title %></h1>
+
+<p>
+   Date: <%= announcement.created_at %><br />
+   Type: 
+   <% if announcement.sms && announcement.email %>
+     <%= 'Both' %>
+   <% elsif announcement.sms%>
+     <%= 'SMS' %>
+   <% elsif announcement.email%>
+     <%= 'Email' %>
+   <% end %><br />
+   <br />
+   <strong>Message:</strong> <%= announcement.content %><br />
+   
+</p>

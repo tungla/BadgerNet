@@ -20,8 +20,8 @@ RSpec.describe ScheduleController, type: :controller do
 
   describe 'POST #create_event' do
     before do
-      coach = create(:coach_user)
-      sign_in(coach)
+      athlete = create(:athlete_user)
+      sign_in(athlete)
       get :index
     end
     context 'given a valid event' do
@@ -31,6 +31,22 @@ RSpec.describe ScheduleController, type: :controller do
                                         time: { 'start' => '09:00', 'end' => '16:45' },
                                         days: [0, 2, 3] }
         end.to change { Event.count }.by(1)
+      end
+    end
+  end
+
+  describe 'DELETE #destroy_event' do
+    before do
+      athlete = create(:athlete_user)
+      sign_in(athlete)
+    end
+
+    let(:event) { create(:event) }
+
+    context 'given a valid event id' do
+      it 'deletes the event' do
+        delete :destroy_event, params: { event_id: event.id }
+        expect { Event.find(event.id) }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end

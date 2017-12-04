@@ -1,8 +1,8 @@
-<h1>Contacts</h1>
+<h1>Teams</h1>
 <button class="button-primary" onclick="toggleModal('new-team')" style="float: right; margin: 1.25em 0 0 0;">New Team</button>
 <header>
   <br/>
-Click the team in the "Teams In" category to remove user from team, Click team in "Other Team" to add user to team.
+Simply check the boxes under a user's name to add them to a team. Un-check the box to remove them from the team.
 </header>
 <table>
     <thead>
@@ -16,37 +16,32 @@ Click the team in the "Teams In" category to remove user from team, Click team i
     <tbody>
         <% @users.each do |user| %>
             <!--for each user -->
-            <tr>
-                <td><%= user.first_name %></td>
-                <td><%= user.last_name %></td>
-                <td><%= user.email %></td>
-                <td><%= user.phone %></td>
-              </tr>
-              <tr>
-
-                <td><strong>Current Teams:</strong></td>
-                <td colspan='3'>
-                          <% has_roles = false %>
-                          <% user.roles.sort_by{ |r| r.name }.each do |role|%>
-                            <% next if role.name == 'athlete' || role == 'coach' %>
-                            <% has_roles = true %>
-                            <%= button_to role.name.capitalize, {action: 'update', id: user.id, role: role.id}, method: :put, class:"button-danger" %>
-                        <% end %>
-                        <%= "Not in any teams!" unless has_roles %>
-                      </td>
-                      </tr>
-                      <tr>
-                        <td><strong>Other Teams:</strong></td>
-                        <td colspan='3'>
-                        <% @roles.each do |role|%>
-                        <%if !user.roles.include?(role)%>
-                          <%= button_to role.name.capitalize, {action: 'update', id: user.id, role: role.id}, method: :put, class:"button-danger"%>
-                        <% end %>
-                        <% end %>
-                      </td>
-</tr>
-<tr><td></td></tr>
-
+            <tr class='no-border-top'>
+                <% unless user.first_name %>
+                    <td colspan='4'><i>Pending Invite</i></td>
+                <% else %>
+                    <td class='no-border-top'><%= user.first_name.capitalize %></td>
+                    <td class='no-border-top'><%= user.last_name.capitalize %></td>
+                    <td class='no-border-top'><%= user.email %></td>
+                    <td class='no-border-top'><%= user.phone %></td>
+                <% end %>
+            </tr>
+            <tr class='no-border-top separator'>
+                <td colspan='4' style='padding-top: 0;'>
+                    <div class='check-box-group' style='margin: 0;'>
+                    <% @roles.sort_by{ |r| r.name }.each do |role|%>
+                        <div class="check-box-group-item">
+                          <%= form_tag("/contacts/#{user.id}?role=#{role.id}", method: "put") do %>
+                            <%= check_box_tag role.name, role.id, user.has_role?(role.name), onclick: "document.getElementById('#{user.id}#{role.id}').click();" %>
+                            <%= label_tag role.name %>
+                            <%= submit_tag('', class: 'hidden', id: "#{user.id}#{role.id}") %>
+                          <% end %>
+                        </div>
+                        <!-- <%= button_to role.name.capitalize, {action: 'update', id: user.id, role: role.id}, method: :put, class:"button-danger" %> -->
+                    <% end %>
+                    </div>
+                </td>
+            </tr>
         <% end %>
     </tbody>
 </table>
