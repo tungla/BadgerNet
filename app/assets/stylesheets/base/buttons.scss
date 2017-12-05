@@ -4,6 +4,10 @@ Buttons
 ==========================================================================
 */
 
+@import "navigation";
+@import "fonts";
+
+// primary action buttons
 .button-default,
 .button-primary,
 .button-danger {
@@ -42,4 +46,15 @@ Buttons
 
     &:hover { background-color: #EB3D5E; }
     &:active { background-color: #E9264B; }
+}
+
+// emphasized links
+.link-emphasized {
+    display: inline-block;
+    margin: 0.75em 0 0 0;
+    padding: 0.35em 0.85em 0.35em 0.85em;
+    border-radius: 2em;
+    background: linear-gradient(120deg, $navbar-gradient-start, $navbar-gradient-end);
+    color: white;
+    font-weight: $font-weight-bold;
 }
