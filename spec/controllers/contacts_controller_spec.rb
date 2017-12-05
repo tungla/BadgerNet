@@ -45,6 +45,12 @@ RSpec.describe ContactsController, type: :controller do
       sign_in(coach)
     end
 
+    it 'shows an alert if the team already exists (and is not archived)' do
+      role = create(:role)
+      post :create, params: { name: role.name }
+      expect(flash[:alert]).to eq("Team '#{role.name}' already exists!")
+    end
+
     it 'creates a new role (team) if one does not already exist' do
       post :create, params: { name: 'new_team' }
       expect(Role.where(name: 'new_team').first).not_to be nil
