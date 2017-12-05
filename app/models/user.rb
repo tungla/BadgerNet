@@ -7,7 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :invitable
   validates :first_name, :last_name, :phone, presence: true
-  validates :phone, format: { with: /[0-9]{10}/,
+  validates :phone, format: { with: /\A(\d{10}|\(?\d{3}\)?[-. ]\d{3}[-.]\d{4})\z/,
                               message: 'Please enter a 10 digit US Phone Number' }
 
   def coach?
