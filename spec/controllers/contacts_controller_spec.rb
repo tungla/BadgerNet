@@ -113,8 +113,8 @@ RSpec.describe ContactsController, type: :controller do
       delete :destroy, params: { roles: nil }
       # Count is two because there is the coach role and the one we created
       expect(Role.where(archived: false).count).to eq(2)
-      alert_message = 'Could not delete teams at this time.'
-      expect(flash[:danger]).to eq(alert_message)
+      alert_message = 'Must select at least one team to delete!'
+      expect(flash[:alert]).to eq(alert_message)
     end
   end
 end

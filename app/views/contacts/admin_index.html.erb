@@ -69,7 +69,7 @@ Simply check the boxes under a user's name to add them to a team. Un-check the b
             <p> Select teams to delete, then select "Delete Teams".
             <%= render 'shared/roles' %>
             <div style="margin-top:1.5em;text-align:right;">
-                <button class="button-default" onclick="toggleModal('delete-team')">Cancel</button>
+                <button class="button-default" type='button' onclick="toggleModal('delete-team')">Cancel</button>
                 <%= submit_tag('Delete Teams', class: 'button-danger') %>
             </div>
         <% end %>

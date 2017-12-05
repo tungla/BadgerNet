@@ -28,14 +28,14 @@ class ContactsController < ApplicationController
   end
 
   def destroy
-    flash[:danger] = 'Could not delete teams at this time.' unless destroy_roles
+    flash[:alert] = 'Must select at least one team to delete!' unless destroy_roles
     redirect_to action: 'index'
   end
 
   private
 
   def destroy_roles
-    return false if params[:roles].empty? || params[:roles].blank?
+    return false if params[:roles].blank? || params[:roles].empty?
     flash[:success] = ''
     params[:roles].each_with_index do |id, i|
       to_archive = Role.find(id)
