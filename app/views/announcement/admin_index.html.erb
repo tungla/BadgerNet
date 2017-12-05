@@ -25,7 +25,7 @@
         <% @announcements.each_with_index do |announcement, index| %>
             <tr>
                 <td><%= announcement.title%></td>
-                <td><%= truncate(announcement.content, :length => 78) %></td>
+                <td><%= truncate(announcement.content, :length => 80) %></td>
                 <td><%= (announcement.created_at).strftime("%I:%M%p, %d %b. %Y") %></td>
                 <td>
                     <% if announcement.sms && announcement.email %>
