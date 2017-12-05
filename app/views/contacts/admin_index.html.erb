@@ -1,5 +1,6 @@
 <h1>Teams</h1>
 <button class="button-primary" onclick="toggleModal('new-team')" style="float: right; margin: 1.25em 0 0 0;">New Team</button>
+<button class="button-primary" onclick="toggleModal('delete-team')" style="float: right; margin: 1.25em 1em 0 0;">Select Teams to Delete</button>
 <header>
   <br/>
 Simply check the boxes under a user's name to add them to a team. Un-check the box to remove them from the team.
@@ -51,13 +52,26 @@ Simply check the boxes under a user's name to add them to a team. Un-check the b
         <h2>New Team</h2>
         <%= form_tag do %>
             <%= label_tag(:name, "Name:") %>
-            <%= text_field_tag(:name) %><br>
-
-            <%= button_to "Add Role", {action: 'create', name: :name}, method: :post, class:"button-danger"%>
-            <%= button_to "Remove Role", {action: 'destroy', name: :name}, method: :delete, class:"button-danger"%>
+            <%= text_field_tag(:name) %>
+            <div style="margin-top:1.5em;text-align:right;">
+                <button class="button-default" onclick="toggleModal('new-team')">Cancel</button>
+                <%= button_to "Add Team", { action: 'create', name: :name }, method: :post, class:"button-primary" %>
+            </div>
         <% end %>
-        <div style="margin-top:1.5em;text-align:right;">
-            <button class="button-default" onclick="toggleModal('new-team')">Cancel</button>
-        </div>
+    </div>
+</div>
+
+<div class="modal hidden" id="delete-team">
+    <div class="modal-content">
+        <div class="modal-close" onclick="toggleModal('delete-team')">&times;</div>
+        <h2>Delete Teams</h2>
+        <%= form_tag(contacts_destroy_path, method: :delete) do %>
+            <p> Select teams to delete, then select "Delete Teams".
+            <%= render 'shared/roles' %>
+            <div style="margin-top:1.5em;text-align:right;">
+                <button class="button-default" onclick="toggleModal('delete-team')">Cancel</button>
+                <%= submit_tag('Delete Teams', class: 'button-danger') %>
+            </div>
+        <% end %>
     </div>
 </div>
