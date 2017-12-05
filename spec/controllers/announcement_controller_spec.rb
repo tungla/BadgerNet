@@ -57,7 +57,7 @@ RSpec.describe AnnouncementController, type: :controller do
       let(:a) { build(:announcement_sms) }
       it 'sends a text message' do
         # Stub the send text message function to make it a dummy method
-        allow_any_instance_of(AnnouncementHelper).to receive(:send_text_message)
+        allow_any_instance_of(AnnouncementController).to receive(:send_text_message)
         expect do
           post :create, params: { announcement: { email: a.email, sms: a.sms,
                                                   title: a.title, content: a.content } }
