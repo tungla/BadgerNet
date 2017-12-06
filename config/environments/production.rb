@@ -21,7 +21,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -75,6 +75,21 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings ={
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "badgernet.me",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: 'badgernet.announcement',
+    password: 'badger1234'
+  }
+
+  Rails.application.routes.default_url_options[:host] = 'badgernet.me'
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'

@@ -44,7 +44,7 @@ RSpec.feature 'Visiting the permissions page', type: :feature do
     scenario 'Inviting a new user should result in a pending invite' do
       click_on 'Invite New User'
       fill_in('email', with: 'invited@wisc.edu')
-      click_on 'Add User'
+      click_on 'Invite User'
       expect(page).to have_content('Pending Invite')
       expect(page).to have_content('Successfully sent an invite to invited@wisc.edu!')
     end

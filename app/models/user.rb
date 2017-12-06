@@ -26,7 +26,7 @@ class User < ApplicationRecord
     !has_role?(role)
   end
 
-  def self.read_all
+  def self.all_users
     User.order('last_name ASC')
   end
 end

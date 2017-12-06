@@ -1,21 +1,29 @@
 <%= form_for @announcement, url: {action: "create"} do |f| %>
-  <%= f.label 'Receipent enter name goes here' %> </br>
-  <%= label_tag 'users[]', "Teams (Hold ctrl while clicking to select multiple teams)" %>
-  <%= select_tag 'users', options_from_collection_for_select(User.read_all, "id", "last_name"),
-   multiple: true %>
-  <br />
+  <%= label_tag(:fname, "Enter First Name")%>
+  <%= text_field_tag(:fname) %>
 
-  <div id='sendtype'>
-    <%= f.check_box :email%>  <%# figure out how to do validation %>
-    <%= f.label :email, 'Email'%> </br>
-    <%= f.check_box :sms%>
-    <%= f.label :sms, 'SMS'%> </br>
+  <%= button_to "Add User", {action: 'get', name: :fname}, method: :get, class:"button-danger"%>
+
+  <%= f.label 'Receipent enter name goes here' %>
+  <%= label_tag 'user[]', "Teams (Hold ctrl while clicking to select multiple teams)" %>
+  <%= select_tag 'user', options_from_collection_for_select(@user.all_users, "id", "last_name"),
+   multiple: true %>
+  <%= f.label "Send via" %>
+  <div class="check-box-group">
+    <div class="check-box-group-item">
+      <%= f.check_box :email%>  <%# figure out how to do validation %>
+      <%= f.label :email, 'Email'%>
+    </div>
+    <div class="check-box-group-item">
+      <%= f.check_box :sms%>
+      <%= f.label :sms, 'SMS'%>
+    </div>
   </div>
   <%= render 'shared/roles' %>
   <%= f.label :title, 'Title'%>
-  <%= f.text_field :title %> </br>
-  <%= f.label 'body' %></br>
-  <%= f.text_area :content, size: "80x12" , required: true%> </br>
+  <%= f.text_field :title %>
+  <%= f.label 'Message' %>
+  <%= f.text_area :content, required: true %>
   <div style="margin-top:1.5em;text-align:right;">
     <button class="button-default" onclick="toggleModal('new-announcement')">Cancel</button>
     <%= f.submit "Send Announcement", class: "button-primary"%>
