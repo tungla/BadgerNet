@@ -4,6 +4,7 @@ Buttons
 ==========================================================================
 */
 
+@import "colors";
 @import "navigation";
 @import "fonts";
 
@@ -60,7 +61,7 @@ Buttons
     margin: 0.75em 0 0 0;
     padding: 0.35em 0.85em 0.35em 0.85em;
     border-radius: 2em;
-    background: linear-gradient(120deg, $navbar-gradient-start, $navbar-gradient-end);
+    background: linear-gradient(120deg, $primary-theme-color, $secondary-theme-color);
     color: white;
     font-weight: $font-weight-bold;
 }
