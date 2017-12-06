@@ -62,7 +62,7 @@ RSpec.describe Event, type: :model do
           user.schedule = create(:schedule, event: [event, event2])
           user.add_role role.name
           Scope.backfill_event_scope(user, role)
-          expect(Event.scoped_by_day(0, nil).count).to eq(Event.count)
+          expect(Event.scoped_by_day(0, '').count).to eq(Event.where('0=ANY(days)').count)
         end
       end
 
