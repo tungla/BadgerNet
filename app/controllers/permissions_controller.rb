@@ -4,7 +4,7 @@ class PermissionsController < ApplicationController
   before_action :coach?
 
   def index
-    @users = User.all
+    @users = User.where.not id: current_user.id
   end
 
   def create
@@ -23,6 +23,7 @@ class PermissionsController < ApplicationController
     @coach_before = @user.coach?
     flip_permissions
     flash[:success] = "Successfully changed #{@user.email}'s permission level"
+    redirect_to action: 'index'
   rescue ActiveRecord::RecordNotFound
     flash[:danger] = 'Unable to update user at this time.'
     redirect_to action: 'index'

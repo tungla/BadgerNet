@@ -1,2 +1,16 @@
 <h1>Team Availability</h1>
+<h2>Filter by Teams:</h3>
+<%= form_tag("/schedule", method: "get") do %>
+    <%= render 'shared/roles' %>
+    <%= submit_tag('Filter', class: 'button-primary') %>
+    <%= link_to 'Clear Filters', schedule_path, class: 'button-primary', style: 'color: white;' %>
+<% end %>
+<% unless params[:roles].blank? %>
+    <p> Currently filtering by:
+        <% params[:roles].each_with_index do |r, i| %>
+            <%= Role.find_by(id: r).name + ', ' if i < params[:roles].count - 1 %>
+            <%= Role.find_by(id: r).name if i == params[:roles].count - 1 %>
+        <% end %>
+    </p>
+<% end %>
 <%= render 'events_calendar' %>

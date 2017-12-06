@@ -22,7 +22,7 @@ class AnnouncementController < ApplicationController
   def create
     @announcement = Announcement.new(announcement_params)
     if @announcement.sms && @announcement.save
-      send_text_message(@announcement.content)
+      send_text_message(@announcement.title, @announcement.content)
       announcement_success
     elsif @announcement.save
       announcement_success
@@ -63,7 +63,7 @@ class AnnouncementController < ApplicationController
     flash[:success] = 'Announcement sent'
   end
 
-  def send_text_message(words)
+  def send_text_message(subject, words)
     number_to_send_to = '2066180749' # "params[:number_to_send_to]"
 
     twilio_sid = 'ACc17e1968205992bb82bdb0ba8de37732' # this is public
@@ -75,7 +75,7 @@ class AnnouncementController < ApplicationController
     @twilio_client.messages.create(
       from: "+1#{twilio_phone_number}",
       to: number_to_send_to,
-      body: words
+      body: subject + ' - ' + words
     )
   end
 end

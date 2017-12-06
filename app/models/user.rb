@@ -7,7 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :invitable
   validates :first_name, :last_name, :phone, presence: true
-  validates :phone, format: { with: /\d{10}/,
+  validates :phone, format: { with: /\A(\d{10}|\(?\d{3}\)?[-. ]\d{3}[-.]\d{4})\z/,
                               message: 'Please enter a 10 digit US Phone Number' }
 
   attr_accessor :confirm_password
@@ -25,5 +25,18 @@ class User < ApplicationRecord
     end
     # rubocop:enable Lint/HandleExceptions
     !has_role?(role)
+  end
+
+  def role_ids
+    non_permissions_roles = roles.reject { |r| r.name == 'coach' || r.name == 'athlete' }
+    non_permissions_roles.map(&:id).to_a
+  end
+
+  def first_name
+    self[:first_name].capitalize if self[:first_name]
+  end
+
+  def last_name
+    self[:last_name].capitalize if self[:last_name]
   end
 end
