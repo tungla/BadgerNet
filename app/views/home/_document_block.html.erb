@@ -1,0 +1,16 @@
+<table class="table table-bordered table-striped one">
+  <thead>
+    <tr>
+      <th><font size="5">Documents</font></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @documents.each do |document| %>
+      <tr>
+        <td><%= document.name %></td>
+        <td><%= document.created_at.strftime("%d %b. %Y") %></td>
+        <td><%= button_to "Download Document", document.attachment_url, class: "button-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
