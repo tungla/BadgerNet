@@ -41,7 +41,7 @@ class Event < ApplicationRecord
       condition +=  if i.zero?
                       "scopes.role_id = #{r} "
                     else
-                      " OR scopes.role_id = #{r} "
+                      "OR scopes.role_id = #{r} "
                     end
     end
     condition
