@@ -24,4 +24,9 @@ class User < ApplicationRecord
     # rubocop:enable Lint/HandleExceptions
     !has_role?(role)
   end
+
+  def role_ids
+    non_permissions_roles = roles.reject { |r| r.name == 'coach' || r.name == 'athlete' }
+    non_permissions_roles.map(&:id).to_a
+  end
 end
