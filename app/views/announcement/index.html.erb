@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <% @announcements.each do |announcement, index| %>
+        <% @announcements.each_with_index do |announcement, index| %>
             <tr>
                 <td><%= announcement.title%></td>
                 <td><%= truncate(announcement.content, :length => 80) %></td>
