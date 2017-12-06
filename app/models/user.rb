@@ -24,4 +24,8 @@ class User < ApplicationRecord
     # rubocop:enable Lint/HandleExceptions
     !has_role?(role)
   end
+
+  def self.all_users
+    User.order('last_name ASC')
+  end
 end
