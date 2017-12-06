@@ -25,6 +25,11 @@ class User < ApplicationRecord
     !has_role?(role)
   end
 
+  def role_ids
+    non_permissions_roles = roles.reject { |r| r.name == 'coach' || r.name == 'athlete' }
+    non_permissions_roles.map(&:id).to_a
+  end
+
   def first_name
     self[:first_name].capitalize if self[:first_name]
   end
