@@ -1,15 +1,14 @@
 <h1>Documents</h1>
-<div style="margin-top:1.5em;text-align:right;">
-<button class="button-primary" onclick="toggleModal('new-document')" >New Document</button>
+<div style="float:right;">
+  <button class="button-primary" onclick="toggleModal('new-document')" >New Document</button>
 </div>
 <div class="modal hidden" id="new-document">
-<div class="modal-content">
-    <div class="modal-close" onclick="toggleModal('new-document')">&times;</div>
-    <h2>New Document</h2>
-    <%= render 'documents/new' %>
+    <div class="modal-content">
+        <div class="modal-close" onclick="toggleModal('new-document')">&times;</div>
+        <h2>New Document</h2>
+        <%= render 'documents/new' %>
+    </div>
 </div>
-</div>
-<br />
 <table class="table table-bordered table-striped">
   <thead>
     <tr>

@@ -8,7 +8,9 @@ Page elements and structure
 .main {
     max-width: 64em;
     padding: 0 1.25em 0 1.25em;
-    margin: 1.15em auto 3.5em auto;
+    margin: 1.5em auto 3.5em auto;
+
+    h1 { display: inline-block; }
 }
 
 // alerts show up at top of page, below navigation bar

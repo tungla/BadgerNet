@@ -5,7 +5,7 @@ Tables
 */
 
 table {
-    margin: 1em 0 0 0;
+    margin: 0;
     width: 100%;
     font-size: 1em;
     font-family: $default-body-font;
@@ -16,7 +16,6 @@ table {
     }
 
     thead {
-        background-color: #f7f7f7;
         text-align: left;
     }
 
