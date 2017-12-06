@@ -22,8 +22,11 @@ class AnnouncementController < ApplicationController
 
   def create
     @name = params[:name]
+    flash[:success] = User.find_by(first_name: params[:fname], last_name: params[:lname]).first_name
     if User.exists?(first_name: 'Jack')
-      @userlist =  [User.find_by(first_name: 'john').first_name]
+      @userlist = [User.find_by(first_name: 'john').first_name]
+      @user = User.where(first_name: @userlist)
+
     else
     @announcement = Announcement.new(announcement_params)
     if @announcement.sms && @announcement.save
