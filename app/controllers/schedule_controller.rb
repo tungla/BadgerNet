@@ -2,9 +2,12 @@
 class ScheduleController < ApplicationController
   def index
     @user = current_user
-    render 'admin_index' if @user.coach?
-    athlete_view
-    render 'index'
+    if @user.coach?
+      render 'admin_index'
+    else
+      athlete_view
+      render 'index'
+    end
   end
 
   def create_event
