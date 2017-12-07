@@ -43,6 +43,18 @@ input:focus {
     transition: all 100ms ease-in;
 }
 
+textarea {
+    width: 100%;
+    height: 6em;
+    resize: none;
+    margin: $input-margin;
+    padding: $input-padding;
+    border: $input-border-default;
+    border-radius: $input-border-radius;
+    background-color: $input-background-color-default;
+}
+
+// form elements of specific types
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -78,7 +90,8 @@ input[type="file"] {
     margin: $input-margin;
 }
 
-input.search {
+// custom elements
+.search {
     display: block;
     width: 100%;
     padding: $input-padding;
@@ -87,24 +100,12 @@ input.search {
     background-color: $input-background-color-default;
 }
 
-input.search:focus {
+.search:focus {
     border: $input-border-focus;
     background-color: $input-background-color-focus;
     box-shadow: $input-box-shadow-focus;
 }
 
-textarea {
-    width: 100%;
-    height: 6em;
-    resize: none;
-    margin: $input-margin;
-    padding: $input-padding;
-    border: $input-border-default;
-    border-radius: $input-border-radius;
-    background-color: $input-background-color-default;
-}
-
-// custom classes
 .check-box-group {
     display: flex;
     box-sizing: border-box;
