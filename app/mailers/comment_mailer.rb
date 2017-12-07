@@ -5,9 +5,11 @@ class CommentMailer < ApplicationMailer
   #
   #   en.comment_mailer.new_comment.subject
   #
-  def new_comment(user)
+  def new_comment(user, subject, content, from)
     # default from: 'badgernet.announcement@gmail.com'
     @user = user
-    mail to: user.email, subject: 'new email'
+    @content = content
+    @current_user = from
+    mail to: @user.email, subject: subject
   end
 end

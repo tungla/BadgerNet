@@ -3,7 +3,6 @@
   <%= text_field_tag(:fname) %>
   <%= label_tag(:lname, "Enter Last Name")%>
   <%= text_field_tag(:lname) %>
-  <%= button_to "Add User", {action: 'get', fname: :fname, lname: :lname}, method: :get, class:"button-danger"%>
 
   <%= f.label 'Receipent enter name goes here' %>
   <%= label_tag 'user[]', "Teams (Hold ctrl while clicking to select multiple teams)" %>

@@ -21,12 +21,12 @@ class AnnouncementController < ApplicationController
   end
 
   def create
-    @name = params[:name]
-    flash[:success] = User.find_by(first_name: params[:fname], last_name: params[:lname]).first_name
-    if User.exists?(first_name: 'Jack')
-      @userlist = [User.find_by(first_name: 'john').first_name]
-      @user = User.where(first_name: @userlist)
-
+    @name = params[:fname]
+    if User.exists?(first_name: @name)
+      @announcement = Announcement.new(announcement_params)
+      CommentMailer.new_comment(User.find_by(first_name: @name), @announcement.title, @announcement.content, current_user).deliver_now
+      flash[:success] = @announcement.content
+      redirect_to '/announcement'
     else
     @announcement = Announcement.new(announcement_params)
     if @announcement.sms && @announcement.save

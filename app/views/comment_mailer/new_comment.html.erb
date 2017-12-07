@@ -1,5 +1,6 @@
-<h1>Comment</h1>
 
 <p>
-  this is the email.
+  <%=@content%>
 </p>
+<p> This message is sent you from <%=@current_user.first_name%> <%=@current_user.last_name%> via Badgernet <p>
+  <p> You may reach them at <%=@current_user.email%><p>
